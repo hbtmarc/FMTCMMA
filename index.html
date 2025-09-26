@@ -400,7 +400,7 @@
         <!-- ===== HERO SECTION ===== -->
         <section id="hero" class="relative text-center">
             <video id="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/000000/101010?text=Loading...">
-                <source src="https://videos.pexels.com/video-files/4754141/4754141-hd_1920_1080_25fps.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-boxer-training-with-his-coach-34443-large.mp4" type="video/mp4">
             </video>
             <div class="relative z-10 p-6">
                 <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white leading-tight">Forje sua Evolução</h1>
@@ -853,15 +853,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (planDatabase[level] && planDatabase[level][goal]) {
             const options = planDatabase[level][goal];
             const selectedPlan = options[Math.floor(Math.random() * options.length)];
-            const finalPlan = selectedPlan.plan.replace(/\${daysString}/g, daysString);
+            const finalPlan = selectedPlan.plan.replaceAll('${daysString}', daysString);
             return `<p class="mb-4">${selectedPlan.intro}</p>${finalPlan}`;
         } else {
             return `<p class="mb-4">Com base nas suas escolhas, o ideal é focar na consistência. Converse com nossos instrutores para um plano ainda mais detalhado!</p><ul><li><strong>Dica:</strong> O Open Mat de Sábado é uma excelente oportunidade para treinar livremente.</li></ul>`;
         }
     };
 
-    planForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    generatePlanBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Impede o envio do formulário e o recarregamento da página
         generatePlanBtn.disabled = true;
         planResultDiv.innerHTML = '<div class="loader mx-auto"></div><p class="text-center mt-4">Gerando seu plano...</p>';
 
