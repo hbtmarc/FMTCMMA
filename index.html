@@ -36,7 +36,7 @@
             --color-surface: #101010;
             --color-primary: #E50914;
             --color-glow: #ff001e;
-            --color-secondary: #00f6ff;
+            --color-accent: #F59E0B; /* Dourado/Âmbar como nova cor de destaque */
             --color-text-primary: #ffffff;
             --color-text-secondary: #b3b3b3;
         }
@@ -68,7 +68,7 @@
         .aurora-background {
             position: relative;
             background-color: var(--color-background);
-            overflow-x: hidden; /* Previne overflow horizontal do gradiente */
+            overflow-x: hidden;
         }
         .aurora-background::before {
             content: "";
@@ -78,7 +78,7 @@
             width: 150%;
             padding-bottom: 150%;
             border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, rgba(0, 246, 255, 0.08) 25%, transparent 50%);
+            background: radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, rgba(245, 158, 11, 0.08) 25%, transparent 50%);
             animation: aurora-spin 25s linear infinite;
             transform-origin: center center;
             will-change: transform;
@@ -124,7 +124,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 5rem; /* Espaço para o header */
+            padding-top: 5rem;
             padding-bottom: 2rem;
         }
         #hero-video {
@@ -172,7 +172,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            transform-style: preserve-3d; /* Necessário para o efeito 3D */
+            transform-style: preserve-3d;
         }
         .glass-card:hover {
             border-color: var(--color-primary);
@@ -183,7 +183,7 @@
              display: flex;
              flex-direction: column;
              height: 100%;
-             transform: translateZ(20px); /* Move o conteúdo para frente no eixo Z */
+             transform: translateZ(20px);
         }
         @media (min-width: 768px) {
             .glass-card-inner { padding: 2rem; }
@@ -201,18 +201,16 @@
             content: ''; 
             position: absolute; 
             width: 4px; 
-            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary), transparent); 
             top: 10px; 
             bottom: 10px; 
             left: 20px; 
             border-radius: 2px; 
         }
-        /* Gradientes customizados para cada modalidade */
         .timeline-jj::after {
-            background: linear-gradient(to bottom, #3b82f6, #9333ea, #78350f, #111827, transparent) !important;
+            background: linear-gradient(to bottom, #d1d5db, #3b82f6, #9333ea, #78350f, #111827, transparent);
         }
         .timeline-mt::after {
-            background: linear-gradient(to bottom, #f97316, #3b82f6, #eab308, #22c55e, #78350f, #111827, #d1d5db, #facc15, transparent) !important;
+            background: linear-gradient(to bottom, #f97316, #3b82f6, #eab308, #22c55e, #78350f, #111827, #d1d5db, #facc15, transparent);
         }
 
         .timeline-item { position: relative; padding-left: 60px; padding-bottom: 1.5rem; }
@@ -231,12 +229,45 @@
             transition: all 0.3s ease; 
         }
         .timeline-item:hover::before { 
-            background-color: var(--color-primary); 
             transform: scale(1.2); 
-            box-shadow: 0 0 15px var(--color-primary);
+            box-shadow: 0 0 15px currentColor;
         }
         
-        /* Estilos visuais para faixas e prajieds */
+        /* Cores dos pontos da Timeline - Jiu-Jitsu Infantil */
+        #modal-jiujitsu .timeline-infantil .timeline-item:nth-child(1)::before { border-color: #a1a1aa; }
+        #modal-jiujitsu .timeline-infantil .timeline-item:nth-child(2)::before { border-color: #eab308; }
+        #modal-jiujitsu .timeline-infantil .timeline-item:nth-child(3)::before { border-color: #f97316; }
+        #modal-jiujitsu .timeline-infantil .timeline-item:nth-child(4)::before { border-color: #22c55e; }
+        #modal-jiujitsu .timeline-infantil .timeline-item:hover::before { background-color: currentColor; }
+
+        /* Cores dos pontos da Timeline - Jiu-Jitsu Adulto */
+        #modal-jiujitsu .timeline-adulto .timeline-item:nth-child(1)::before { border-color: #ffffff; }
+        #modal-jiujitsu .timeline-adulto .timeline-item:nth-child(2)::before { border-color: #3b82f6; }
+        #modal-jiujitsu .timeline-adulto .timeline-item:nth-child(3)::before { border-color: #9333ea; }
+        #modal-jiujitsu .timeline-adulto .timeline-item:nth-child(4)::before { border-color: #78350f; }
+        #modal-jiujitsu .timeline-adulto .timeline-item:nth-child(5)::before { border-color: #E50914; }
+        #modal-jiujitsu .timeline-adulto .timeline-item:hover::before { background-color: var(--border-color); }
+        
+        /* Cores dos pontos da Timeline - Muay Thai */
+        #modal-muaythai .timeline-item:nth-child(1)::before { border-color: #ffffff; }
+        #modal-muaythai .timeline-item:nth-child(2)::before { border-color: #f97316; }
+        #modal-muaythai .timeline-item:nth-child(3)::before { border-color: #f97316; }
+        #modal-muaythai .timeline-item:nth-child(4)::before { border-color: #3b82f6; }
+        #modal-muaythai .timeline-item:nth-child(5)::before { border-color: #3b82f6; }
+        #modal-muaythai .timeline-item:nth-child(6)::before { border-color: #eab308; }
+        #modal-muaythai .timeline-item:nth-child(7)::before { border-color: #eab308; }
+        #modal-muaythai .timeline-item:nth-child(8)::before { border-color: #22c55e; }
+        #modal-muaythai .timeline-item:nth-child(9)::before { border-color: #22c55e; }
+        #modal-muaythai .timeline-item:nth-child(10)::before { border-color: #78350f; }
+        #modal-muaythai .timeline-item:nth-child(11)::before { border-color: #78350f; }
+        #modal-muaythai .timeline-item:nth-child(12)::before { border-color: #6b7280; }
+        #modal-muaythai .timeline-item:nth-child(13)::before { border-color: #6b7280; }
+        #modal-muaythai .timeline-item:nth-child(14)::before { border-color: #6b7280; }
+        #modal-muaythai .timeline-item:nth-child(15)::before { border-color: #6b7280; }
+        #modal-muaythai .timeline-item:nth-child(16)::before { border-color: #d1d5db; }
+        #modal-muaythai .timeline-item:nth-child(17)::before { border-color: #facc15; }
+        #modal-muaythai .timeline-item:hover::before { background-color: var(--border-color); }
+
         .timeline-item-content {
             display: flex;
             align-items: center;
@@ -369,7 +400,7 @@
         <section id="academia" class="container mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Nosso DNA</h3>
+                    <h3 class="text-lg text-[var(--color-accent)] font-semibold tracking-widest">Nosso DNA</h3>
                     <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-6">Tradição e Inovação</h2>
                     <p class="text-text-secondary mb-4 text-base md:text-lg">Acreditamos que todo grande lutador é construído sobre dois pilares: o respeito profundo pelas raízes da arte marcial e a busca incansável pela inovação. Nossa metodologia integra o melhor dos dois mundos para criar atletas completos, resilientes e inteligentes.</p>
                     <p class="text-text-secondary text-base md:text-lg">Aqui, cada treino é um passo em uma jornada de autoconhecimento. Você aprenderá a superar limites, não apenas no tatame, mas na vida.</p>
@@ -384,7 +415,7 @@
         <!-- ===== MODALIDADES ===== -->
         <section id="modalidades" class="container mx-auto">
              <div class="text-center mb-12 md:mb-16">
-                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Nossas Arenas</h3>
+                <h3 class="text-lg text-[var(--color-accent)] font-semibold tracking-widest">Nossas Arenas</h3>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Escolha sua disciplina</h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -392,14 +423,14 @@
                      <div class="glass-card-inner">
                         <h3 class="text-3xl md:text-4xl mb-3">Jiu-Jitsu</h3>
                         <p class="text-text-secondary mb-6 flex-grow">A arte suave reimaginada. Estratégia, fluidez e técnica para dominar o tatame com inteligência.</p>
-                        <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-secondary)] hover:text-black transition-all" data-modal="jiujitsu">Ver Progressão</button>
+                        <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-accent)] text-[var(--color-accent)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-accent)] hover:text-black transition-all" data-modal="jiujitsu">Ver Progressão</button>
                      </div>
                 </div>
                 <div class="glass-card" data-tilt>
                      <div class="glass-card-inner">
                         <h3 class="text-3xl md:text-4xl mb-3">Muay Thai</h3>
                         <p class="text-text-secondary mb-6 flex-grow">Potência e precisão. Condicionamento extremo e a ciência dos oito membros para forjar um corpo de aço.</p>
-                        <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-secondary)] hover:text-black transition-all" data-modal="muaythai">Ver Progressão</button>
+                        <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-accent)] text-[var(--color-accent)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-accent)] hover:text-black transition-all" data-modal="muaythai">Ver Progressão</button>
                      </div>
                 </div>
                 <div class="glass-card" data-tilt>
@@ -415,7 +446,7 @@
         <!-- ===== GEMINI: PLANO DE TREINO IA ===== -->
         <section id="plano-ia" class="container mx-auto">
             <div class="text-center mb-12 md:mb-16">
-                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Coach Digital</h3>
+                <h3 class="text-lg text-[var(--color-accent)] font-semibold tracking-widest">Coach Digital</h3>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Monte seu treino com IA</h2>
                  <p class="max-w-3xl mx-auto text-lg text-text-secondary mt-4">Responda as perguntas abaixo e nossa inteligência artificial criará um plano de treino semanal, personalizado para você, com base em nossos horários.</p>
             </div>
@@ -464,7 +495,7 @@
         <!-- ===== DEPOIMENTOS ===== -->
         <section id="depoimentos" class="container mx-auto">
             <div class="text-center mb-12 md:mb-16">
-                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Voz da Equipe</h3>
+                <h3 class="text-lg text-[var(--color-accent)] font-semibold tracking-widest">Voz da Equipe</h3>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">O que nossos atletas dizem</h2>
             </div>
             <div class="grid lg:grid-cols-3 gap-8">
@@ -478,10 +509,10 @@
                 </div>
                 <div class="glass-card" data-tilt>
                     <div class="glass-card-inner text-center">
-                        <img src="https://placehold.co/100x100/101010/00f6ff?text=MC" alt="Maria C." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-[var(--color-secondary)]">
+                        <img src="https://placehold.co/100x100/101010/F59E0B?text=MC" alt="Maria C." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-[var(--color-accent)]">
                         <p class="text-text-secondary mb-4 flex-grow">"O treino de Muay Thai aqui é de outro nível. Me sinto mais forte, confiante e preparada para qualquer desafio. A energia é contagiante!"</p>
                         <h4 class="text-2xl mt-auto">Maria C.</h4>
-                        <p class="text-sm text-[var(--color-secondary)]">Aluna de Muay Thai</p>
+                        <p class="text-sm text-[var(--color-accent)]">Aluna de Muay Thai</p>
                     </div>
                 </div>
                 <div class="glass-card" data-tilt>
@@ -501,7 +532,7 @@
         <!-- ===== HORÁRIOS ===== -->
         <section id="horarios" class="container mx-auto">
              <div class="text-center mb-12 md:mb-16">
-                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Sua Rotina</h3>
+                <h3 class="text-lg text-[var(--color-accent)] font-semibold tracking-widest">Sua Rotina</h3>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Encontre seu horário</h2>
             </div>
             <div id="horarios-grid">
@@ -540,7 +571,7 @@
                 </div>
                 <div class="horarios-dia">
                     <h3 class="text-xl sm:text-2xl mb-4">Sábado</h3>
-                     <p class="text-text-secondary text-sm text-[var(--color-secondary)]"><strong>12:00</strong> Open Mat</p>
+                     <p class="text-text-secondary text-sm text-[var(--color-accent)]"><strong>12:00</strong> Open Mat</p>
                 </div>
                 <div class="horarios-dia border-none">
                     <h3 class="text-xl sm:text-2xl mb-4 text-gray-600">Domingo</h3>
@@ -551,7 +582,7 @@
 
         <!-- ===== CONTATO ===== -->
         <section id="contato" class="container mx-auto text-center">
-            <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Seu Próximo Passo</h3>
+            <h3 class="text-lg text-[var(--color-accent)] font-semibold tracking-widest">Seu Próximo Passo</h3>
             <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-6">A transformação começa aqui</h2>
             <p class="max-w-3xl mx-auto text-lg text-text-secondary mb-12">Chega de desculpas. Sua aula experimental é o portal para a sua melhor versão. Preencha, compareça, conquiste.</p>
             <div class="max-w-xl mx-auto">
@@ -585,121 +616,49 @@
             <h3 class="text-4xl font-bold uppercase text-white mb-2 text-center">Jornada no Jiu-Jitsu</h3>
             <p class="text-center text-text-secondary mb-8">A progressão no Jiu-Jitsu é dividida por idade, respeitando o desenvolvimento do atleta.</p>
             
-            <h4 class="text-2xl font-semibold text-[var(--color-secondary)] mb-4">Graduação Infantil/Juvenil (Até 15 anos)</h4>
-            <div class="timeline mb-10">
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual bg-gray-500"></div>
-                        <div>
-                            <h5 class="text-xl text-gray-400">01. Faixa Cinza</h5>
-                            <p class="text-sm text-text-secondary">Idade: 4 a 15 anos (lisa até 4 graus).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual" style="background-color: #eab308;"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #eab308;">02. Faixa Amarela</h5>
-                            <p class="text-sm text-text-secondary">Idade: 7 a 15 anos (lisa até 4 graus).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual" style="background-color: #f97316;"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #f97316;">03. Faixa Laranja</h5>
-                            <p class="text-sm text-text-secondary">Idade: 10 a 15 anos (lisa até 4 graus).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual" style="background-color: #22c55e;"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #22c55e;">04. Faixa Verde</h5>
-                            <p class="text-sm text-text-secondary">Idade: 13 a 15 anos (lisa até 4 graus).</p>
-                        </div>
-                    </div>
-                </div>
+            <h4 class="text-2xl font-semibold text-[var(--color-accent)] mb-4">Graduação Infantil/Juvenil (Até 15 anos)</h4>
+            <div class="timeline timeline-infantil mb-10">
+                <div class="timeline-item" style="--border-color: #a1a1aa;"><div class="timeline-item-content"><div class="belt-visual bg-gray-500"></div><div><h5 class="text-xl text-gray-400">01. Faixa Cinza</h5><p class="text-sm text-text-secondary">Idade: 4 a 15 anos (lisa até 4 graus).</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #eab308;"><div class="timeline-item-content"><div class="belt-visual" style="background-color: #eab308;"></div><div><h5 class="text-xl" style="color: #eab308;">02. Faixa Amarela</h5><p class="text-sm text-text-secondary">Idade: 7 a 15 anos (lisa até 4 graus).</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #f97316;"><div class="timeline-item-content"><div class="belt-visual" style="background-color: #f97316;"></div><div><h5 class="text-xl" style="color: #f97316;">03. Faixa Laranja</h5><p class="text-sm text-text-secondary">Idade: 10 a 15 anos (lisa até 4 graus).</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #22c55e;"><div class="timeline-item-content"><div class="belt-visual" style="background-color: #22c55e;"></div><div><h5 class="text-xl" style="color: #22c55e;">04. Faixa Verde</h5><p class="text-sm text-text-secondary">Idade: 13 a 15 anos (lisa até 4 graus).</p></div></div></div>
             </div>
 
-            <h4 class="text-2xl font-semibold text-[var(--color-secondary)] mb-4 mt-12">Graduação Adulto (A partir de 16 anos)</h4>
-            <div class="timeline timeline-jj">
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual bg-white"></div>
-                        <div>
-                            <h5 class="text-xl text-white font-bold">01. Faixa Branca</h5>
-                            <p class="text-sm text-text-secondary">Tempo: Indeterminado (lisa até 4 graus). Foco nos fundamentos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual" style="background-color: #3b82f6;"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #5292f6;">02. Faixa Azul</h5>
-                            <p class="text-sm text-text-secondary">Tempo médio: 2 anos (lisa até 4 graus). Desenvolvimento do jogo.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual" style="background-color: #9333ea;"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #a353ea;">03. Faixa Roxa</h5>
-                            <p class="text-sm text-text-secondary">Tempo médio: 1.5 anos (lisa até 4 graus). Combinações e estratégia.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual" style="background-color: #78350f;"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #8f4d22;">04. Faixa Marrom</h5>
-                            <p class="text-sm text-text-secondary">Tempo médio: 1 ano (lisa até 4 graus). Refinamento técnico.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-item-content">
-                        <div class="belt-visual bg-black border-2 border-gray-600"></div>
-                        <div>
-                            <h5 class="text-xl" style="color: #E50914;">05. Faixa Preta</h5>
-                            <p class="text-sm text-text-secondary">O início de um novo ciclo. Conquistada após anos de dedicação.</p>
-                        </div>
-                    </div>
-                </div>
+            <h4 class="text-2xl font-semibold text-[var(--color-accent)] mb-4 mt-12">Graduação Adulto (A partir de 16 anos)</h4>
+            <div class="timeline timeline-adulto timeline-jj">
+                <div class="timeline-item" style="--border-color: #ffffff;"><div class="timeline-item-content"><div class="belt-visual bg-white"></div><div><h5 class="text-xl text-white font-bold">01. Faixa Branca</h5><p class="text-sm text-text-secondary">Tempo: Indeterminado (lisa até 4 graus). Foco nos fundamentos.</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #3b82f6;"><div class="timeline-item-content"><div class="belt-visual" style="background-color: #3b82f6;"></div><div><h5 class="text-xl" style="color: #5292f6;">02. Faixa Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 2 anos (lisa até 4 graus). Desenvolvimento do jogo.</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #9333ea;"><div class="timeline-item-content"><div class="belt-visual" style="background-color: #9333ea;"></div><div><h5 class="text-xl" style="color: #a353ea;">03. Faixa Roxa</h5><p class="text-sm text-text-secondary">Tempo médio: 1.5 anos (lisa até 4 graus). Combinações e estratégia.</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #78350f;"><div class="timeline-item-content"><div class="belt-visual" style="background-color: #78350f;"></div><div><h5 class="text-xl" style="color: #8f4d22;">04. Faixa Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 1 ano (lisa até 4 graus). Refinamento técnico.</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #E50914;"><div class="timeline-item-content"><div class="belt-visual bg-black border-2 border-gray-600"></div><div><h5 class="text-xl" style="color: #E50914;">05. Faixa Preta</h5><p class="text-sm text-text-secondary">O início de um novo ciclo. Conquistada após anos de dedicação.</p></div></div></div>
             </div>
         </div>
     </div>
 </div>
 
 <div id="modal-muaythai" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
-     <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-2xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-secondary)]/20 max-h-[90vh] overflow-y-auto">
+     <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-2xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-accent)]/20 max-h-[90vh] overflow-y-auto">
         <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
         <div class="p-8 md:p-12 -mt-16">
             <h3 class="text-4xl font-bold uppercase text-white mb-8 text-center">Jornada no Muay Thai</h3>
              <div class="timeline timeline-mt">
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual bg-white"></div><div><h5 class="text-xl text-black font-bold">01. Prajied Branca</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #f97316;"></div><div><h5 class="text-xl" style="color: #f97316;">02. Prajied Laranja</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #f97316 50%, #3b82f6 50%);"></div><div><h5 class="text-xl" style="color: #f97316;">03. Prajied Laranja c/ Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #3b82f6;"></div><div><h5 class="text-xl" style="color: #3b82f6;">04. Prajied Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #3b82f6 50%, #eab308 50%);"></div><div><h5 class="text-xl" style="color: #3b82f6;">05. Prajied Azul c/ Amarela</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #eab308;"></div><div><h5 class="text-xl" style="color: #eab308;">06. Prajied Amarela</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #eab308 50%, #22c55e 50%);"></div><div><h5 class="text-xl" style="color: #eab308;">07. Prajied Amarela c/ Verde</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #22c55e;"></div><div><h5 class="text-xl" style="color: #22c55e;">08. Prajied Verde</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #22c55e 50%, #78350f 50%);"></div><div><h5 class="text-xl" style="color: #22c55e;">09. Prajied Verde c/ Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #78350f;"></div><div><h5 class="text-xl" style="color: #8f4d22;">10. Prajied Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #78350f 50%, #000 50%);"></div><div><h5 class="text-xl" style="color: #8f4d22;">11. Prajied Marrom c/ Preta</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual bg-black border-2 border-gray-400"></div><div><h5 class="text-xl text-white">12. Prajied Preta</h5><p class="text-sm text-text-secondary">Nível de Instrutor Auxiliar</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #fff 50%);"></div><div><h5 class="text-xl text-white">13. Prajied Preta c/ Branco</h5><p class="text-sm text-text-secondary">Nível de Instrutor</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #eab308 50%);"></div><div><h5 class="text-xl text-white">14. Prajied Preta c/ Amarela</h5><p class="text-sm text-text-secondary">Nível de Professor</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #E50914 50%);"></div><div><h5 class="text-xl text-white">15. Prajied Preta c/ Vermelha</h5><p class="text-sm text-text-secondary">Nível de Mestre</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual bg-gray-300"></div><div><h5 class="text-xl" style="color: #d1d5db;">16. Prajied Prata</h5><p class="text-sm text-text-secondary">Nível de Grão Mestre</p></div></div></div>
-                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #facc15;"></div><div><h5 class="text-xl" style="color: #facc15;">17. Prajied Ouro</h5><p class="text-sm text-text-secondary">Título Honorífico Máximo</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #ffffff;"><div class="timeline-item-content"><div class="prajied-visual bg-white"></div><div><h5 class="text-xl text-white font-bold">01. Prajied Branca</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #f97316;"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #f97316;"></div><div><h5 class="text-xl" style="color: #f97316;">02. Prajied Laranja</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #f97316;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #f97316 50%, #3b82f6 50%);"></div><div><h5 class="text-xl" style="color: #f97316;">03. Prajied Laranja c/ Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #3b82f6;"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #3b82f6;"></div><div><h5 class="text-xl" style="color: #3b82f6;">04. Prajied Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #3b82f6;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #3b82f6 50%, #eab308 50%);"></div><div><h5 class="text-xl" style="color: #3b82f6;">05. Prajied Azul c/ Amarela</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #eab308;"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #eab308;"></div><div><h5 class="text-xl" style="color: #eab308;">06. Prajied Amarela</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #eab308;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #eab308 50%, #22c55e 50%);"></div><div><h5 class="text-xl" style="color: #eab308;">07. Prajied Amarela c/ Verde</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #22c55e;"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #22c55e;"></div><div><h5 class="text-xl" style="color: #22c55e;">08. Prajied Verde</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #22c55e;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #22c55e 50%, #78350f 50%);"></div><div><h5 class="text-xl" style="color: #22c55e;">09. Prajied Verde c/ Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #78350f;"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #78350f;"></div><div><h5 class="text-xl" style="color: #8f4d22;">10. Prajied Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #78350f;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #78350f 50%, #000 50%);"></div><div><h5 class="text-xl" style="color: #8f4d22;">11. Prajied Marrom c/ Preta</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #6b7280;"><div class="timeline-item-content"><div class="prajied-visual bg-black border-2 border-gray-400"></div><div><h5 class="text-xl text-white">12. Prajied Preta</h5><p class="text-sm text-text-secondary">Nível de Instrutor Auxiliar</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #6b7280;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #fff 50%);"></div><div><h5 class="text-xl text-white">13. Prajied Preta c/ Branco</h5><p class="text-sm text-text-secondary">Nível de Instrutor</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #6b7280;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #eab308 50%);"></div><div><h5 class="text-xl text-white">14. Prajied Preta c/ Amarela</h5><p class="text-sm text-text-secondary">Nível de Professor</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #6b7280;"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #E50914 50%);"></div><div><h5 class="text-xl text-white">15. Prajied Preta c/ Vermelha</h5><p class="text-sm text-text-secondary">Nível de Mestre</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #d1d5db;"><div class="timeline-item-content"><div class="prajied-visual bg-gray-300"></div><div><h5 class="text-xl" style="color: #d1d5db;">16. Prajied Prata</h5><p class="text-sm text-text-secondary">Nível de Grão Mestre</p></div></div></div>
+                <div class="timeline-item" style="--border-color: #facc15;"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #facc15;"></div><div><h5 class="text-xl" style="color: #facc15;">17. Prajied Ouro</h5><p class="text-sm text-text-secondary">Título Honorífico Máximo</p></div></div></div>
              </div>
         </div>
     </div>
@@ -707,7 +666,7 @@
 
 <!-- Modal para Motivação -->
 <div id="modal-motivation" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
-    <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-md w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-secondary)]/20">
+    <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-md w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-accent)]/20">
         <button class="modal-close absolute top-2 right-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
         <div id="motivation-content" class="p-8 md:p-12 text-center">
             <!-- Conteúdo da citação será inserido aqui -->
@@ -837,29 +796,27 @@ document.addEventListener('DOMContentLoaded', function() {
             - Sábado: 12:00 Open Mat
         `;
 
+        // Instrução do sistema integrada diretamente na query do usuário
         const userQuery = `
-            Como um coach de artes marciais de elite da academia FMTC-EVO, crie um plano de treino semanal personalizado e motivador para um novo membro. Use apenas as aulas da grade de horários. Seja conciso e responda em português do Brasil.
+            Você é um coach de artes marciais de elite da academia FMTC-EVO. Sua tarefa é criar um plano de treino semanal, personalizado e motivador para um novo membro, usando exclusivamente as aulas da grade de horários fornecida. Seja conciso e direto. A resposta deve ser em português do Brasil.
 
-            **Grade de Horários:**
+            **Grade de Horários Disponível:**
             ${gymSchedule}
 
-            **Perfil do Aluno:**
+            **Perfil do Novo Aluno:**
             - Objetivo Principal: ${goal}
             - Nível de Experiência: ${level}
-            - Dias Disponíveis: ${days.join(', ')}
+            - Dias Disponíveis para Treino: ${days.join(', ')}
 
-            **Instruções de Resposta:**
-            1. Monte um plano apenas para os dias disponíveis.
-            2. Para iniciantes, recomende aulas como Jiu-Jitsu (Iniciante) e Muay Thai. Evite aulas avançadas.
-            3. Para alunos com objetivo de competir, sugira MMA ou Sparring se estiverem disponíveis nos dias dele.
-            4. Dê uma breve explicação motivadora (1-2 frases) para o plano.
-            5. Formate a resposta final APENAS em HTML, usando <strong> para os dias e <ul>/<li> para as aulas. Não use markdown.
+            **Formato da Resposta:**
+            Sua resposta deve ser APENAS o código HTML. Comece com uma breve explicação motivadora (1-2 frases) e, em seguida, liste o plano usando a tag <strong> para os dias da semana e <ul>/<li> para as aulas. Não use markdown ou qualquer outro formato.
         `;
 
         try {
             const response = await fetchWithBackoff(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                // Payload simplificado, sem 'systemInstruction'
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: userQuery }] }]
                 })
@@ -873,7 +830,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (text) {
                 planResultDiv.innerHTML = text;
             } else {
-                planResultDiv.innerHTML = '<p class="text-red-500">Não foi possível gerar o plano. Tente novamente.</p>';
+                throw new Error("Resposta da API vazia.");
             }
         } catch (error) {
             console.error("Error calling Gemini API:", error);
@@ -892,12 +849,14 @@ document.addEventListener('DOMContentLoaded', function() {
         motivationContentDiv.innerHTML = '<div class="loader mx-auto"></div>';
         openModal('motivation');
 
-        const userQuery = "Você é um mestre de artes marciais. Crie uma citação motivacional curta, poderosa e original em português do Brasil sobre o espírito guerreiro ou disciplina. Sua resposta deve ser APENAS o código HTML formatado exatamente assim: `<p class='text-2xl text-text-primary'>Sua citação aqui</p><span class='text-sm text-[var(--color-secondary)]'>- Coach IA</span>`. Não adicione nenhum outro texto ou formatação.";
+        // Instrução integrada na query
+        const userQuery = "Você é um mestre de artes marciais. Crie uma citação motivacional curta, poderosa e original em português do Brasil sobre o espírito guerreiro ou disciplina. Sua resposta deve ser APENAS o código HTML formatado exatamente assim: `<p class='text-2xl text-text-primary'>Sua citação aqui</p><span class='text-sm text-[var(--color-accent)]'>- Coach IA</span>`. Não adicione nenhum outro texto, explicação ou formatação markdown.";
         
          try {
             const response = await fetchWithBackoff(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                // Payload simplificado
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: userQuery }] }]
                 })
@@ -911,7 +870,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (text) {
                 motivationContentDiv.innerHTML = text;
             } else {
-                motivationContentDiv.innerHTML = '<p>Não foi possível gerar a motivação. Tente novamente.</p>';
+                throw new Error("Resposta da API vazia.");
             }
         } catch (error) {
             console.error("Error calling Gemini API for motivation:", error);
@@ -927,7 +886,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < retries; i++) {
             try {
                 const response = await fetch(url, options);
-                if (response.status === 429 || response.status >= 500) { // Retry on rate limiting or server errors
+                if (response.status === 429 || response.status >= 500) { 
                     throw new Error(`Server error: ${response.status}`);
                 }
                 return response;
