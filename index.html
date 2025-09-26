@@ -53,7 +53,7 @@
         .section-subtitle { @apply text-lg text-[var(--color-primary)] font-semibold tracking-widest; }
         
         .cta-button, .secondary-button {
-            @apply relative inline-block text-white uppercase font-bold tracking-wider text-sm px-8 py-3 rounded-sm shadow-lg transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105;
+            @apply relative inline-block text-white uppercase font-bold tracking-wider text-sm px-8 py-3 rounded-md shadow-lg transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105;
         }
         .cta-button { background-color: var(--color-primary); box-shadow: 0 4px 30px rgba(229, 9, 20, 0.4); }
         .secondary-button { background-color: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
@@ -66,13 +66,16 @@
         }
         .cta-button:hover::before { left: 100%; }
 
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes cinematic-slide-in { 
+            from { opacity: 0; transform: translateY(40px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         
         .animated-item { opacity: 0; }
-        .animated-item.visible { animation: slideInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+        .animated-item.visible { animation: cinematic-slide-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
         
-        .modal { transition: opacity 0.3s ease; }
-        .modal-content { transform: translateY(20px) scale(0.98); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+        .modal { transition: opacity 0.4s ease; }
+        .modal-content { transform: translateY(20px) scale(0.98); opacity: 0; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease; }
         .modal:not(.hidden) .modal-content { transform: translateY(0) scale(1); opacity: 1; }
     </style>
     
@@ -116,10 +119,10 @@
                 <h1 class="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-tight animated-item visible" style="text-shadow: 0 0 40px rgba(0,0,0,1);">
                     Onde <span class="text-[var(--color-primary)]">Guerreiros</span> São Forjados
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-200 mt-4 mb-10 max-w-3xl mx-auto font-light animated-item visible" style="animation-delay: 0.2s;">
+                <p class="text-xl md:text-2xl text-gray-200 mt-4 mb-10 max-w-3xl mx-auto font-light animated-item visible" style="animation-delay: 0.3s;">
                     Mais que uma academia, uma comunidade. Descubra sua força interior através da disciplina e técnica do Jiu-Jitsu, Muay Thai e MMA.
                 </p>
-                <div class="animated-item visible" style="animation-delay: 0.4s;">
+                <div class="animated-item visible" style="animation-delay: 0.6s;">
                     <a href="#contato" class="cta-button">Inicie Sua Jornada Hoje</a>
                 </div>
             </div>
@@ -130,7 +133,7 @@
                 <div class="animated-item">
                     <div class="relative group"><img src="https://placehold.co/800x600/141414/f5f5f5?text=FMTC-MMA" alt="Foto da academia FMTC-MMA" class="rounded-lg shadow-2xl w-full transition-transform duration-500 group-hover:scale-105"></div>
                 </div>
-                <div class="animated-item" style="animation-delay: 0.2s;">
+                <div class="animated-item" style="animation-delay: 0.3s;">
                     <h3 class="section-subtitle">Nossa Missão</h3>
                     <h2 class="section-title mb-6">Tradição e Evolução</h2>
                     <p class="text-lg text-gray-300 mb-4">A FMTC-MMA nasceu do respeito às tradições e da paixão pela evolução técnica. Somos a Federação de Muay Thai Chaiya e Artes Marciais Mistas de Minas Gerais, um lar para todos que buscam autoconhecimento, superação e um condicionamento físico de elite.</p>
@@ -151,15 +154,15 @@
                         <p class="text-gray-400 mb-6 min-h-[100px]">A arte suave. Desenvolva técnica e estratégia para controlar qualquer oponente, independentemente do tamanho ou da força.</p>
                         <button class="modal-trigger secondary-button w-full" data-modal="jiujitsu">Ver Sistema de Graduação</button>
                     </div>
-                    <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300" style="animation-delay: 0.2s;">
+                    <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300" style="animation-delay: 0.3s;">
                         <h3 class="text-5xl mb-3">Muay Thai</h3>
                         <p class="text-gray-400 mb-6 min-h-[100px]">A arte das oito armas. Transforme seu corpo com socos, chutes, cotoveladas e joelhadas em um treino de alta intensidade.</p>
                          <button class="modal-trigger secondary-button w-full" data-modal="muaythai">Ver Sistema de Graduação</button>
                     </div>
-                    <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300" style="animation-delay: 0.4s;">
+                    <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300" style="animation-delay: 0.6s;">
                         <h3 class="text-5xl mb-3">MMA</h3>
                         <p class="text-gray-400 mb-6 min-h-[100px]">A união das artes marciais. Integre a luta em pé e no chão, desenvolvendo um jogo completo para o esporte de combate moderno.</p>
-                        <button class="w-full text-center bg-gray-800/50 text-gray-500 border border-gray-700 uppercase font-bold tracking-wider text-sm px-8 py-3 rounded-sm cursor-not-allowed">Graduação Unificada</button>
+                        <button class="w-full text-center bg-gray-800/50 text-gray-500 border border-gray-700 uppercase font-bold tracking-wider text-sm px-8 py-3 rounded-md cursor-not-allowed">Graduação Unificada</button>
                     </div>
                 </div>
             </div>
@@ -169,7 +172,7 @@
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="text-center animated-item"><h3 class="section-subtitle">Lidere Pelo Exemplo</h3><h2 class="section-title mb-12">Nossos Comandantes</h2></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.1s;">
+                    <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.2s;">
                         <img src="https://placehold.co/600x600/141414/e50914?text=Mestre+Silva" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Mestre Silva">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:bottom-4">
@@ -178,7 +181,7 @@
                             <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">Mais de 20 anos formando campeões e cidadãos no tatame, com uma didática incomparável.</p>
                         </div>
                     </div>
-                    <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.3s;">
+                    <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.4s;">
                          <img src="https://placehold.co/600x600/141414/e50914?text=Kru+Nak" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Kru Nak">
                          <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:bottom-4">
@@ -187,7 +190,7 @@
                             <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">A autêntica técnica do Muay Thai Chaiya, trazida por um mestre com experiência em estádios da Tailândia.</p>
                         </div>
                     </div>
-                    <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.5s;">
+                    <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.6s;">
                          <img src="https://placehold.co/600x600/141414/e50914?text=Coach+Ferreira" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Coach Ferreira">
                          <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:bottom-4">
@@ -227,10 +230,10 @@
                     <div>
                          <form action="#" method="POST" class="space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
-                                <input type="text" name="name" placeholder="Seu Nome Completo" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
-                                <input type="tel" name="phone" placeholder="Seu WhatsApp" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
+                                <input type="text" name="name" placeholder="Seu Nome Completo" required class="w-full bg-surface border border-gray-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
+                                <input type="tel" name="phone" placeholder="Seu WhatsApp" required class="w-full bg-surface border border-gray-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
                             </div>
-                            <select name="modality" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all"><option value="" disabled selected>Qual modalidade te interessa?</option><option value="jiujitsu">Jiu-Jitsu</option><option value="muaythai">Muay Thai</option><option value="mma">MMA</option></select>
+                            <select name="modality" required class="w-full bg-surface border border-gray-700/50 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all"><option value="" disabled selected>Qual modalidade te interessa?</option><option value="jiujitsu">Jiu-Jitsu</option><option value="muaythai">Muay Thai</option><option value="mma">MMA</option></select>
                             <button type="submit" class="cta-button w-full">Quero minha aula grátis!</button>
                         </form>
                     </div>
@@ -261,37 +264,37 @@
                 <h3 class="text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Jiu-Jitsu</h3>
                 <div class="space-y-6">
                     <!-- Faixas -->
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                    <div class="bg-background p-6 rounded-md border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded-md w-full bg-white"></div></div>
                             <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Branca</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
                         <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 12-18 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Fundamentos, posturas, quedas, passagens, finalizações básicas.</p></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                    <div class="bg-background p-6 rounded-md border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-blue-600"></div></div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded-md w-full bg-blue-600"></div></div>
                             <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Azul</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
                         <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Controle posicional, combinações, sparring estratégico.</p></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                    <div class="bg-background p-6 rounded-md border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-purple-600"></div></div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded-md w-full bg-purple-600"></div></div>
                             <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Roxa</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
                         <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 1.5-2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Desenvolvimento de um "Jogo A", contra-ataques, conceitos avançados.</p></div>
                     </div>
-                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                     <div class="bg-background p-6 rounded-md border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-yellow-900"></div></div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background-color: #78350f;"></div></div>
                             <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Marrom</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 1-2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Refinamento técnico, didática de ensino, preparação para liderança.</p></div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 1-2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Refinamento técnico, didática, preparação para liderança.</p></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                    <div class="bg-background p-6 rounded-md border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-black border-2 border-[var(--color-primary)]"></div></div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded-md w-full bg-black border-2 border-[var(--color-primary)]"></div></div>
                             <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Preta</h4><p class="text-sm text-gray-400">A maestria dos fundamentos marca um novo começo.</p></div>
                         </div>
                     </div>
@@ -304,26 +307,55 @@
             <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
             <div class="p-8 md:p-12 -mt-16">
                 <h3 class="text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Muay Thai</h3>
-                <div class="space-y-6">
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div><h4 class="text-2xl text-black">Kruang Branco</h4></div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 6 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Postura, guarda, movimentação, golpes básicos.</p></div>
+                <div class="space-y-4">
+                    <!-- Níveis Iniciais -->
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-white"></div></div><h4 class="text-xl text-black">1º Khan - Branco</h4></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-yellow-400"></div></div><h4 class="text-2xl text-black">Kruang Amarelo</h4></div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 12 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Joelhadas, cotoveladas, defesas e combinações simples.</p></div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-yellow-400"></div></div><h4 class="text-xl text-black">2º Khan - Amarelo</h4></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-green-500"></div></div><h4 class="text-2xl text-black">Kruang Verde</h4></div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 12 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Domínio do clinch, contra-ataques, fluidez.</p></div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background: linear-gradient(to right, #facc15 50%, white 50%);"></div></div><h4 class="text-xl text-black">3º Khan - Amarelo e Branco</h4></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-blue-600"></div></div><h4 class="text-2xl text-white">Kruang Azul</h4></div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 18 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Técnicas avançadas, estratégia, controle de distância e ritmo.</p></div>
+                     <!-- Níveis Intermediários -->
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-green-500"></div></div><h4 class="text-xl text-black">4º Khan - Verde</h4></div>
                     </div>
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-[var(--color-primary)]"></div></div><h4 class="text-2xl text-white">Kruang Vermelho</h4></div>
-                        <p class="mt-4 text-sm text-gray-400">Nível de Instrutor Auxiliar. Conhecimento profundo da arte, capaz de auxiliar no ensino e liderar aquecimentos.</p>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background: linear-gradient(to right, #4ade80 50%, white 50%);"></div></div><h4 class="text-xl text-black">5º Khan - Verde e Branco</h4></div>
+                    </div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-blue-600"></div></div><h4 class="text-xl text-white">6º Khan - Azul</h4></div>
+                    </div>
+                    <!-- Níveis Avançados -->
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background: linear-gradient(to right, #3b82f6 50%, white 50%);"></div></div><h4 class="text-xl text-white">7º Khan - Azul e Branco</h4></div>
+                    </div>
+                     <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background-color: #78350f"></div></div><h4 class="text-xl text-white">8º Khan - Marrom</h4></div>
+                    </div>
+                     <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background: linear-gradient(to right, #78350f 50%, white 50%);"></div></div><h4 class="text-xl text-white">9º Khan - Marrom e Branco</h4></div>
+                    </div>
+                     <!-- Níveis de Instrutor e Mestre -->
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background-color: var(--color-primary)"></div></div><h4 class="text-xl text-white">10º Khan - Vermelho</h4></div>
+                    </div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full" style="background: linear-gradient(to right, var(--color-primary) 50%, white 50%);"></div></div><div><h4 class="text-xl text-white">11º Khan - Vermelho e Branco</h4><p class="text-sm text-gray-400">Nível: Instrutor</p></div></div>
+                    </div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-black border-2 border-white"></div></div><div><h4 class="text-xl text-white">12º Khan - Preto</h4><p class="text-sm text-gray-400">Nível: Professor</p></div></div>
+                    </div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-black border-2 border-white" style="background: linear-gradient(to right, black 50%, white 50%);"></div></div><div><h4 class="text-xl text-white">13º Khan - Preto e Branco</h4><p class="text-sm text-gray-400">Nível: Mestre</p></div></div>
+                    </div>
+                    <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-gray-400"></div></div><div><h4 class="text-xl text-black">14º Khan - Prata</h4><p class="text-sm text-gray-400">Nível: Grão Mestre</p></div></div>
+                    </div>
+                     <div class="bg-background p-4 rounded-md border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/3 flex-shrink-0"><div class="h-8 rounded-md w-full bg-yellow-500"></div></div><div><h4 class="text-xl text-black">15º Khan - Ouro</h4><p class="text-sm text-gray-400">Nível: Grão Mestre</p></div></div>
                     </div>
                 </div>
             </div>
