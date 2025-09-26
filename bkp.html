@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>FMTC-MMA | A Evolução do Combate</title>
+    <meta name="description" content="Mergulhe em uma experiência de artes marciais única em BH. Com uma filosofia moderna e instrutores de elite, a FMTC-MMA é o lugar para forjar seu corpo e mente.">
+    <meta name="keywords" content="jiu jitsu bh, muay thai belo horizonte, mma, academia de luta, artes marciais, treino de combate, FMTC-MMA, inovação, futuro da luta">
+    <meta name="author" content="FMTC-MMA">
+    <link rel="canonical" href="https://hbtmarc.github.io/FMTCMMA-Final/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hbtmarc.github.io/FMTCMMA-Final/">
+    <meta property="og:title" content="FMTC-MMA | A Evolução do Combate">
+    <meta property="og:description" content="Design imersivo, conteúdo aprofundado. A jornada definitiva para o lutador moderno em BH.">
+    <meta property="og:image" content="https://placehold.co/1200x630/000000/E50914?text=FMTC:EVOLUTION">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hbtmarc.github.io/FMTCMMA-Final/">
+    <meta property="twitter:title" content="FMTC-MMA | A Evolução do Combate">
+    <meta property="twitter:description" content="Design imersivo, conteúdo aprofundado. A jornada definitiva para o lutador moderno em BH.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/000000/E50914?text=FMTC:EVOLUTION">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-background: #000000;
+            --color-surface: #101010;
+            --color-primary: #E50914;
+            --color-glow: #ff001e;
+            --color-secondary: #00f6ff;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #b3b3b3;
+        }
+
+        /* ===== SCROLLBAR PERSONALIZADO ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-surface); }
+        ::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-glow); }
+
+        html { 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Classe controlada por JS para travar a rolagem quando necessário */
+        html.scroll-lock {
+            overflow: hidden;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--color-background); 
+            color: var(--color-text-primary); 
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Krub', sans-serif; font-weight: 700; text-transform: uppercase; }
+
+        /* ===== EFEITO AURORA ANIMADO ===== */
+        .aurora-background {
+            position: relative;
+            background-color: var(--color-background);
+            overflow-x: hidden; /* Previne overflow horizontal do gradiente */
+        }
+        .aurora-background::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            padding-bottom: 150%;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, rgba(0, 246, 255, 0.08) 25%, transparent 50%);
+            animation: aurora-spin 25s linear infinite;
+            transform-origin: center center;
+            will-change: transform;
+            z-index: 0;
+        }
+        @keyframes aurora-spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .content-wrapper { position: relative; z-index: 1; }
+        section { padding: 4rem 1rem; }
+        @media (min-width: 768px) {
+            section { padding: 6rem 1.5rem; }
+        }
+
+        /* ===== HEADER E NAVEGAÇÃO ATIVA ===== */
+         #main-nav a {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+         #main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+         #main-nav a:hover::after,
+         #main-nav a.active::after {
+            width: 100%;
+        }
+         #main-nav a.active {
+            color: var(--color-primary);
+        }
+
+        /* ===== SEÇÃO HERO ===== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem; /* Espaço para o header */
+            padding-bottom: 2rem;
+        }
+        #hero-video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;
+            filter: grayscale(80%) contrast(1.2) brightness(0.7);
+        }
+        
+        /* ===== BOTÃO ===== */
+        .cta-button {
+            background: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-family: 'Krub', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px 0px rgba(229, 9, 20, 0.5);
+        }
+        .cta-button:hover {
+            background: var(--color-glow);
+            border-color: var(--color-glow);
+            box-shadow: 0 0 25px 5px rgba(229, 9, 20, 0.8);
+            transform: translateY(-5px) scale(1.05);
+        }
+        .cta-button:disabled {
+            background-color: #555;
+            border-color: #555;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        /* ===== CARDS DE VIDRO COM EFEITO 3D ===== */
+        .glass-card {
+            background: rgba(16, 16, 16, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d; /* Necessário para o efeito 3D */
+        }
+        .glass-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 30px rgba(229, 9, 20, 0.3);
+        }
+        .glass-card-inner {
+             padding: 1.5rem;
+             display: flex;
+             flex-direction: column;
+             height: 100%;
+             transform: translateZ(20px); /* Move o conteúdo para frente no eixo Z */
+        }
+        @media (min-width: 768px) {
+            .glass-card-inner { padding: 2rem; }
+        }
+        
+        /* ===== MODAL REFINADO ===== */
+        .modal { transition: opacity 0.3s ease, backdrop-filter 0.3s ease; backdrop-filter: blur(0px); }
+        .modal.modal-active { opacity: 1; pointer-events: auto; backdrop-filter: blur(10px); }
+        .modal-content { transform: translateY(30px) scale(0.98); opacity: 0; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; }
+        .modal.modal-active .modal-content { transform: translateY(0) scale(1); opacity: 1; }
+        
+        /* ===== TIMELINE DE GRADUAÇÃO (ATUALIZADO) ===== */
+        .timeline { position: relative; }
+        .timeline::after { 
+            content: ''; 
+            position: absolute; 
+            width: 4px; 
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary), transparent); 
+            top: 10px; 
+            bottom: 10px; 
+            left: 20px; 
+            border-radius: 2px; 
+        }
+        /* Gradientes customizados para cada modalidade */
+        .timeline-jj::after {
+            background: linear-gradient(to bottom, #3b82f6, #9333ea, #78350f, #111827, transparent) !important;
+        }
+        .timeline-mt::after {
+            background: linear-gradient(to bottom, #f97316, #3b82f6, #eab308, #22c55e, #78350f, #111827, #d1d5db, #facc15, transparent) !important;
+        }
+
+        .timeline-item { position: relative; padding-left: 60px; padding-bottom: 1.5rem; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before { 
+            content: ''; 
+            position: absolute; 
+            width: 24px; 
+            height: 24px; 
+            left: 10px; 
+            top: 0; 
+            background-color: var(--color-surface); 
+            border: 4px solid var(--color-primary); 
+            border-radius: 50%; 
+            z-index: 1; 
+            transition: all 0.3s ease; 
+        }
+        .timeline-item:hover::before { 
+            background-color: var(--color-primary); 
+            transform: scale(1.2); 
+            box-shadow: 0 0 15px var(--color-primary);
+        }
+        
+        /* Estilos visuais para faixas e prajieds */
+        .timeline-item-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .belt-visual {
+            width: 90px;
+            height: 28px;
+            border: 2px solid #444;
+            border-radius: 4px;
+            flex-shrink: 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+        }
+        .prajied-visual {
+            width: 70px;
+            height: 28px;
+            border-radius: 14px;
+            border: 2px solid #555;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+        }
+
+        /* ===== HORÁRIOS ===== */
+        #horarios-grid {
+            background: rgba(16, 16, 16, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            #horarios-grid { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
+        }
+        @media (min-width: 1024px) {
+            #horarios-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (min-width: 1280px) {
+            #horarios-grid { grid-template-columns: repeat(7, 1fr); }
+        }
+        .horarios-dia {
+            border-left: 2px solid var(--color-primary);
+            padding-left: 1rem;
+        }
+
+        /* ===== GEMINI FEATURES ===== */
+        .gemini-form-select, .gemini-form-checkbox-group {
+            background: var(--color-surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+        }
+        .gemini-result-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--color-primary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            min-height: 150px;
+        }
+        @media (max-width: 1023px) {
+            .gemini-result-box {
+                 margin-top: 1.5rem;
+            }
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #FFF;
+            border-bottom-color: var(--color-primary);
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body class="aurora-background">
+<div class="content-wrapper">
+
+    <!-- ===== HEADER ===== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center bg-black/30 backdrop-blur-md rounded-b-2xl shadow-lg">
+            <a href="#hero" class="text-3xl font-black tracking-wider transition-transform hover:scale-105">FMTC<span class="text-[var(--color-primary)]">EVO</span></a>
+            <nav id="main-nav" class="hidden md:flex items-center space-x-8">
+                <a href="#academia" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">A Academia</a>
+                <a href="#modalidades" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Modalidades</a>
+                <a href="#plano-ia" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Plano IA</a>
+                <a href="#depoimentos" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Depoimentos</a>
+                <a href="#horarios" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Horários</a>
+                <a href="#contato" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Contato</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white z-50">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 z-40 transition-transform duration-300 -translate-x-full md:hidden">
+            <a href="#academia" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">A Academia</a>
+            <a href="#modalidades" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Modalidades</a>
+            <a href="#plano-ia" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Plano IA</a>
+            <a href="#depoimentos" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Depoimentos</a>
+            <a href="#horarios" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Horários</a>
+            <a href="#contato" class="cta-button mt-4">Agendar Aula</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ===== HERO SECTION ===== -->
+        <section id="hero" class="relative text-center">
+            <video id="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/000000/101010?text=Loading...">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-shadow-boxer-in-a-dark-gym-42283-large.mp4" type="video/mp4">
+            </video>
+            <div class="relative z-10 p-6">
+                <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white leading-tight">Forje sua Evolução</h1>
+                <p class="text-md sm:text-lg md:text-xl text-text-secondary mt-6 mb-12 max-w-2xl mx-auto">
+                    Não somos apenas uma academia. Somos um laboratório de performance humana, onde a disciplina ancestral das artes marciais encontra a ciência moderna.
+                </p>
+                <a href="#contato" class="cta-button">Comece sua transformação</a>
+            </div>
+        </section>
+
+        <!-- ===== NOSSA FILOSOFIA ===== -->
+        <section id="academia" class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Nosso DNA</h3>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-6">Tradição e Inovação</h2>
+                    <p class="text-text-secondary mb-4 text-base md:text-lg">Acreditamos que todo grande lutador é construído sobre dois pilares: o respeito profundo pelas raízes da arte marcial e a busca incansável pela inovação. Nossa metodologia integra o melhor dos dois mundos para criar atletas completos, resilientes e inteligentes.</p>
+                    <p class="text-text-secondary text-base md:text-lg">Aqui, cada treino é um passo em uma jornada de autoconhecimento. Você aprenderá a superar limites, não apenas no tatame, mas na vida.</p>
+                </div>
+                <div class="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden group">
+                    <img src="https://placehold.co/800x600/101010/ffffff?text=O+Santuário" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Ambiente da academia">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MODALIDADES ===== -->
+        <section id="modalidades" class="container mx-auto">
+             <div class="text-center mb-12 md:mb-16">
+                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Nossas Arenas</h3>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Escolha sua disciplina</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card" data-tilt>
+                     <div class="glass-card-inner">
+                        <h3 class="text-3xl md:text-4xl mb-3">Jiu-Jitsu</h3>
+                        <p class="text-text-secondary mb-6 flex-grow">A arte suave reimaginada. Estratégia, fluidez e técnica para dominar o tatame com inteligência.</p>
+                        <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-secondary)] hover:text-black transition-all" data-modal="jiujitsu">Ver Progressão</button>
+                     </div>
+                </div>
+                <div class="glass-card" data-tilt>
+                     <div class="glass-card-inner">
+                        <h3 class="text-3xl md:text-4xl mb-3">Muay Thai</h3>
+                        <p class="text-text-secondary mb-6 flex-grow">Potência e precisão. Condicionamento extremo e a ciência dos oito membros para forjar um corpo de aço.</p>
+                        <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-secondary)] hover:text-black transition-all" data-modal="muaythai">Ver Progressão</button>
+                     </div>
+                </div>
+                <div class="glass-card" data-tilt>
+                     <div class="glass-card-inner">
+                        <h3 class="text-3xl md:text-4xl mb-3">MMA</h3>
+                        <p class="text-text-secondary mb-6 flex-grow">A síntese do combate. Integre todas as valências e torne-se o lutador mais completo e adaptável.</p>
+                        <button class="w-full mt-auto text-center border-2 border-gray-700 text-gray-600 py-3 rounded-lg uppercase text-xs font-bold tracking-wider cursor-not-allowed">Sistema Integrado</button>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GEMINI: PLANO DE TREINO IA ===== -->
+        <section id="plano-ia" class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Coach Digital</h3>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Monte seu treino com IA</h2>
+                 <p class="max-w-3xl mx-auto text-lg text-text-secondary mt-4">Responda as perguntas abaixo e nossa inteligência artificial criará um plano de treino semanal, personalizado para você, com base em nossos horários.</p>
+            </div>
+            <div class="max-w-4xl mx-auto grid lg:grid-cols-2 gap-8 items-start">
+                <div class="glass-card">
+                    <form id="gemini-plan-form" class="glass-card-inner space-y-6">
+                        <div>
+                            <label for="goal" class="block mb-2 font-semibold">Qual seu principal objetivo?</label>
+                            <select id="goal" name="goal" class="w-full gemini-form-select">
+                                <option value="Perda de peso">Perder Peso e Fitness</option>
+                                <option value="Defesa pessoal">Defesa Pessoal</option>
+                                <option value="Competição">Competir</option>
+                                <option value="Condicionamento físico">Condicionamento e Força</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="level" class="block mb-2 font-semibold">Qual seu nível de experiência?</label>
+                            <select id="level" name="level" class="w-full gemini-form-select">
+                                <option value="Iniciante">Iniciante (Nunca treinei)</option>
+                                <option value="Intermediário">Intermediário (Já treinei antes)</option>
+                                <option value="Avançado">Avançado (Atleta ativo)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-semibold">Quais dias você pode treinar?</label>
+                            <div class="gemini-form-checkbox-group grid grid-cols-3 gap-4 text-sm">
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Segunda" class="form-checkbox"><span>Seg</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Terça" class="form-checkbox"><span>Ter</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Quarta" class="form-checkbox"><span>Qua</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Quinta" class="form-checkbox"><span>Qui</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Sexta" class="form-checkbox"><span>Sex</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Sábado" class="form-checkbox"><span>Sáb</span></label>
+                            </div>
+                        </div>
+                        <button type="submit" id="generate-plan-btn" class="cta-button w-full !mt-8">✨ Gerar Plano Inteligente</button>
+                    </form>
+                </div>
+                <div class="gemini-result-box flex items-center justify-center">
+                    <div id="plan-result" class="text-text-secondary w-full">
+                        Seu plano de treino personalizado aparecerá aqui...
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== DEPOIMENTOS ===== -->
+        <section id="depoimentos" class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Voz da Equipe</h3>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">O que nossos atletas dizem</h2>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="glass-card" data-tilt>
+                    <div class="glass-card-inner text-center">
+                        <img src="https://placehold.co/100x100/101010/E50914?text=JP" alt="João P." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-[var(--color-primary)]">
+                        <p class="text-text-secondary mb-4 flex-grow">"A FMTC mudou meu jogo. A atenção aos detalhes dos instrutores é algo que nunca vi em outro lugar. Mais que uma academia, uma família."</p>
+                        <h4 class="text-2xl mt-auto">João P.</h4>
+                        <p class="text-sm text-[var(--color-primary)]">Faixa Roxa, Jiu-Jitsu</p>
+                    </div>
+                </div>
+                <div class="glass-card" data-tilt>
+                    <div class="glass-card-inner text-center">
+                        <img src="https://placehold.co/100x100/101010/00f6ff?text=MC" alt="Maria C." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-[var(--color-secondary)]">
+                        <p class="text-text-secondary mb-4 flex-grow">"O treino de Muay Thai aqui é de outro nível. Me sinto mais forte, confiante e preparada para qualquer desafio. A energia é contagiante!"</p>
+                        <h4 class="text-2xl mt-auto">Maria C.</h4>
+                        <p class="text-sm text-[var(--color-secondary)]">Aluna de Muay Thai</p>
+                    </div>
+                </div>
+                <div class="glass-card" data-tilt>
+                    <div class="glass-card-inner text-center">
+                        <img src="https://placehold.co/100x100/101010/ffffff?text=LG" alt="Lucas G." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-gray-500">
+                        <p class="text-text-secondary mb-4 flex-grow">"Como atleta de MMA, preciso de um treinamento integrado. Aqui eu encontrei o equilíbrio perfeito entre a luta em pé e o chão. Recomendo 100%."</p>
+                        <h4 class="text-2xl mt-auto">Lucas G.</h4>
+                        <p class="text-sm text-gray-400">Atleta de MMA</p>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-12">
+                <button id="get-motivation-btn" class="text-center border-2 border-[var(--color-primary)] text-[var(--color-primary)] py-3 px-8 rounded-lg uppercase text-sm font-bold tracking-wider hover:bg-[var(--color-primary)] hover:text-black transition-all">✨ Me Dê uma Motivação</button>
+            </div>
+        </section>
+
+        <!-- ===== HORÁRIOS ===== -->
+        <section id="horarios" class="container mx-auto">
+             <div class="text-center mb-12 md:mb-16">
+                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Sua Rotina</h3>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Encontre seu horário</h2>
+            </div>
+            <div id="horarios-grid">
+                <div class="horarios-dia">
+                    <h3 class="text-xl sm:text-2xl mb-4">Segunda</h3>
+                    <p class="text-text-secondary text-sm"><strong>07:00</strong> Muay Thai</p>
+                    <p class="text-text-secondary text-sm"><strong>12:00</strong> Jiu-Jitsu</p>
+                    <p class="text-text-secondary text-sm"><strong>18:00</strong> Muay Thai</p>
+                    <p class="text-text-secondary text-sm"><strong>19:30</strong> Jiu-Jitsu (Av.)</p>
+                </div>
+                <div class="horarios-dia">
+                    <h3 class="text-xl sm:text-2xl mb-4">Terça</h3>
+                    <p class="text-text-secondary text-sm"><strong>07:00</strong> Jiu-Jitsu</p>
+                    <p class="text-text-secondary text-sm"><strong>18:00</strong> Jiu-Jitsu (Inic.)</p>
+                    <p class="text-text-secondary text-sm"><strong>19:30</strong> Muay Thai</p>
+                </div>
+                 <div class="horarios-dia">
+                    <h3 class="text-xl sm:text-2xl mb-4">Quarta</h3>
+                    <p class="text-text-secondary text-sm"><strong>07:00</strong> Muay Thai</p>
+                    <p class="text-text-secondary text-sm"><strong>12:00</strong> Jiu-Jitsu</p>
+                    <p class="text-text-secondary text-sm"><strong>18:00</strong> Muay Thai</p>
+                    <p class="text-text-secondary text-sm"><strong>19:30</strong> Jiu-Jitsu (Av.)</p>
+                </div>
+                <div class="horarios-dia">
+                    <h3 class="text-xl sm:text-2xl mb-4">Quinta</h3>
+                    <p class="text-text-secondary text-sm"><strong>07:00</strong> Jiu-Jitsu</p>
+                    <p class="text-text-secondary text-sm"><strong>18:00</strong> Jiu-Jitsu (Inic.)</p>
+                    <p class="text-text-secondary text-sm"><strong>19:30</strong> Muay Thai</p>
+                </div>
+                <div class="horarios-dia">
+                    <h3 class="text-xl sm:text-2xl mb-4">Sexta</h3>
+                    <p class="text-text-secondary text-sm"><strong>07:00</strong> Muay Thai</p>
+                    <p class="text-text-secondary text-sm"><strong>12:00</strong> Jiu-Jitsu</p>
+                    <p class="text-text-secondary text-sm text-[var(--color-primary)]"><strong>18:00</strong> MMA</p>
+                    <p class="text-text-secondary text-sm text-[var(--color-primary)]"><strong>19:30</strong> MMA Sparring</p>
+                </div>
+                <div class="horarios-dia">
+                    <h3 class="text-xl sm:text-2xl mb-4">Sábado</h3>
+                     <p class="text-text-secondary text-sm text-[var(--color-secondary)]"><strong>12:00</strong> Open Mat</p>
+                </div>
+                <div class="horarios-dia border-none">
+                    <h3 class="text-xl sm:text-2xl mb-4 text-gray-600">Domingo</h3>
+                    <p class="text-gray-700 text-sm">Descanso do Guerreiro</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTATO ===== -->
+        <section id="contato" class="container mx-auto text-center">
+            <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Seu Próximo Passo</h3>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-6">A transformação começa aqui</h2>
+            <p class="max-w-3xl mx-auto text-lg text-text-secondary mb-12">Chega de desculpas. Sua aula experimental é o portal para a sua melhor versão. Preencha, compareça, conquiste.</p>
+            <div class="max-w-md mx-auto">
+                 <form action="#" method="POST" class="space-y-6">
+                    <input type="text" name="name" placeholder="Seu Nome" required class="w-full bg-surface border border-gray-700/50 rounded-lg px-6 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
+                    <input type="tel" name="phone" placeholder="Seu WhatsApp" required class="w-full bg-surface border border-gray-700/50 rounded-lg px-6 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
+                    <button type="submit" class="cta-button w-full">Quero minha vaga agora!</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-900/50 py-8">
+        <div class="container mx-auto px-6 lg:px-8 text-center text-gray-700 text-xs">
+            <p>&copy; 2025 FMTC EVOLUTION | Todos os futuros reservados.</p>
+            <p>CNPJ: 26.546.108/0001-78</p>
+        </div>
+    </footer>
+</div>
+
+<!-- MODAIS ATUALIZADOS -->
+<div id="modal-jiujitsu" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+    <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-2xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/20 max-h-[90vh] overflow-y-auto">
+        <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
+        <div class="p-8 md:p-12 -mt-16">
+            <h3 class="text-4xl font-bold uppercase text-white mb-2 text-center">Jornada no Jiu-Jitsu</h3>
+            <p class="text-center text-text-secondary mb-8">A progressão no Jiu-Jitsu é dividida por idade, respeitando o desenvolvimento do atleta.</p>
+
+            <h4 class="text-2xl font-semibold text-[var(--color-secondary)] mb-4">Graduação Adulto (A partir de 16 anos)</h4>
+            <div class="timeline timeline-jj mb-10">
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual bg-white"></div>
+                        <div>
+                            <h5 class="text-xl text-black font-bold">01. Faixa Branca</h5>
+                            <p class="text-sm text-text-secondary">Tempo: Indeterminado (lisa até 4 graus). Foco nos fundamentos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual" style="background-color: #3b82f6;"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #5292f6;">02. Faixa Azul</h5>
+                            <p class="text-sm text-text-secondary">Tempo médio: 2 anos (lisa até 4 graus). Desenvolvimento do jogo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual" style="background-color: #9333ea;"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #a353ea;">03. Faixa Roxa</h5>
+                            <p class="text-sm text-text-secondary">Tempo médio: 1.5 anos (lisa até 4 graus). Combinações e estratégia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual" style="background-color: #78350f;"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #8f4d22;">04. Faixa Marrom</h5>
+                            <p class="text-sm text-text-secondary">Tempo médio: 1 ano (lisa até 4 graus). Refinamento técnico.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual bg-black border-2 border-gray-600"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #E50914;">05. Faixa Preta</h5>
+                            <p class="text-sm text-text-secondary">O início de um novo ciclo. Conquistada após anos de dedicação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-[var(--color-secondary)] mb-4 mt-12">Graduação Infantil/Juvenil (Até 15 anos)</h4>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual bg-gray-500"></div>
+                        <div>
+                            <h5 class="text-xl text-gray-400">01. Faixa Cinza</h5>
+                            <p class="text-sm text-text-secondary">Idade: 4 a 15 anos (lisa até 4 graus).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual" style="background-color: #eab308;"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #eab308;">02. Faixa Amarela</h5>
+                            <p class="text-sm text-text-secondary">Idade: 7 a 15 anos (lisa até 4 graus).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual" style="background-color: #f97316;"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #f97316;">03. Faixa Laranja</h5>
+                            <p class="text-sm text-text-secondary">Idade: 10 a 15 anos (lisa até 4 graus).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <div class="belt-visual" style="background-color: #22c55e;"></div>
+                        <div>
+                            <h5 class="text-xl" style="color: #22c55e;">04. Faixa Verde</h5>
+                            <p class="text-sm text-text-secondary">Idade: 13 a 15 anos (lisa até 4 graus).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-muaythai" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+     <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-2xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-secondary)]/20 max-h-[90vh] overflow-y-auto">
+        <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
+        <div class="p-8 md:p-12 -mt-16">
+            <h3 class="text-4xl font-bold uppercase text-white mb-8 text-center">Jornada no Muay Thai</h3>
+             <div class="timeline timeline-mt">
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual bg-white"></div><div><h5 class="text-xl text-black font-bold">01. Prajied Branca</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #f97316;"></div><div><h5 class="text-xl" style="color: #f97316;">02. Prajied Laranja</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #f97316 50%, #3b82f6 50%);"></div><div><h5 class="text-xl" style="color: #f97316;">03. Prajied Laranja c/ Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #3b82f6;"></div><div><h5 class="text-xl" style="color: #3b82f6;">04. Prajied Azul</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #3b82f6 50%, #eab308 50%);"></div><div><h5 class="text-xl" style="color: #3b82f6;">05. Prajied Azul c/ Amarela</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #eab308;"></div><div><h5 class="text-xl" style="color: #eab308;">06. Prajied Amarela</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #eab308 50%, #22c55e 50%);"></div><div><h5 class="text-xl" style="color: #eab308;">07. Prajied Amarela c/ Verde</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #22c55e;"></div><div><h5 class="text-xl" style="color: #22c55e;">08. Prajied Verde</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #22c55e 50%, #78350f 50%);"></div><div><h5 class="text-xl" style="color: #22c55e;">09. Prajied Verde c/ Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #78350f;"></div><div><h5 class="text-xl" style="color: #8f4d22;">10. Prajied Marrom</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #78350f 50%, #000 50%);"></div><div><h5 class="text-xl" style="color: #8f4d22;">11. Prajied Marrom c/ Preta</h5><p class="text-sm text-text-secondary">Tempo médio: 6 meses</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual bg-black border-2 border-gray-400"></div><div><h5 class="text-xl text-white">12. Prajied Preta</h5><p class="text-sm text-text-secondary">Nível de Instrutor Auxiliar</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #fff 50%);"></div><div><h5 class="text-xl text-white">13. Prajied Preta c/ Branco</h5><p class="text-sm text-text-secondary">Nível de Instrutor</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #eab308 50%);"></div><div><h5 class="text-xl text-white">14. Prajied Preta c/ Amarela</h5><p class="text-sm text-text-secondary">Nível de Professor</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background: linear-gradient(to right, #000 50%, #E50914 50%);"></div><div><h5 class="text-xl text-white">15. Prajied Preta c/ Vermelha</h5><p class="text-sm text-text-secondary">Nível de Mestre</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual bg-gray-300"></div><div><h5 class="text-xl" style="color: #d1d5db;">16. Prajied Prata</h5><p class="text-sm text-text-secondary">Nível de Grão Mestre</p></div></div></div>
+                <div class="timeline-item"><div class="timeline-item-content"><div class="prajied-visual" style="background-color: #facc15;"></div><div><h5 class="text-xl" style="color: #facc15;">17. Prajied Ouro</h5><p class="text-sm text-text-secondary">Título Honorífico Máximo</p></div></div></div>
+             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Motivação -->
+<div id="modal-motivation" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+    <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-md w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-secondary)]/20">
+        <button class="modal-close absolute top-2 right-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
+        <div id="motivation-content" class="p-8 md:p-12 text-center">
+            <!-- Conteúdo da citação será inserido aqui -->
+        </div>
+    </div>
+</div>
+
+<!-- Script para o efeito 3D Tilt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const docHtml = document.documentElement;
+
+    // ===== MENU MOBILE =====
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const toggleMenu = () => {
+        mobileMenu.classList.toggle('-translate-x-full');
+        docHtml.classList.toggle('scroll-lock', !mobileMenu.classList.contains('-translate-x-full'));
+    };
+    mobileMenuButton.addEventListener('click', toggleMenu);
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            if (!mobileMenu.classList.contains('-translate-x-full')) {
+                toggleMenu();
+            }
+        });
+    });
+    
+    // ===== NAVEGAÇÃO ATIVA (SCROLLSPY) =====
+    const sections = document.querySelectorAll('main section');
+    const navLinks = document.querySelectorAll('#main-nav a');
+    
+    const activateLink = (id) => {
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                activateLink(entry.target.id);
+            }
+        });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+    
+    // ===== LÓGICA DOS MODAIS (GENÉRICO) =====
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+    const modals = document.querySelectorAll('.modal');
+    const modalCloses = document.querySelectorAll('.modal-close');
+
+    const openModal = (modalId) => {
+        const modal = document.getElementById(`modal-${modalId}`);
+        if (modal) {
+            modal.classList.add('modal-active');
+            docHtml.classList.add('scroll-lock');
+        }
+    };
+
+    const closeModal = (modal) => {
+        if (modal) {
+            modal.classList.remove('modal-active');
+            const isAnyModalActive = Array.from(modals).some(m => m.classList.contains('modal-active'));
+            const isMobileMenuOpen = !mobileMenu.classList.contains('-translate-x-full');
+            if (!isAnyModalActive && !isMobileMenuOpen) {
+                docHtml.classList.remove('scroll-lock');
+            }
+        }
+    };
+
+    modalTriggers.forEach(trigger => trigger.addEventListener('click', () => openModal(trigger.dataset.modal)));
+    modalCloses.forEach(button => button.addEventListener('click', (e) => closeModal(e.target.closest('.modal'))));
+    modals.forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); }));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") document.querySelectorAll('.modal.modal-active').forEach(closeModal);
+    });
+
+    // ===== ANIMAÇÃO 3D DOS CARDS (COM SEGURANÇA) =====
+    try {
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.3,
+        });
+    } catch (e) {
+        console.error("Vanilla Tilt failed to load, but the site will continue working.", e);
+    }
+
+    // ===== GEMINI API FEATURES =====
+    const apiKey = ""; // Chave da API do Gemini (deixar em branco)
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+    const planForm = document.getElementById('gemini-plan-form');
+    const planResultDiv = document.getElementById('plan-result');
+    const generatePlanBtn = document.getElementById('generate-plan-btn');
+
+    planForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        generatePlanBtn.disabled = true;
+        planResultDiv.innerHTML = '<div class="loader mx-auto"></div><p class="text-center mt-4">Gerando seu plano inteligente...</p>';
+
+        const formData = new FormData(planForm);
+        const goal = formData.get('goal');
+        const level = formData.get('level');
+        const days = formData.getAll('days');
+
+        if (days.length === 0) {
+            planResultDiv.innerHTML = '<p class="text-red-500">Por favor, selecione pelo menos um dia para treinar.</p>';
+            generatePlanBtn.disabled = false;
+            return;
+        }
+
+        const gymSchedule = `
+            - Monday: 07:00 Muay Thai, 12:00 Jiu-Jitsu, 18:00 Muay Thai, 19:30 Jiu-Jitsu (Advanced)
+            - Tuesday: 07:00 Jiu-Jitsu, 18:00 Jiu-Jitsu (Beginner), 19:30 Muay Thai
+            - Wednesday: 07:00 Muay Thai, 12:00 Jiu-Jitsu, 18:00 Muay Thai, 19:30 Jiu-Jitsu (Advanced)
+            - Thursday: 07:00 Jiu-Jitsu, 18:00 Jiu-Jitsu (Beginner), 19:30 Muay Thai
+            - Friday: 07:00 Muay Thai, 12:00 Jiu-Jitsu, 18:00 MMA, 19:30 MMA Sparring
+            - Saturday: 12:00 Open Mat
+        `;
+
+        const systemPrompt = "You are a world-class martial arts head coach at a high-tech gym called FMTC-EVO. Your goal is to create personalized, encouraging, and realistic weekly training plans for potential new members based on their inputs. You must use ONLY the classes available on the provided schedule. Be concise and motivating.";
+        const userQuery = `
+            Based on the following gym schedule and user profile, create a personalized weekly training plan.
+
+            **Gym Schedule:**
+            ${gymSchedule}
+
+            **User Profile:**
+            - Main Goal: ${goal}
+            - Experience Level: ${level}
+            - Available Days: ${days.join(', ')}
+
+            **Instructions:**
+            1. Create a plan for the available days only.
+            2. Suggest 1 or 2 classes per available day, balancing intensity and recovery.
+            3. For beginners, recommend beginner-friendly classes (Jiu-Jitsu (Inic.), Muay Thai, Open Mat). Avoid advanced classes like MMA Sparring or Jiu-Jitsu (Av.).
+            4. For intermediate/advanced with a competition goal, suggest MMA or Sparring if available on their days.
+            5. Provide a brief (1-2 sentences) encouraging explanation for your choices.
+            6. Format the output as simple HTML with <strong> for days and <ul>/<li> for classes.
+            7. The entire response MUST be in Brazilian Portuguese.
+        `;
+
+        try {
+            const response = await fetchWithBackoff(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const result = await response.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (text) {
+                planResultDiv.innerHTML = text;
+            } else {
+                planResultDiv.innerHTML = '<p class="text-red-500">Não foi possível gerar o plano. Tente novamente.</p>';
+            }
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            planResultDiv.innerHTML = `<p class="text-red-500">Ocorreu um erro ao conectar com o Coach Digital. Por favor, tente mais tarde. Detalhe: ${error.message}</p>`;
+        } finally {
+            generatePlanBtn.disabled = false;
+        }
+    });
+
+    // --- Gerador de Motivação ---
+    const getMotivationBtn = document.getElementById('get-motivation-btn');
+    const motivationContentDiv = document.getElementById('motivation-content');
+    
+    getMotivationBtn.addEventListener('click', async () => {
+        getMotivationBtn.disabled = true;
+        motivationContentDiv.innerHTML = '<div class="loader mx-auto"></div>';
+        openModal('motivation');
+
+        const userQuery = "Generate a short, powerful, and original motivational quote about the warrior spirit, discipline, or martial arts. The quote should be in Brazilian Portuguese. Make it impactful and format it inside a <p class='text-2xl text-text-primary'> tag followed by a <span class='text-sm text-secondary'>- Coach IA</span> tag.";
+        
+         try {
+            const response = await fetchWithBackoff(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: userQuery }] }],
+                })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const result = await response.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (text) {
+                motivationContentDiv.innerHTML = text;
+            } else {
+                motivationContentDiv.innerHTML = '<p>Não foi possível gerar a motivação. Tente novamente.</p>';
+            }
+        } catch (error) {
+            console.error("Error calling Gemini API for motivation:", error);
+            motivationContentDiv.innerHTML = `<p>Ocorreu um erro. Por favor, tente mais tarde.</p>`;
+        } finally {
+             getMotivationBtn.disabled = false;
+        }
+    });
+
+    // --- Função de Fetch com Exponential Backoff ---
+    async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+        try {
+            return await fetch(url, options);
+        } catch (err) {
+            if (retries > 0) {
+                await new Promise(resolve => setTimeout(resolve, delay));
+                return fetchWithBackoff(url, options, retries - 1, delay * 2);
+            }
+            throw err;
+        }
+    }
+});
+</script>
+</body>
+</html>
