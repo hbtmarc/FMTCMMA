@@ -77,10 +77,6 @@
         .modal-content { transform: scale(0.95); transition: transform 0.3s ease; }
         .modal:not(.hidden) .modal-content { transform: scale(1); }
         
-        .timeline-item { @apply relative pl-10; }
-        .timeline-item:not(:last-child) { @apply pb-10; border-left: 2px solid #3f3f46; }
-        .timeline-item:last-child { border-left: 2px solid transparent; }
-        .timeline-dot { @apply absolute -left-[11px] top-1 h-5 w-5 rounded-full ring-4 ring-[var(--color-surface)]; }
     </style>
     
     <script type="application/ld+json">
@@ -279,13 +275,13 @@
 
         <section id="contato" class="py-24 md:py-32 bg-background">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center animated-item">
+                <div class="text-center">
                     <h3 class="section-subtitle">O Primeiro Passo é Seu</h3>
                     <h2 class="section-title mb-6">Agende uma Aula Experimental Gratuita</h2>
                     <p class="max-w-3xl mx-auto text-lg text-gray-400 mb-12">Sem compromisso. Venha sentir a energia, conhecer nossos professores e descobrir por que a FMTC-MMA é o seu lugar. Preencha o formulário e nossa equipe entrará em contato.</p>
                 </div>
                 <div class="grid lg:grid-cols-2 gap-12 items-start">
-                    <div class="animated-item" style="animation-delay: 0.2s;">
+                    <div>
                          <form action="#" method="POST" class="space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
                                 <input type="text" name="name" placeholder="Seu Nome Completo" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
@@ -300,7 +296,7 @@
                             <button type="submit" class="cta-button w-full !text-base !py-3">Quero minha aula grátis!</button>
                         </form>
                     </div>
-                    <div class="animated-item" style="animation-delay: 0.4s;">
+                    <div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.272186121102!2d-43.939286!3d-19.912998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699dc58b5f393%3A0x669a9e3e3b3c3e8a!2sBelo%20Horizonte%2C%20State%20of%20Minas%20Gerais!5e0!3m2!1sen!2sbr!4v1678886543210!5m2!1sen!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg filter grayscale contrast-125 opacity-80 hover:opacity-100 transition-opacity"></iframe>
                          <div class="mt-6 text-gray-400">
                              <p class="flex items-center mb-2"><span class="text-[var(--color-primary)] mr-3 text-xl">📍</span> Rua Exemplo, 123 - Bairro Teste, Belo Horizonte - MG</p>
@@ -321,83 +317,136 @@
     
     <!-- MODAIS DE GRADUAÇÃO -->
     <div id="modal-jiujitsu" class="modal fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4">
-        <div class="modal-content bg-surface rounded-lg max-w-3xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/10">
-            <button class="modal-close absolute top-4 right-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
-            <div class="p-8 md:p-12">
-                <h3 class="text-4xl md:text-5xl font-bold uppercase text-white mb-8">Jornada no Jiu-Jitsu</h3>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #f9fafb;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Faixa Branca</h4>
-                    <div class="flex items-center space-x-2 my-2" title="Graus">[...]</div>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 12 - 18 meses</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Fundamentos, posturas, 2 quedas, 3 passagens de guarda, 4 finalizações básicas, e defesa pessoal.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #3b82f6;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Faixa Azul</h4>
-                    <div class="flex items-center space-x-2 my-2" title="Graus">[...]</div>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 2 anos</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Repertório expandido, controle posicional, combinações de ataques, e sparring estratégico.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #8b5cf6;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Faixa Roxa</h4>
-                    <div class="flex items-center space-x-2 my-2" title="Graus">[...]</div>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 1.5 - 2 anos</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Desenvolvimento de um "Jogo A", contra-ataques, e domínio de conceitos avançados.</p>
-                </div>
-                <div class="timeline-item">
-                     <div class="timeline-dot" style="background-color: #78350f;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Faixa Marrom</h4>
-                    <div class="flex items-center space-x-2 my-2" title="Graus">[...]</div>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 1 - 2 anos</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Refinamento técnico, didática de ensino, e preparação para a liderança.</p>
-                </div>
-                 <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #111; border: 2px solid var(--color-primary);"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Faixa Preta</h4>
-                    <p class="text-sm text-gray-400 mt-2">A maestria dos fundamentos marca um novo começo. O foco se volta para o legado, o ensino e o aprofundamento infinito na arte suave.</p>
+        <div class="modal-content bg-surface rounded-lg max-w-3xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/10 max-h-[90vh] overflow-y-auto">
+            <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
+            <div class="p-8 md:p-12 -mt-12">
+                <h3 class="text-4xl md:text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Jiu-Jitsu</h3>
+                <div class="space-y-6">
+                    <!-- Faixa Branca -->
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div>
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Branca</h4>
+                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 12 - 18 meses</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Fundamentos, posturas, quedas, passagens, finalizações básicas e defesa pessoal.</p>
+                        </div>
+                    </div>
+                    <!-- Faixas seguintes... -->
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #3b82f6;"></div></div>
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Azul</h4>
+                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 2 anos</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Repertório expandido, controle posicional, combinações e sparring estratégico.</p>
+                        </div>
+                    </div>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #8b5cf6;"></div></div>
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Roxa</h4>
+                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 1.5 - 2 anos</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Desenvolvimento de um "Jogo A", contra-ataques e conceitos avançados.</p>
+                        </div>
+                    </div>
+                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #78350f;"></div></div>
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Marrom</h4>
+                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 1 - 2 anos</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Refinamento técnico, didática de ensino e preparação para a liderança.</p>
+                        </div>
+                    </div>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-black border-2 border-[var(--color-primary)]"></div></div>
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Preta</h4>
+                                <p class="text-sm text-gray-400">A maestria dos fundamentos marca um novo começo. O foco se volta para o legado, o ensino e o aprofundamento infinito na arte suave.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="modal-muaythai" class="modal fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4">
-        <div class="modal-content bg-surface rounded-lg max-w-3xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/10">
-            <button class="modal-close absolute top-4 right-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
-            <div class="p-8 md:p-12">
-                <h3 class="text-4xl md:text-5xl font-bold uppercase text-white mb-8">Jornada no Muay Thai</h3>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #f9fafb;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Kruang Branco</h4>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 6 meses</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Postura, guarda, movimentação, e execução dos golpes básicos (jab, direto, chute circular).</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #facc15;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Kruang Amarelo</h4>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 12 meses</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Introdução a joelhadas e cotoveladas, defesas simples e combinações básicas de 2-3 golpes.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #4ade80;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Kruang Verde</h4>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 12 meses</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Domínio do clinch, contra-ataques, e maior fluidez nas combinações.</p>
-                </div>
-                <div class="timeline-item">
-                     <div class="timeline-dot" style="background-color: #3b82f6;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Kruang Azul</h4>
-                    <p class="text-sm text-gray-400 mb-1"><strong class="text-gray-200">Tempo Médio:</strong> 18 meses</p>
-                    <p class="text-sm text-gray-400"><strong class="text-gray-200">Foco do Exame:</strong> Técnicas avançadas, estratégia de sparring, controle de distância e ritmo de luta.</p>
-                </div>
-                 <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #e50914;"></div>
-                    <h4 class="text-2xl font-bold uppercase text-white">Kruang Vermelho (Ponta Preta)</h4>
-                    <p class="text-sm text-gray-400 mt-2">Nível de Instrutor Auxiliar. Conhecimento profundo da arte, capaz de auxiliar no ensino e liderar aquecimentos.</p>
+         <div class="modal-content bg-surface rounded-lg max-w-3xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/10 max-h-[90vh] overflow-y-auto">
+            <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
+            <div class="p-8 md:p-12 -mt-12">
+                <h3 class="text-4xl md:text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Muay Thai</h3>
+                <div class="space-y-6">
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-white text-black">Kruang Branco</h4></div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 6 meses</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Postura, guarda, movimentação, e golpes básicos (jab, direto, chute circular).</p>
+                        </div>
+                    </div>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #facc15;"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-black">Kruang Amarelo</h4></div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 12 meses</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Joelhadas, cotoveladas, defesas simples e combinações de 2-3 golpes.</p>
+                        </div>
+                    </div>
+                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #4ade80;"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-black">Kruang Verde</h4></div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 12 meses</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Domínio do clinch, contra-ataques, e maior fluidez nas combinações.</p>
+                        </div>
+                    </div>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #3b82f6;"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-white">Kruang Azul</h4></div>
+                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 18 meses</p>
+                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Técnicas avançadas, estratégia de sparring, controle de distância e ritmo.</p>
+                        </div>
+                    </div>
+                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: var(--color-primary);"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-white">Kruang Vermelho</h4></div>
+                        </div>
+                         <p class="mt-4 text-sm text-gray-400">Nível de Instrutor Auxiliar. Conhecimento profundo da arte, capaz de auxiliar no ensino e liderar aquecimentos.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -416,26 +465,23 @@
 
             const toggleMenu = () => {
                 const isOpen = mobileMenu.classList.contains('hidden');
-                if (isOpen) {
-                    mobileMenu.classList.remove('hidden');
-                    requestAnimationFrame(() => {
-                        mobileMenu.classList.remove('-translate-x-full');
-                    });
-                } else {
-                    mobileMenu.classList.add('-translate-x-full');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
-                }
                 document.body.classList.toggle('modal-open', isOpen);
                 hamburgerIcon.classList.toggle('open');
+
+                if (isOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    requestAnimationFrame(() => { mobileMenu.classList.remove('-translate-x-full'); });
+                } else {
+                    mobileMenu.classList.add('-translate-x-full');
+                    setTimeout(() => { mobileMenu.classList.add('hidden'); }, 300);
+                }
             };
             mobileMenuButton.addEventListener('click', toggleMenu);
             document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
+                    if (entry.isInterisecting) {
                         entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
