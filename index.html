@@ -400,7 +400,7 @@
         <!-- ===== HERO SECTION ===== -->
         <section id="hero" class="relative text-center">
             <video id="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/000000/101010?text=Loading...">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-shadow-boxer-in-a-dark-gym-42283-large.mp4" type="video/mp4">
+                <source src="https://videos.pexels.com/video-files/4754141/4754141-hd_1920_1080_25fps.mp4" type="video/mp4">
             </video>
             <div class="relative z-10 p-6">
                 <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white leading-tight">Forje sua Evolução</h1>
@@ -785,43 +785,79 @@ document.addEventListener('DOMContentLoaded', function() {
     const planResultDiv = document.getElementById('plan-result');
     const generatePlanBtn = document.getElementById('generate-plan-btn');
 
-    const getOfflinePlan = (level, days) => {
-        const daysString = days.length > 0 ? `nos seus dias disponíveis (${days.join(', ')})` : '';
-        let intro, plan;
-
-        switch(level) {
-            case 'Iniciante':
-                intro = `Excelente começo! Foco na consistência e nos fundamentos. Este plano inicial vai construir uma base sólida para sua evolução.`;
-                plan = `
-                    <ul>
-                        <li><strong>Foco:</strong> Aulas de Jiu-Jitsu (Iniciante) e Muay Thai.</li>
-                        <li><strong>Sugestão:</strong> Alterne entre as duas modalidades ${daysString} para um desenvolvimento completo.</li>
-                        <li><strong>Dica:</strong> O Open Mat de Sábado é ótimo para praticar com calma o que aprendeu.</li>
-                    </ul>`;
-                break;
-            case 'Intermediário':
-                intro = `Ótimo! Agora vamos refinar suas habilidades e aumentar a intensidade. Este plano é focado em consolidar seu conhecimento.`;
-                plan = `
-                    <ul>
-                        <li><strong>Foco:</strong> Aulas regulares de Jiu-Jitsu e Muay Thai para aprimorar a técnica.</li>
-                        <li><strong>Sugestão:</strong> Participe das aulas de Jiu-Jitsu (Avançado) ${daysString} para se desafiar.</li>
-                        <li><strong>Dica:</strong> Use o Open Mat de Sábado para testar novas posições e estratégias.</li>
-                    </ul>`;
-                break;
-            case 'Avançado':
-                intro = `Hora de ir para o próximo nível. Este plano é para quem busca performance máxima, seja para competição ou para superar seus próprios limites.`;
-                plan = `
-                    <ul>
-                        <li><strong>Foco:</strong> Aulas de Jiu-Jitsu (Avançado) e treinos de MMA na Sexta.</li>
-                        <li><strong>Sugestão:</strong> Integre os treinos de MMA Sparring ${daysString.includes('Sexta') ? 'na Sexta' : ''} para testar seu jogo completo.</li>
-                        <li><strong>Dica:</strong> Mantenha a base afiada com as aulas regulares e use o Open Mat para rolas de alto nível.</li>
-                    </ul>`;
-                break;
-            default:
-                intro = `Vamos montar o treino ideal para você.`;
-                plan = `<p>Selecione seu nível de experiência para ver uma sugestão.</p>`
+    const planDatabase = {
+        'Iniciante': {
+            'Perda de peso': [{
+                intro: "Ótima escolha! Foco total em queimar calorias e construir uma base sólida. Este plano vai acelerar seu metabolismo e te deixar mais resistente.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Aulas de Muay Thai. Elas são de alta intensidade e perfeitas para o seu objetivo.</li><li><strong>Sugestão:</strong> Tente fazer pelo menos duas aulas de Muay Thai ${daysString}. Se tiver mais um dia, inclua uma aula de Jiu-Jitsu (Iniciante) para trabalhar o corpo de forma diferente e melhorar a flexibilidade.</li><li><strong>Dica Pro:</strong> A consistência é a chave! Não desanime na primeira semana, seu corpo vai se adaptar e os resultados virão.</li></ul>`
+            }, {
+                intro: "Vamos com tudo! Para queimar gordura e ganhar condicionamento, a intensidade é nossa aliada. Prepare-se para suar.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Aulas de alta intensidade. Muay Thai será seu melhor amigo.</li><li><strong>Sugestão:</strong> Frequente as aulas de Muay Thai ${daysString}. A combinação de golpes e condicionamento físico é imbatível para perda de peso.</li><li><strong>Dica Pro:</strong> Lembre-se que a alimentação corresponde a 70% do resultado. Combine os treinos com uma dieta balanceada!</li></ul>`
+            }],
+            'Defesa pessoal': [{
+                intro: "Excelente objetivo! Aprender a se defender é um investimento para a vida. Este plano foca em técnicas eficientes e consciência situacional.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Equilíbrio entre Jiu-Jitsu (Iniciante) e Muay Thai.</li><li><strong>Sugestão:</strong> Alterne as modalidades ${daysString}. O Muay Thai te dará a base em pé, e o Jiu-Jitsu o controle no chão, as duas situações mais comuns em uma defesa.</li><li><strong>Dica Pro:</strong> Preste atenção extra nos detalhes que os professores passam sobre distância e posicionamento. Isso é crucial.</li></ul>`
+            }, {
+                intro: "Construir confiança para se proteger é fundamental. Vamos focar nas artes marciais mais diretas e eficazes para situações reais.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Fundamentos sólidos. Comece com as aulas de Jiu-Jitsu (Iniciante) ${daysString} para entender o controle corporal.</li><li><strong>Sugestão:</strong> Após o primeiro mês, adicione o Muay Thai para aprender a se defender em pé. A combinação é poderosa.</li><li><strong>Dica Pro:</strong> Defesa pessoal é 90% prevenção. Aulas te darão mais confiança e atenção ao seu redor.</li></ul>`
+            }],
+            'Competição': [{
+                intro: "Mentalidade de campeão desde o primeiro dia! Para competir, a base técnica tem que ser impecável. Vamos construir isso juntos.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Absorver o máximo de informação. Frequente tanto as aulas de Jiu-Jitsu (Iniciante) quanto as de Muay Thai.</li><li><strong>Sugestão:</strong> Tente treinar pelo menos 3 vezes na semana, mesclando as modalidades ${daysString}.</li><li><strong>Dica Pro:</strong> Assista a campeonatos, estude os melhores e converse com os atletas mais experientes da academia. O aprendizado continua fora do tatame.</li></ul>`
+            }],
+            'Condicionamento físico': [{
+                intro: "Vamos transformar seu corpo em uma máquina! Este plano é para construir força, resistência e uma capacidade cardiovascular de elite.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Volume e intensidade. Todas as nossas aulas vão te ajudar, mas o Muay Thai se destaca.</li><li><strong>Sugestão:</strong> Faça uma aula de Muay Thai e uma de Jiu-Jitsu (Iniciante) na semana ${daysString}. Isso garantirá um trabalho corporal completo.</li><li><strong>Dica Pro:</strong> Não pule os aquecimentos! Eles são essenciais para preparar seu corpo para o esforço e prevenir lesões.</li></ul>`
+            }]
+        },
+        'Intermediário': {
+            'Perda de peso': [{
+                intro: "Você já conhece o caminho, agora é hora de acelerar. Vamos aumentar a intensidade para quebrar platôs e continuar vendo resultados.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Treinos de alta intensidade e volume.</li><li><strong>Sugestão:</strong> Mantenha a frequência nas aulas de Muay Thai e participe das aulas de Jiu-Jitsu (Avançado) ${daysString} para um desafio cardiovascular e técnico extra.</li><li><strong>Dica Pro:</strong> Considere participar dos treinos de MMA na Sexta-feira para um estímulo metabólico diferente e intenso.</li></ul>`
+            }],
+            'Defesa pessoal': [{
+                intro: "Com a base já construída, vamos refinar suas reações e adicionar mais ferramentas ao seu arsenal. O foco agora é na aplicação e fluidez.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Transições e combinações.</li><li><strong>Sugestão:</strong> Participe das aulas avançadas de Jiu-Jitsu e dos treinos regulares de Muay Thai ${daysString}. O objetivo é conectar as técnicas que você já conhece de forma mais natural.</li><li><strong>Dica Pro:</strong> O Open Mat de Sábado é perfeito para praticar cenários de defesa pessoal com parceiros de confiança.</li></ul>`
+            }],
+            'Competição': [{
+                intro: "É hora de refinar a estratégia e a preparação física. Para competir neste nível, cada detalhe importa.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Aulas avançadas e treinos específicos.</li><li><strong>Sugestão:</strong> Sua semana deve incluir as aulas de Jiu-Jitsu (Avançado) e os treinos de MMA e Sparring na Sexta ${daysString}.</li><li><strong>Dica Pro:</strong> Grave seus treinos de sparring para analisar seus erros e acertos. A autoavaliação é a chave para a evolução de um competidor.</li></ul>`
+            }],
+            'Condicionamento físico': [{
+                intro: "Seu corpo já está adaptado. Para continuar evoluindo, precisamos de novos estímulos e desafios. Prepare-se para superar seus limites.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Aumentar a capacidade de trabalho (work capacity).</li><li><strong>Sugestão:</strong> Combine as aulas de Jiu-Jitsu (Avançado) com os treinos de MMA na Sexta ${daysString}. A intensidade e a variedade de movimentos levarão seu condicionamento a outro patamar.</li><li><strong>Dica Pro:</strong> Foque na recuperação: sono de qualidade e boa hidratação são tão importantes quanto o treino em si.</li></ul>`
+            }]
+        },
+        'Avançado': {
+            'Perda de peso': [{
+                intro: "Você é um atleta. Manter o peso ideal é parte do jogo. Este plano é para otimizar sua composição corporal sem sacrificar a performance.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Manter a intensidade máxima nos treinos.</li><li><strong>Sugestão:</strong> Continue com os treinos de Jiu-Jitsu (Avançado) e MMA/Sparring ${daysString}. Você já sabe o que funciona, a chave é a disciplina.</li><li><strong>Dica Pro:</strong> Períodos de treinos de alta intensidade (HIIT) podem ser incorporados no seu aquecimento para um impulso extra na queima de calorias.</li></ul>`
+            }],
+            'Defesa pessoal': [{
+                intro: "Neste nível, a defesa pessoal se torna instintiva. O foco é manter a lâmina afiada e estar preparado para qualquer cenário.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Realismo e pressão.</li><li><strong>Sugestão:</strong> Os treinos de MMA Sparring na Sexta são o ambiente mais próximo de uma situação real. Sua presença ${daysString.includes('Sexta') ? 'é fundamental' : 'seria fundamental se disponível'}.</li><li><strong>Dica Pro:</strong> Ajude os alunos mais novos. Ensinar é uma das melhores formas de solidificar seu próprio conhecimento.</li></ul>`
+            }],
+            'Competição': [{
+                intro: "O topo é o seu lugar. A preparação agora é um jogo de xadrez, focada em estratégia, camp de treino e mentalidade inabalável.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Estratégia e Sparring.</li><li><strong>Sugestão:</strong> Sua agenda deve ser centrada nas aulas de Jiu-Jitsu (Avançado) e, principalmente, nos treinos de MMA e Sparring de Sexta ${daysString}.</li><li><strong>Dica Pro:</strong> Trabalhe com os treinadores para desenvolver um plano de jogo específico para seus pontos fortes e para os adversários que você pode encontrar.</li></ul>`
+            }],
+            'Condicionamento físico': [{
+                intro: "Atletas de elite exigem preparação de elite. Seu condicionamento já é ótimo, mas sempre há uma margem para se tornar mais forte, mais rápido e mais resistente.",
+                plan: `<ul><li><strong>Foco Principal:</strong> Performance máxima e prevenção de lesões.</li><li><strong>Sugestão:</strong> A combinação de todos os treinos avançados (Jiu-Jitsu, MMA, Sparring) ${daysString} é o que vai te manter no auge.</li><li><strong>Dica Pro:</strong> Incorpore trabalho de mobilidade e flexibilidade na sua rotina para garantir a longevidade no esporte.</li></ul>`
+            }]
         }
-        return `<p class="mb-4">${intro}</p>${plan}`;
+    };
+
+    const getOfflinePlan = (level, goal, days) => {
+        const daysString = days.length > 0 ? `nos seus dias disponíveis (${days.join(', ')})` : '';
+        if (planDatabase[level] && planDatabase[level][goal]) {
+            const options = planDatabase[level][goal];
+            const selectedPlan = options[Math.floor(Math.random() * options.length)];
+            const finalPlan = selectedPlan.plan.replace(/\${daysString}/g, daysString);
+            return `<p class="mb-4">${selectedPlan.intro}</p>${finalPlan}`;
+        } else {
+            return `<p class="mb-4">Com base nas suas escolhas, o ideal é focar na consistência. Converse com nossos instrutores para um plano ainda mais detalhado!</p><ul><li><strong>Dica:</strong> O Open Mat de Sábado é uma excelente oportunidade para treinar livremente.</li></ul>`;
+        }
     };
 
     planForm.addEventListener('submit', (e) => {
@@ -831,6 +867,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData(planForm);
         const level = formData.get('level');
+        const goal = formData.get('goal');
         const days = formData.getAll('days');
 
         if (days.length === 0) {
@@ -839,9 +876,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Simula um pequeno delay para a UI
         setTimeout(() => {
-            planResultDiv.innerHTML = getOfflinePlan(level, days);
+            planResultDiv.innerHTML = getOfflinePlan(level, goal, days);
             generatePlanBtn.disabled = false;
         }, 800);
     });
@@ -850,56 +886,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const getMotivationBtn = document.getElementById('get-motivation-btn');
     const motivationContentDiv = document.getElementById('motivation-content');
     const quotes = [
-        "A dor é temporária, a glória é eterna.",
-        "O tatame é o espelho da alma. Ele não mente.",
-        "Disciplina é fazer o que precisa ser feito, mesmo quando você não quer.",
-        "Não conte os dias, faça os dias contarem.",
-        "A faixa preta é uma faixa branca que nunca desistiu.",
-        "A força não vem da capacidade corporal, e sim de uma vontade indomável.",
-        "O único treino ruim é aquele que não aconteceu.",
-        "Respeite todos, não tema ninguém.",
-        "A maior vitória é a vitória sobre si mesmo.",
-        "Um campeão tem medo de perder. Todos os outros têm medo de vencer.",
-        "Sorte é o que acontece quando a preparação encontra a oportunidade.",
-        "O suor no dojo economiza sangue no campo de batalha.",
-        "Seja mais forte que sua melhor desculpa.",
-        "A técnica conquista a força bruta.",
-        "Cada gota de suor é um passo a mais rumo à maestria.",
-        "Não se trata de ser o melhor. Trata-se de ser melhor do que você era ontem.",
-        "A mente é seu melhor músculo. Treine-a.",
-        "O fracasso é apenas a oportunidade de recomeçar com mais inteligência.",
-        "A persistência realiza o impossível.",
-        "Um leão não se preocupa com a opinião das ovelhas.",
-        "O caminho do guerreiro é a aceitação total da morte.",
-        "Transforme a dor em poder.",
-        "A arte de vencer se aprende nas derrotas.",
-        "Quanto mais você sua no treino, menos você sangra na batalha.",
-        "A cor da faixa só serve para segurar as calças. O que vale é o seu jiu-jitsu.",
-        "Vença a si mesmo e vencerá o mundo.",
-        "Para cada técnica, existe uma contra-técnica.",
-        "O medo é uma reação. A coragem é uma decisão.",
-        "O objetivo não é ser invencível, mas sim nunca desistir de lutar.",
-        "Um passo de cada vez. Um round de cada vez.",
-        "O corpo alcança o que a mente acredita.",
-        "A repetição é a mãe da habilidade.",
-        "Humildade não é pensar menos de si mesmo, é pensar menos em si mesmo.",
-        "Aprenda as regras como um profissional para que possa quebrá-las como um artista.",
-        "O silêncio antes do combate é onde a estratégia nasce.",
-        "Não levante a sua voz, melhore os seus argumentos.",
-        "Seja calmo como um lago, mas com a fúria de um dragão por dentro.",
-        "Um guerreiro não desiste do que ama, ele encontra amor no que faz.",
-        "A excelência não é um ato, mas um hábito.",
-        "A melhor defesa é um ataque inteligente.",
-        "Conheça seu inimigo e a si mesmo, e você não precisará temer o resultado de cem batalhas.",
-        "O tatame ensina o que os livros não podem.",
-        "A jornada de mil quilômetros começa com um único passo.",
-        "A verdadeira força está em dominar sua própria mente.",
-        "A diferença entre o ordinário e o extraordinário é aquele pequeno 'extra'.",
-        "Não espere pela oportunidade. Crie-a.",
-        "Caia sete vezes, levante-se oito.",
-        "O guerreiro de sucesso é um homem comum, com um foco de laser.",
-        "Sua única limitação é você mesmo.",
-        "O combate é vencido antes mesmo de começar, na mente do lutador."
+        "A dor é temporária, a glória é eterna.", "O tatame é o espelho da alma. Ele não mente.", "Disciplina é fazer o que precisa ser feito, mesmo quando você não quer.", "Não conte os dias, faça os dias contarem.", "A faixa preta é uma faixa branca que nunca desistiu.", "A força não vem da capacidade corporal, e sim de uma vontade indomável.", "O único treino ruim é aquele que não aconteceu.", "Respeite todos, não tema ninguém.", "A maior vitória é a vitória sobre si mesmo.", "Um campeão tem medo de perder. Todos os outros têm medo de vencer.", "Sorte é o que acontece quando a preparação encontra a oportunidade.", "O suor no dojo economiza sangue no campo de batalha.", "Seja mais forte que sua melhor desculpa.", "A técnica conquista a força bruta.", "Cada gota de suor é um passo a mais rumo à maestria.", "Não se trata de ser o melhor. Trata-se de ser melhor do que você era ontem.", "A mente é seu melhor músculo. Treine-a.", "O fracasso é apenas a oportunidade de recomeçar com mais inteligência.", "A persistência realiza o impossível.", "Um leão não se preocupa com a opinião das ovelhas.", "O caminho do guerreiro é a aceitação total da morte.", "Transforme a dor em poder.", "A arte de vencer se aprende nas derrotas.", "Quanto mais você sua no treino, menos você sangra na batalha.", "A cor da faixa só serve para segurar as calças. O que vale é o seu jiu-jitsu.", "Vença a si mesmo e vencerá o mundo.", "Para cada técnica, existe uma contra-técnica.", "O medo é uma reação. A coragem é uma decisão.", "O objetivo não é ser invencível, mas sim nunca desistir de lutar.", "Um passo de cada vez. Um round de cada vez.", "O corpo alcança o que a mente acredita.", "A repetição é a mãe da habilidade.", "Humildade não é pensar menos de si mesmo, é pensar menos em si mesmo.", "Aprenda as regras como um profissional para que possa quebrá-las como um artista.", "O silêncio antes do combate é onde a estratégia nasce.", "Não levante a sua voz, melhore os seus argumentos.", "Seja calmo como um lago, mas com a fúria de um dragão por dentro.", "Um guerreiro não desiste do que ama, ele encontra amor no que faz.", "A excelência não é um ato, mas um hábito.", "A melhor defesa é um ataque inteligente.", "Conheça seu inimigo e a si mesmo, e você não precisará temer o resultado de cem batalhas.", "O tatame ensina o que os livros não podem.", "A jornada de mil quilômetros começa com um único passo.", "A verdadeira força está em dominar sua própria mente.", "A diferença entre o ordinário e o extraordinário é aquele pequeno 'extra'.", "Não espere pela oportunidade. Crie-a.", "Caia sete vezes, levante-se oito.", "O guerreiro de sucesso é um homem comum, com um foco de laser.", "Sua única limitação é você mesmo.", "O combate é vencido antes mesmo de começar, na mente do lutador."
     ];
     
     getMotivationBtn.addEventListener('click', () => {
