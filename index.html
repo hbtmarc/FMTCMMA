@@ -29,7 +29,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -44,39 +44,36 @@
         body { font-family: 'Barlow', sans-serif; background-color: var(--color-background); color: var(--color-text-primary); }
         body.modal-open { overflow: hidden; }
 
-        h1, h2, h3, h4, h5, h6 { font-family: 'Teko', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Teko', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; }
 
         .hero-video-bg { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: -1; filter: blur(5px); }
-        .hero-overlay { background-color: rgba(0, 0, 0, 0.6); }
+        .hero-overlay { background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%); }
 
-        .section-title { @apply text-5xl md:text-7xl font-bold text-white; }
-        .section-subtitle { @apply text-lg md:text-xl text-[var(--color-primary)] font-semibold tracking-widest; }
+        .section-title { @apply text-6xl md:text-7xl text-white; }
+        .section-subtitle { @apply text-lg text-[var(--color-primary)] font-semibold tracking-widest; }
         
         .cta-button, .secondary-button {
-            @apply relative inline-block text-white uppercase font-bold text-lg px-10 py-4 rounded-sm shadow-lg transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105;
+            @apply relative inline-block text-white uppercase font-bold tracking-wider text-sm px-8 py-3 rounded-sm shadow-lg transition-all duration-300 ease-in-out overflow-hidden transform hover:scale-105;
         }
-        .cta-button { background-color: var(--color-primary); }
+        .cta-button { background-color: var(--color-primary); box-shadow: 0 4px 30px rgba(229, 9, 20, 0.4); }
         .secondary-button { background-color: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
-        .secondary-button:hover { background-color: var(--color-primary); color: white; }
+        .secondary-button:hover { background-color: var(--color-primary); color: white; box-shadow: 0 4px 20px rgba(229, 9, 20, 0.3); }
 
         .cta-button::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
             background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: all 650ms;
+            transition: all 700ms;
         }
         .cta-button:hover::before { left: 100%; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
         
         .animated-item { opacity: 0; }
-        .animated-item.visible { animation: slideInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-        .hero-title.visible { animation: fadeIn 1.2s ease-out forwards, slideInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-
-        .modal { transition: opacity 0.3s ease; }
-        .modal-content { transform: scale(0.95); transition: transform 0.3s ease; }
-        .modal:not(.hidden) .modal-content { transform: scale(1); }
+        .animated-item.visible { animation: slideInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
         
+        .modal { transition: opacity 0.3s ease; }
+        .modal-content { transform: translateY(20px) scale(0.98); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+        .modal:not(.hidden) .modal-content { transform: translateY(0) scale(1); opacity: 1; }
     </style>
     
     <script type="application/ld+json">
@@ -89,16 +86,14 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full">
             <a href="#hero" class="text-4xl font-bold text-white tracking-wider transition-transform hover:scale-105">FMTC <span class="text-[var(--color-primary)]">MMA</span></a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#sobre" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm">A Academia</a>
-                <a href="#modalidades" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm">Modalidades</a>
-                <a href="#instrutores" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm">Instrutores</a>
-                <a href="#horarios" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm">Horários</a>
+                <a href="#sobre" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm tracking-wider">A Academia</a>
+                <a href="#modalidades" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm tracking-wider">Modalidades</a>
+                <a href="#instrutores" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm tracking-wider">Instrutores</a>
+                <a href="#horarios" class="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 uppercase font-semibold text-sm tracking-wider">Horários</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-[101]">
                 <div id="hamburger-icon" class="space-y-2 relative w-8 h-6">
-                    <span class="block w-full h-0.5 bg-white transition-all duration-300 absolute top-0"></span>
-                    <span class="block w-full h-0.5 bg-white transition-all duration-300 absolute top-1/2 -translate-y-1/2"></span>
-                    <span class="block w-full h-0.5 bg-white transition-all duration-300 absolute bottom-0"></span>
+                    <span class="hamburger-line top"></span><span class="hamburger-line middle"></span><span class="hamburger-line bottom"></span>
                 </div>
             </button>
         </div>
@@ -107,7 +102,7 @@
             <a href="#modalidades" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Modalidades</a>
             <a href="#instrutores" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Instrutores</a>
             <a href="#horarios" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Horários</a>
-            <a href="#contato" class="text-2xl cta-button mt-4 !px-8 !py-3 !text-base">Agendar Aula</a>
+            <a href="#contato" class="cta-button mt-4">Agendar Aula</a>
         </div>
     </header>
 
@@ -118,14 +113,14 @@
             </video>
             <div class="hero-overlay absolute inset-0"></div>
             <div class="relative z-10 p-6">
-                <h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-tight hero-title animated-item" style="text-shadow: 0 0 30px rgba(0,0,0,0.9);">
+                <h1 class="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-tight animated-item visible" style="text-shadow: 0 0 40px rgba(0,0,0,1);">
                     Onde <span class="text-[var(--color-primary)]">Guerreiros</span> São Forjados
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-200 mt-4 mb-10 max-w-3xl mx-auto font-light animated-item" style="animation-delay: 0.2s;">
+                <p class="text-xl md:text-2xl text-gray-200 mt-4 mb-10 max-w-3xl mx-auto font-light animated-item visible" style="animation-delay: 0.2s;">
                     Mais que uma academia, uma comunidade. Descubra sua força interior através da disciplina e técnica do Jiu-Jitsu, Muay Thai e MMA.
                 </p>
-                <div class="animated-item" style="animation-delay: 0.4s;">
-                    <a href="#contato" class="cta-button !text-base !px-8 !py-3">Inicie Sua Jornada Hoje</a>
+                <div class="animated-item visible" style="animation-delay: 0.4s;">
+                    <a href="#contato" class="cta-button">Inicie Sua Jornada Hoje</a>
                 </div>
             </div>
         </section>
@@ -133,10 +128,7 @@
         <section id="sobre" class="py-24 md:py-32 bg-background">
             <div class="container mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div class="animated-item">
-                    <div class="relative group">
-                         <img src="https://placehold.co/800x600/141414/f5f5f5?text=FMTC-MMA" alt="Foto da academia FMTC-MMA" class="rounded-lg shadow-2xl w-full transition-transform duration-500 group-hover:scale-105">
-                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-                    </div>
+                    <div class="relative group"><img src="https://placehold.co/800x600/141414/f5f5f5?text=FMTC-MMA" alt="Foto da academia FMTC-MMA" class="rounded-lg shadow-2xl w-full transition-transform duration-500 group-hover:scale-105"></div>
                 </div>
                 <div class="animated-item" style="animation-delay: 0.2s;">
                     <h3 class="section-subtitle">Nossa Missão</h3>
@@ -155,19 +147,19 @@
                 </div>
                 <div class="grid lg:grid-cols-3 gap-8">
                     <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300">
-                        <h3 class="text-5xl font-bold uppercase text-white mb-3 transition-colors">Jiu-Jitsu</h3>
+                        <h3 class="text-5xl mb-3">Jiu-Jitsu</h3>
                         <p class="text-gray-400 mb-6 min-h-[100px]">A arte suave. Desenvolva técnica e estratégia para controlar qualquer oponente, independentemente do tamanho ou da força.</p>
-                        <button class="modal-trigger secondary-button w-full !text-xs !px-6 !py-3" data-modal="jiujitsu">Ver Sistema de Graduação</button>
+                        <button class="modal-trigger secondary-button w-full" data-modal="jiujitsu">Ver Sistema de Graduação</button>
                     </div>
                     <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300" style="animation-delay: 0.2s;">
-                        <h3 class="text-5xl font-bold uppercase text-white mb-3 transition-colors">Muay Thai</h3>
+                        <h3 class="text-5xl mb-3">Muay Thai</h3>
                         <p class="text-gray-400 mb-6 min-h-[100px]">A arte das oito armas. Transforme seu corpo com socos, chutes, cotoveladas e joelhadas em um treino de alta intensidade.</p>
-                         <button class="modal-trigger secondary-button w-full !text-xs !px-6 !py-3" data-modal="muaythai">Ver Sistema de Graduação</button>
+                         <button class="modal-trigger secondary-button w-full" data-modal="muaythai">Ver Sistema de Graduação</button>
                     </div>
                     <div class="bg-background p-8 rounded-lg shadow-2xl border border-gray-800/50 group animated-item hover:border-[var(--color-primary)]/50 hover:-translate-y-2 transition-all duration-300" style="animation-delay: 0.4s;">
-                        <h3 class="text-5xl font-bold uppercase text-white mb-3 transition-colors">MMA</h3>
+                        <h3 class="text-5xl mb-3">MMA</h3>
                         <p class="text-gray-400 mb-6 min-h-[100px]">A união das artes marciais. Integre a luta em pé e no chão, desenvolvendo um jogo completo para o esporte de combate moderno.</p>
-                        <button class="w-full text-center bg-gray-800/50 text-gray-500 border border-gray-700 uppercase font-semibold text-xs px-6 py-3 rounded-sm cursor-not-allowed">Graduação Unificada</button>
+                        <button class="w-full text-center bg-gray-800/50 text-gray-500 border border-gray-700 uppercase font-bold tracking-wider text-sm px-8 py-3 rounded-sm cursor-not-allowed">Graduação Unificada</button>
                     </div>
                 </div>
             </div>
@@ -175,34 +167,31 @@
 
         <section id="instrutores" class="py-24 md:py-32 bg-background">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center animated-item">
-                    <h3 class="section-subtitle">Lidere Pelo Exemplo</h3>
-                    <h2 class="section-title mb-12">Nossos Comandantes</h2>
-                </div>
+                <div class="text-center animated-item"><h3 class="section-subtitle">Lidere Pelo Exemplo</h3><h2 class="section-title mb-12">Nossos Comandantes</h2></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.1s;">
-                        <img src="https://placehold.co/600x600/141414/e50914?text=Mestre+Silva" class="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Mestre Silva">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <img src="https://placehold.co/600x600/141414/e50914?text=Mestre+Silva" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Mestre Silva">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:bottom-4">
-                            <h4 class="text-3xl font-bold uppercase text-white">Mestre Silva</h4>
+                            <h4 class="text-4xl">Mestre Silva</h4>
                             <p class="text-[var(--color-primary)] font-semibold mb-3">Faixa Preta 5º Grau - Jiu-Jitsu</p>
                             <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">Mais de 20 anos formando campeões e cidadãos no tatame, com uma didática incomparável.</p>
                         </div>
                     </div>
                     <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.3s;">
-                         <img src="https://placehold.co/600x600/141414/e50914?text=Kru+Nak" class="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Kru Nak">
-                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                         <img src="https://placehold.co/600x600/141414/e50914?text=Kru+Nak" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Kru Nak">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:bottom-4">
-                            <h4 class="text-3xl font-bold uppercase text-white">Kru "Nak"</h4>
+                            <h4 class="text-4xl">Kru "Nak"</h4>
                             <p class="text-[var(--color-primary)] font-semibold mb-3">Treinador Chefe - Muay Thai</p>
                             <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">A autêntica técnica do Muay Thai Chaiya, trazida por um mestre com experiência em estádios da Tailândia.</p>
                         </div>
                     </div>
                     <div class="bg-surface rounded-lg text-center overflow-hidden border border-gray-800/50 animated-item group relative" style="animation-delay: 0.5s;">
-                         <img src="https://placehold.co/600x600/141414/e50914?text=Coach+Ferreira" class="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Coach Ferreira">
-                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                         <img src="https://placehold.co/600x600/141414/e50914?text=Coach+Ferreira" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Coach Ferreira">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:bottom-4">
-                            <h4 class="text-3xl font-bold uppercase text-white">Coach Ferreira</h4>
+                            <h4 class="text-4xl">Coach Ferreira</h4>
                             <p class="text-[var(--color-primary)] font-semibold mb-3">Head Coach - MMA</p>
                             <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">Estrategista e ex-atleta profissional, especializado em unificar as artes marciais para criar lutadores de MMA completos.</p>
                         </div>
@@ -213,60 +202,15 @@
 
         <section id="horarios" class="py-24 md:py-32 bg-surface">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center animated-item">
-                    <h3 class="section-subtitle">Encaixe na sua Rotina</h3>
-                    <h2 class="section-title mb-12">Grade de Horários</h2>
-                </div>
+                <div class="text-center animated-item"><h3 class="section-subtitle">Encaixe na sua Rotina</h3><h2 class="section-title mb-12">Grade de Horários</h2></div>
                 <div class="overflow-x-auto animated-item">
                     <table class="w-full min-w-[800px] border-collapse text-center">
-                        <thead>
-                            <tr class="bg-black/50">
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7">Horário</th>
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800">Segunda</th>
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800">Terça</th>
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800">Quarta</th>
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800">Quinta</th>
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800">Sexta</th>
-                                <th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800">Sábado</th>
-                            </tr>
-                        </thead>
+                        <thead><tr class="bg-black/50"><th class="p-4 uppercase text-sm text-gray-400 w-1/7 tracking-wider">Horário</th><th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800 tracking-wider">Segunda</th><th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800 tracking-wider">Terça</th><th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800 tracking-wider">Quarta</th><th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800 tracking-wider">Quinta</th><th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800 tracking-wider">Sexta</th><th class="p-4 uppercase text-sm text-gray-400 w-1/7 border-l border-gray-800 tracking-wider">Sábado</th></tr></thead>
                         <tbody>
-                            <tr class="border-t border-gray-800 hover:bg-black/30 transition-colors">
-                                <td class="p-4 font-bold text-[var(--color-primary)]">07:00 - 08:30</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800 text-gray-600">-</td>
-                            </tr>
-                            <tr class="bg-black/20 border-t border-gray-800 hover:bg-black/30 transition-colors">
-                                <td class="p-4 font-bold text-[var(--color-primary)]">12:00 - 13:30</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu</td>
-                                <td class="p-4 border-l border-gray-800 text-gray-600">-</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu</td>
-                                <td class="p-4 border-l border-gray-800 text-gray-600">-</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu</td>
-                                <td class="p-4 border-l border-gray-800 font-semibold text-green-400">Open Mat</td>
-                            </tr>
-                            <tr class="border-t border-gray-800 hover:bg-black/30 transition-colors">
-                                <td class="p-4 font-bold text-[var(--color-primary)]">18:00 - 19:30</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu (Iniciante)</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu (Iniciante)</td>
-                                <td class="p-4 border-l border-gray-800 font-semibold text-orange-400">MMA</td>
-                                <td class="p-4 border-l border-gray-800 text-gray-600">-</td>
-                            </tr>
-                            <tr class="bg-black/20 border-t border-gray-800 hover:bg-black/30 transition-colors">
-                                <td class="p-4 font-bold text-[var(--color-primary)]">19:30 - 21:00</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu (Avançado)</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800">Jiu-Jitsu (Avançado)</td>
-                                <td class="p-4 border-l border-gray-800">Muay Thai</td>
-                                <td class="p-4 border-l border-gray-800 font-semibold text-orange-400">MMA Sparring</td>
-                                <td class="p-4 border-l border-gray-800 text-gray-600">-</td>
-                            </tr>
+                            <tr class="border-t border-gray-800 hover:bg-black/30 transition-colors"><td class="p-4 font-bold text-[var(--color-primary)]">07:00-08:30</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800 text-gray-600">-</td></tr>
+                            <tr class="bg-black/20 border-t border-gray-800 hover:bg-black/30 transition-colors"><td class="p-4 font-bold text-[var(--color-primary)]">12:00-13:30</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu</td><td class="p-4 border-l border-gray-800 text-gray-600">-</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu</td><td class="p-4 border-l border-gray-800 text-gray-600">-</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu</td><td class="p-4 border-l border-gray-800 font-semibold text-green-400">Open Mat</td></tr>
+                            <tr class="border-t border-gray-800 hover:bg-black/30 transition-colors"><td class="p-4 font-bold text-[var(--color-primary)]">18:00-19:30</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu (Inic.)</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu (Inic.)</td><td class="p-4 border-l border-gray-800 font-semibold text-orange-400">MMA</td><td class="p-4 border-l border-gray-800 text-gray-600">-</td></tr>
+                            <tr class="bg-black/20 border-t border-gray-800 hover:bg-black/30 transition-colors"><td class="p-4 font-bold text-[var(--color-primary)]">19:30-21:00</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu (Avanc.)</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800">Jiu-Jitsu (Avanc.)</td><td class="p-4 border-l border-gray-800">Muay Thai</td><td class="p-4 border-l border-gray-800 font-semibold text-orange-400">MMA Sparring</td><td class="p-4 border-l border-gray-800 text-gray-600">-</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -276,24 +220,18 @@
         <section id="contato" class="py-24 md:py-32 bg-background">
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="text-center">
-                    <h3 class="section-subtitle">O Primeiro Passo é Seu</h3>
-                    <h2 class="section-title mb-6">Agende uma Aula Experimental Gratuita</h2>
+                    <h3 class="section-subtitle">O Primeiro Passo é Seu</h3><h2 class="section-title mb-6">Agende Sua Aula Experimental Gratuita</h2>
                     <p class="max-w-3xl mx-auto text-lg text-gray-400 mb-12">Sem compromisso. Venha sentir a energia, conhecer nossos professores e descobrir por que a FMTC-MMA é o seu lugar. Preencha o formulário e nossa equipe entrará em contato.</p>
                 </div>
-                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
                     <div>
                          <form action="#" method="POST" class="space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
                                 <input type="text" name="name" placeholder="Seu Nome Completo" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
                                 <input type="tel" name="phone" placeholder="Seu WhatsApp" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
                             </div>
-                            <select name="modality" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all">
-                                <option value="" disabled selected>Qual modalidade te interessa?</option>
-                                <option value="jiujitsu">Jiu-Jitsu</option>
-                                <option value="muaythai">Muay Thai</option>
-                                <option value="mma">MMA</option>
-                            </select>
-                            <button type="submit" class="cta-button w-full !text-base !py-3">Quero minha aula grátis!</button>
+                            <select name="modality" required class="w-full bg-surface border border-gray-700/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all"><option value="" disabled selected>Qual modalidade te interessa?</option><option value="jiujitsu">Jiu-Jitsu</option><option value="muaythai">Muay Thai</option><option value="mma">MMA</option></select>
+                            <button type="submit" class="cta-button w-full">Quero minha aula grátis!</button>
                         </form>
                     </div>
                     <div>
@@ -319,70 +257,42 @@
     <div id="modal-jiujitsu" class="modal fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4">
         <div class="modal-content bg-surface rounded-lg max-w-3xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/10 max-h-[90vh] overflow-y-auto">
             <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
-            <div class="p-8 md:p-12 -mt-12">
-                <h3 class="text-4xl md:text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Jiu-Jitsu</h3>
+            <div class="p-8 md:p-12 -mt-16">
+                <h3 class="text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Jiu-Jitsu</h3>
                 <div class="space-y-6">
-                    <!-- Faixa Branca -->
+                    <!-- Faixas -->
                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
                             <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div>
-                            <div class="flex-grow">
-                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Branca</h4>
-                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
-                            </div>
+                            <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Branca</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 12 - 18 meses</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Fundamentos, posturas, quedas, passagens, finalizações básicas e defesa pessoal.</p>
-                        </div>
-                    </div>
-                    <!-- Faixas seguintes... -->
-                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #3b82f6;"></div></div>
-                            <div class="flex-grow">
-                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Azul</h4>
-                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
-                            </div>
-                        </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 2 anos</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Repertório expandido, controle posicional, combinações e sparring estratégico.</p>
-                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 12-18 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Fundamentos, posturas, quedas, passagens, finalizações básicas.</p></div>
                     </div>
                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #8b5cf6;"></div></div>
-                            <div class="flex-grow">
-                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Roxa</h4>
-                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
-                            </div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-blue-600"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Azul</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 1.5 - 2 anos</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Desenvolvimento de um "Jogo A", contra-ataques e conceitos avançados.</p>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Controle posicional, combinações, sparring estratégico.</p></div>
+                    </div>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-purple-600"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Roxa</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 1.5-2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Desenvolvimento de um "Jogo A", contra-ataques, conceitos avançados.</p></div>
                     </div>
                      <div class="bg-background p-6 rounded-lg border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #78350f;"></div></div>
-                            <div class="flex-grow">
-                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Marrom</h4>
-                                <div class="flex items-center space-x-2 my-2" title="4 Graus a conquistar">[...]</div>
-                            </div>
+                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-yellow-900"></div></div>
+                            <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Marrom</h4><div class="flex items-center space-x-1 my-1" title="4 Graus">[...]</div></div>
                         </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 1 - 2 anos</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Refinamento técnico, didática de ensino e preparação para a liderança.</p>
-                        </div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 1-2 anos</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Refinamento técnico, didática de ensino, preparação para liderança.</p></div>
                     </div>
                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
                         <div class="flex flex-col sm:flex-row items-center gap-4">
                             <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-black border-2 border-[var(--color-primary)]"></div></div>
-                            <div class="flex-grow">
-                                <h4 class="text-2xl font-bold uppercase text-white">Faixa Preta</h4>
-                                <p class="text-sm text-gray-400">A maestria dos fundamentos marca um novo começo. O foco se volta para o legado, o ensino e o aprofundamento infinito na arte suave.</p>
-                            </div>
+                            <div class="flex-grow"><h4 class="text-2xl text-white">Faixa Preta</h4><p class="text-sm text-gray-400">A maestria dos fundamentos marca um novo começo.</p></div>
                         </div>
                     </div>
                 </div>
@@ -392,55 +302,28 @@
     <div id="modal-muaythai" class="modal fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4">
          <div class="modal-content bg-surface rounded-lg max-w-3xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/10 max-h-[90vh] overflow-y-auto">
             <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
-            <div class="p-8 md:p-12 -mt-12">
-                <h3 class="text-4xl md:text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Muay Thai</h3>
+            <div class="p-8 md:p-12 -mt-16">
+                <h3 class="text-5xl font-bold uppercase text-white mb-8 text-center">Jornada no Muay Thai</h3>
                 <div class="space-y-6">
                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div>
-                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-white text-black">Kruang Branco</h4></div>
-                        </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 6 meses</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Postura, guarda, movimentação, e golpes básicos (jab, direto, chute circular).</p>
-                        </div>
+                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-white"></div></div><h4 class="text-2xl text-black">Kruang Branco</h4></div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 6 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Postura, guarda, movimentação, golpes básicos.</p></div>
                     </div>
                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #facc15;"></div></div>
-                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-black">Kruang Amarelo</h4></div>
-                        </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 12 meses</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Joelhadas, cotoveladas, defesas simples e combinações de 2-3 golpes.</p>
-                        </div>
-                    </div>
-                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #4ade80;"></div></div>
-                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-black">Kruang Verde</h4></div>
-                        </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 12 meses</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Domínio do clinch, contra-ataques, e maior fluidez nas combinações.</p>
-                        </div>
+                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-yellow-400"></div></div><h4 class="text-2xl text-black">Kruang Amarelo</h4></div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 12 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Joelhadas, cotoveladas, defesas e combinações simples.</p></div>
                     </div>
                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: #3b82f6;"></div></div>
-                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-white">Kruang Azul</h4></div>
-                        </div>
-                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-                            <p class="text-gray-400"><strong class="text-gray-200">🕒 Tempo Médio:</strong> 18 meses</p>
-                            <p class="text-gray-400"><strong class="text-gray-200">🎯 Foco do Exame:</strong> Técnicas avançadas, estratégia de sparring, controle de distância e ritmo.</p>
-                        </div>
+                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-green-500"></div></div><h4 class="text-2xl text-black">Kruang Verde</h4></div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 12 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Domínio do clinch, contra-ataques, fluidez.</p></div>
                     </div>
-                     <div class="bg-background p-6 rounded-lg border border-gray-700/50">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="w-full sm:w-1/4 flex-shrink-0"><div class="h-8 rounded w-full" style="background-color: var(--color-primary);"></div></div>
-                            <div class="flex-grow"><h4 class="text-2xl font-bold uppercase text-white">Kruang Vermelho</h4></div>
-                        </div>
-                         <p class="mt-4 text-sm text-gray-400">Nível de Instrutor Auxiliar. Conhecimento profundo da arte, capaz de auxiliar no ensino e liderar aquecimentos.</p>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-blue-600"></div></div><h4 class="text-2xl text-white">Kruang Azul</h4></div>
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm"><p class="text-gray-400"><strong>🕒 Tempo Médio:</strong> 18 meses</p><p class="text-gray-400"><strong>🎯 Foco:</strong> Técnicas avançadas, estratégia, controle de distância e ritmo.</p></div>
+                    </div>
+                    <div class="bg-background p-6 rounded-lg border border-gray-700/50">
+                        <div class="flex items-center gap-4"><div class="w-1/4 flex-shrink-0"><div class="h-8 rounded w-full bg-[var(--color-primary)]"></div></div><h4 class="text-2xl text-white">Kruang Vermelho</h4></div>
+                        <p class="mt-4 text-sm text-gray-400">Nível de Instrutor Auxiliar. Conhecimento profundo da arte, capaz de auxiliar no ensino e liderar aquecimentos.</p>
                     </div>
                 </div>
             </div>
@@ -481,7 +364,7 @@
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isInterisecting) {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
@@ -502,8 +385,7 @@
                 if (modal) {
                     modal.classList.add('hidden');
                     modal.classList.remove('flex');
-                    const isAnyModalOpen = Array.from(modals).some(m => !m.classList.contains('hidden'));
-                    if (!isAnyModalOpen) {
+                    if (!Array.from(modals).some(m => !m.classList.contains('hidden'))) {
                         document.body.classList.remove('modal-open');
                     }
                 }
