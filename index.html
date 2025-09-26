@@ -47,14 +47,20 @@
         ::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--color-glow); }
 
-        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html { 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Classe controlada por JS para travar a rolagem quando necessário */
+        html.scroll-lock {
+            overflow: hidden;
+        }
+
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--color-background); 
             color: var(--color-text-primary); 
-            overflow-x: hidden;
         }
-        body.modal-open { overflow: hidden; }
 
         h1, h2, h3, h4, h5, h6 { font-family: 'Krub', sans-serif; font-weight: 700; text-transform: uppercase; }
 
@@ -62,7 +68,7 @@
         .aurora-background {
             position: relative;
             background-color: var(--color-background);
-            overflow: hidden;
+            overflow-x: hidden; /* Previne overflow horizontal do gradiente */
         }
         .aurora-background::before {
             content: "";
@@ -83,7 +89,10 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
         .content-wrapper { position: relative; z-index: 1; }
-        section { padding: 6rem 1.5rem; }
+        section { padding: 4rem 1rem; }
+        @media (min-width: 768px) {
+            section { padding: 6rem 1.5rem; }
+        }
 
         /* ===== HEADER E NAVEGAÇÃO ATIVA ===== */
          #main-nav a {
@@ -111,11 +120,15 @@
 
         /* ===== SEÇÃO HERO ===== */
         #hero {
-            height: 100vh;
-            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem; /* Espaço para o header */
+            padding-bottom: 2rem;
         }
         #hero-video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;
             filter: grayscale(80%) contrast(1.2) brightness(0.7);
         }
         
@@ -141,26 +154,39 @@
             box-shadow: 0 0 25px 5px rgba(229, 9, 20, 0.8);
             transform: translateY(-5px) scale(1.05);
         }
+        .cta-button:disabled {
+            background-color: #555;
+            border-color: #555;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
         
-        /* ===== CARDS COM EFEITO 3D ===== */
-        .tilt-card {
+        /* ===== CARDS DE VIDRO COM EFEITO 3D ===== */
+        .glass-card {
             background: rgba(16, 16, 16, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             border-radius: 1.5rem;
-            transition: all 0.2s ease;
-            transform-style: preserve-3d;
+            transition: all 0.3s ease;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d; /* Necessário para o efeito 3D */
         }
-        .tilt-card:hover {
+        .glass-card:hover {
             border-color: var(--color-primary);
             box-shadow: 0 0 30px rgba(229, 9, 20, 0.3);
         }
-        .tilt-card-inner {
-             transform: translateZ(40px);
+        .glass-card-inner {
+             padding: 1.5rem;
              display: flex;
              flex-direction: column;
              height: 100%;
+             transform: translateZ(20px); /* Move o conteúdo para frente no eixo Z */
+        }
+        @media (min-width: 768px) {
+            .glass-card-inner { padding: 2rem; }
         }
         
         /* ===== MODAL REFINADO ===== */
@@ -182,20 +208,57 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 1.5rem;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        @media (min-width: 768px) {
-            #horarios-grid { grid-template-columns: repeat(4, 1fr); }
+        @media (min-width: 640px) {
+            #horarios-grid { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
         }
         @media (min-width: 1024px) {
+            #horarios-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (min-width: 1280px) {
             #horarios-grid { grid-template-columns: repeat(7, 1fr); }
         }
         .horarios-dia {
             border-left: 2px solid var(--color-primary);
             padding-left: 1rem;
+        }
+
+        /* ===== GEMINI FEATURES ===== */
+        .gemini-form-select, .gemini-form-checkbox-group {
+            background: var(--color-surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+        }
+        .gemini-result-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--color-primary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            min-height: 150px;
+        }
+        @media (max-width: 1023px) {
+            .gemini-result-box {
+                 margin-top: 1.5rem;
+            }
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #FFF;
+            border-bottom-color: var(--color-primary);
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
     </style>
@@ -210,6 +273,7 @@
             <nav id="main-nav" class="hidden md:flex items-center space-x-8">
                 <a href="#academia" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">A Academia</a>
                 <a href="#modalidades" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Modalidades</a>
+                <a href="#plano-ia" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Plano IA</a>
                 <a href="#depoimentos" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Depoimentos</a>
                 <a href="#horarios" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Horários</a>
                 <a href="#contato" class="text-gray-300 uppercase font-semibold text-xs tracking-wider">Contato</a>
@@ -218,9 +282,10 @@
                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl flex-col items-center justify-center space-y-8 z-40 transition-transform duration-300 -translate-x-full md:hidden">
+        <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 z-40 transition-transform duration-300 -translate-x-full md:hidden">
             <a href="#academia" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">A Academia</a>
             <a href="#modalidades" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Modalidades</a>
+            <a href="#plano-ia" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Plano IA</a>
             <a href="#depoimentos" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Depoimentos</a>
             <a href="#horarios" class="text-2xl text-gray-300 hover:text-[var(--color-primary)]">Horários</a>
             <a href="#contato" class="cta-button mt-4">Agendar Aula</a>
@@ -230,13 +295,13 @@
     <main>
 
         <!-- ===== HERO SECTION ===== -->
-        <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden">
+        <section id="hero" class="relative text-center">
             <video id="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/000000/101010?text=Loading...">
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-shadow-boxer-in-a-dark-gym-42283-large.mp4" type="video/mp4">
             </video>
             <div class="relative z-10 p-6">
-                <h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-tight">Forje sua Evolução</h1>
-                <p class="text-lg md:text-xl text-text-secondary mt-6 mb-12 max-w-2xl mx-auto">
+                <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white leading-tight">Forje sua Evolução</h1>
+                <p class="text-md sm:text-lg md:text-xl text-text-secondary mt-6 mb-12 max-w-2xl mx-auto">
                     Não somos apenas uma academia. Somos um laboratório de performance humana, onde a disciplina ancestral das artes marciais encontra a ciência moderna.
                 </p>
                 <a href="#contato" class="cta-button">Comece sua transformação</a>
@@ -248,11 +313,11 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Nosso DNA</h3>
-                    <h2 class="text-5xl md:text-6xl text-white mb-6">Tradição e Inovação</h2>
-                    <p class="text-text-secondary mb-4 text-lg">Acreditamos que todo grande lutador é construído sobre dois pilares: o respeito profundo pelas raízes da arte marcial e a busca incansável pela inovação. Nossa metodologia integra o melhor dos dois mundos para criar atletas completos, resilientes e inteligentes.</p>
-                    <p class="text-text-secondary">Aqui, cada treino é um passo em uma jornada de autoconhecimento. Você aprenderá a superar limites, não apenas no tatame, mas na vida.</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-6">Tradição e Inovação</h2>
+                    <p class="text-text-secondary mb-4 text-base md:text-lg">Acreditamos que todo grande lutador é construído sobre dois pilares: o respeito profundo pelas raízes da arte marcial e a busca incansável pela inovação. Nossa metodologia integra o melhor dos dois mundos para criar atletas completos, resilientes e inteligentes.</p>
+                    <p class="text-text-secondary text-base md:text-lg">Aqui, cada treino é um passo em uma jornada de autoconhecimento. Você aprenderá a superar limites, não apenas no tatame, mas na vida.</p>
                 </div>
-                <div class="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden group">
+                <div class="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden group">
                     <img src="https://placehold.co/800x600/101010/ffffff?text=O+Santuário" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Ambiente da academia">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
@@ -261,60 +326,109 @@
 
         <!-- ===== MODALIDADES ===== -->
         <section id="modalidades" class="container mx-auto">
-             <div class="text-center mb-16">
+             <div class="text-center mb-12 md:mb-16">
                 <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Nossas Arenas</h3>
-                <h2 class="text-5xl md:text-6xl text-white">Escolha sua disciplina</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Escolha sua disciplina</h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="tilt-card" data-tilt>
-                     <div class="p-8 tilt-card-inner">
-                        <h3 class="text-4xl mb-3">Jiu-Jitsu</h3>
+                <div class="glass-card" data-tilt>
+                     <div class="glass-card-inner">
+                        <h3 class="text-3xl md:text-4xl mb-3">Jiu-Jitsu</h3>
                         <p class="text-text-secondary mb-6 flex-grow">A arte suave reimaginada. Estratégia, fluidez e técnica para dominar o tatame com inteligência.</p>
                         <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-secondary)] hover:text-black transition-all" data-modal="jiujitsu">Ver Progressão</button>
                      </div>
                 </div>
-                <div class="tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
-                     <div class="p-8 tilt-card-inner">
-                        <h3 class="text-4xl mb-3">Muay Thai</h3>
+                <div class="glass-card" data-tilt>
+                     <div class="glass-card-inner">
+                        <h3 class="text-3xl md:text-4xl mb-3">Muay Thai</h3>
                         <p class="text-text-secondary mb-6 flex-grow">Potência e precisão. Condicionamento extremo e a ciência dos oito membros para forjar um corpo de aço.</p>
                         <button class="modal-trigger mt-auto w-full text-center border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] py-3 rounded-lg uppercase text-xs font-bold tracking-wider hover:bg-[var(--color-secondary)] hover:text-black transition-all" data-modal="muaythai">Ver Progressão</button>
                      </div>
                 </div>
-                <div class="tilt-card" data-tilt>
-                     <div class="p-8 tilt-card-inner">
-                        <h3 class="text-4xl mb-3">MMA</h3>
+                <div class="glass-card" data-tilt>
+                     <div class="glass-card-inner">
+                        <h3 class="text-3xl md:text-4xl mb-3">MMA</h3>
                         <p class="text-text-secondary mb-6 flex-grow">A síntese do combate. Integre todas as valências e torne-se o lutador mais completo e adaptável.</p>
                         <button class="w-full mt-auto text-center border-2 border-gray-700 text-gray-600 py-3 rounded-lg uppercase text-xs font-bold tracking-wider cursor-not-allowed">Sistema Integrado</button>
                      </div>
                 </div>
             </div>
         </section>
+
+        <!-- ===== GEMINI: PLANO DE TREINO IA ===== -->
+        <section id="plano-ia" class="container mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Coach Digital</h3>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Monte seu treino com IA</h2>
+                 <p class="max-w-3xl mx-auto text-lg text-text-secondary mt-4">Responda as perguntas abaixo e nossa inteligência artificial criará um plano de treino semanal, personalizado para você, com base em nossos horários.</p>
+            </div>
+            <div class="max-w-4xl mx-auto grid lg:grid-cols-2 gap-8 items-start">
+                <div class="glass-card">
+                    <form id="gemini-plan-form" class="glass-card-inner space-y-6">
+                        <div>
+                            <label for="goal" class="block mb-2 font-semibold">Qual seu principal objetivo?</label>
+                            <select id="goal" name="goal" class="w-full gemini-form-select">
+                                <option value="Perda de peso">Perder Peso e Fitness</option>
+                                <option value="Defesa pessoal">Defesa Pessoal</option>
+                                <option value="Competição">Competir</option>
+                                <option value="Condicionamento físico">Condicionamento e Força</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="level" class="block mb-2 font-semibold">Qual seu nível de experiência?</label>
+                            <select id="level" name="level" class="w-full gemini-form-select">
+                                <option value="Iniciante">Iniciante (Nunca treinei)</option>
+                                <option value="Intermediário">Intermediário (Já treinei antes)</option>
+                                <option value="Avançado">Avançado (Atleta ativo)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-semibold">Quais dias você pode treinar?</label>
+                            <div class="gemini-form-checkbox-group grid grid-cols-3 gap-4 text-sm">
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Segunda" class="form-checkbox"><span>Seg</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Terça" class="form-checkbox"><span>Ter</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Quarta" class="form-checkbox"><span>Qua</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Quinta" class="form-checkbox"><span>Qui</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Sexta" class="form-checkbox"><span>Sex</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" name="days" value="Sábado" class="form-checkbox"><span>Sáb</span></label>
+                            </div>
+                        </div>
+                        <button type="submit" id="generate-plan-btn" class="cta-button w-full !mt-8">✨ Gerar Plano Inteligente</button>
+                    </form>
+                </div>
+                <div class="gemini-result-box flex items-center justify-center">
+                    <div id="plan-result" class="text-text-secondary w-full">
+                        Seu plano de treino personalizado aparecerá aqui...
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- ===== DEPOIMENTOS ===== -->
         <section id="depoimentos" class="container mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Voz da Equipe</h3>
-                <h2 class="text-5xl md:text-6xl text-white">O que nossos atletas dizem</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">O que nossos atletas dizem</h2>
             </div>
             <div class="grid lg:grid-cols-3 gap-8">
-                <div class="tilt-card" data-tilt>
-                    <div class="p-8 tilt-card-inner text-center">
+                <div class="glass-card" data-tilt>
+                    <div class="glass-card-inner text-center">
                         <img src="https://placehold.co/100x100/101010/E50914?text=JP" alt="João P." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-[var(--color-primary)]">
                         <p class="text-text-secondary mb-4 flex-grow">"A FMTC mudou meu jogo. A atenção aos detalhes dos instrutores é algo que nunca vi em outro lugar. Mais que uma academia, uma família."</p>
                         <h4 class="text-2xl mt-auto">João P.</h4>
                         <p class="text-sm text-[var(--color-primary)]">Faixa Roxa, Jiu-Jitsu</p>
                     </div>
                 </div>
-                <div class="tilt-card" data-tilt>
-                    <div class="p-8 tilt-card-inner text-center">
+                <div class="glass-card" data-tilt>
+                    <div class="glass-card-inner text-center">
                         <img src="https://placehold.co/100x100/101010/00f6ff?text=MC" alt="Maria C." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-[var(--color-secondary)]">
                         <p class="text-text-secondary mb-4 flex-grow">"O treino de Muay Thai aqui é de outro nível. Me sinto mais forte, confiante e preparada para qualquer desafio. A energia é contagiante!"</p>
                         <h4 class="text-2xl mt-auto">Maria C.</h4>
                         <p class="text-sm text-[var(--color-secondary)]">Aluna de Muay Thai</p>
                     </div>
                 </div>
-                <div class="tilt-card" data-tilt>
-                    <div class="p-8 tilt-card-inner text-center">
+                <div class="glass-card" data-tilt>
+                    <div class="glass-card-inner text-center">
                         <img src="https://placehold.co/100x100/101010/ffffff?text=LG" alt="Lucas G." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-gray-500">
                         <p class="text-text-secondary mb-4 flex-grow">"Como atleta de MMA, preciso de um treinamento integrado. Aqui eu encontrei o equilíbrio perfeito entre a luta em pé e o chão. Recomendo 100%."</p>
                         <h4 class="text-2xl mt-auto">Lucas G.</h4>
@@ -322,54 +436,57 @@
                     </div>
                 </div>
             </div>
+             <div class="text-center mt-12">
+                <button id="get-motivation-btn" class="text-center border-2 border-[var(--color-primary)] text-[var(--color-primary)] py-3 px-8 rounded-lg uppercase text-sm font-bold tracking-wider hover:bg-[var(--color-primary)] hover:text-black transition-all">✨ Me Dê uma Motivação</button>
+            </div>
         </section>
 
         <!-- ===== HORÁRIOS ===== -->
         <section id="horarios" class="container mx-auto">
-             <div class="text-center mb-16">
+             <div class="text-center mb-12 md:mb-16">
                 <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Sua Rotina</h3>
-                <h2 class="text-5xl md:text-6xl text-white">Encontre seu horário</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white">Encontre seu horário</h2>
             </div>
             <div id="horarios-grid">
                 <div class="horarios-dia">
-                    <h3 class="text-2xl mb-4">Segunda</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4">Segunda</h3>
                     <p class="text-text-secondary text-sm"><strong>07:00</strong> Muay Thai</p>
                     <p class="text-text-secondary text-sm"><strong>12:00</strong> Jiu-Jitsu</p>
                     <p class="text-text-secondary text-sm"><strong>18:00</strong> Muay Thai</p>
                     <p class="text-text-secondary text-sm"><strong>19:30</strong> Jiu-Jitsu (Av.)</p>
                 </div>
                 <div class="horarios-dia">
-                    <h3 class="text-2xl mb-4">Terça</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4">Terça</h3>
                     <p class="text-text-secondary text-sm"><strong>07:00</strong> Jiu-Jitsu</p>
                     <p class="text-text-secondary text-sm"><strong>18:00</strong> Jiu-Jitsu (Inic.)</p>
                     <p class="text-text-secondary text-sm"><strong>19:30</strong> Muay Thai</p>
                 </div>
                  <div class="horarios-dia">
-                    <h3 class="text-2xl mb-4">Quarta</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4">Quarta</h3>
                     <p class="text-text-secondary text-sm"><strong>07:00</strong> Muay Thai</p>
                     <p class="text-text-secondary text-sm"><strong>12:00</strong> Jiu-Jitsu</p>
                     <p class="text-text-secondary text-sm"><strong>18:00</strong> Muay Thai</p>
                     <p class="text-text-secondary text-sm"><strong>19:30</strong> Jiu-Jitsu (Av.)</p>
                 </div>
                 <div class="horarios-dia">
-                    <h3 class="text-2xl mb-4">Quinta</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4">Quinta</h3>
                     <p class="text-text-secondary text-sm"><strong>07:00</strong> Jiu-Jitsu</p>
                     <p class="text-text-secondary text-sm"><strong>18:00</strong> Jiu-Jitsu (Inic.)</p>
                     <p class="text-text-secondary text-sm"><strong>19:30</strong> Muay Thai</p>
                 </div>
                 <div class="horarios-dia">
-                    <h3 class="text-2xl mb-4">Sexta</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4">Sexta</h3>
                     <p class="text-text-secondary text-sm"><strong>07:00</strong> Muay Thai</p>
                     <p class="text-text-secondary text-sm"><strong>12:00</strong> Jiu-Jitsu</p>
                     <p class="text-text-secondary text-sm text-[var(--color-primary)]"><strong>18:00</strong> MMA</p>
                     <p class="text-text-secondary text-sm text-[var(--color-primary)]"><strong>19:30</strong> MMA Sparring</p>
                 </div>
                 <div class="horarios-dia">
-                    <h3 class="text-2xl mb-4">Sábado</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4">Sábado</h3>
                      <p class="text-text-secondary text-sm text-[var(--color-secondary)]"><strong>12:00</strong> Open Mat</p>
                 </div>
                 <div class="horarios-dia border-none">
-                    <h3 class="text-2xl mb-4 text-gray-600">Domingo</h3>
+                    <h3 class="text-xl sm:text-2xl mb-4 text-gray-600">Domingo</h3>
                     <p class="text-gray-700 text-sm">Descanso do Guerreiro</p>
                 </div>
             </div>
@@ -378,7 +495,7 @@
         <!-- ===== CONTATO ===== -->
         <section id="contato" class="container mx-auto text-center">
             <h3 class="text-lg text-[var(--color-secondary)] font-semibold tracking-widest">Seu Próximo Passo</h3>
-            <h2 class="text-5xl md:text-6xl text-white mb-6">A transformação começa aqui</h2>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-6">A transformação começa aqui</h2>
             <p class="max-w-3xl mx-auto text-lg text-text-secondary mb-12">Chega de desculpas. Sua aula experimental é o portal para a sua melhor versão. Preencha, compareça, conquiste.</p>
             <div class="max-w-md mx-auto">
                  <form action="#" method="POST" class="space-y-6">
@@ -398,7 +515,7 @@
     </footer>
 </div>
 
-<!-- MODAIS (mesma estrutura de antes) -->
+<!-- MODAIS -->
 <div id="modal-jiujitsu" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
     <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-2xl w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-primary)]/20 max-h-[90vh] overflow-y-auto">
         <button class="modal-close sticky top-4 right-4 ml-auto mr-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
@@ -431,20 +548,41 @@
         </div>
     </div>
 </div>
+<!-- Modal para Motivação -->
+<div id="modal-motivation" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+    <div class="modal-content bg-surface/80 backdrop-blur-xl rounded-2xl max-w-md w-full relative border border-gray-800/50 shadow-2xl shadow-[var(--color-secondary)]/20">
+        <button class="modal-close absolute top-2 right-4 text-gray-500 hover:text-white text-4xl transition-transform hover:scale-125 z-10">&times;</button>
+        <div id="motivation-content" class="p-8 md:p-12 text-center">
+            <!-- Conteúdo da citação será inserido aqui -->
+        </div>
+    </div>
+</div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+<!-- Script para o efeito 3D Tilt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    const docHtml = document.documentElement;
 
     // ===== MENU MOBILE =====
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const toggleMenu = () => {
         mobileMenu.classList.toggle('-translate-x-full');
-        document.body.classList.toggle('modal-open', !mobileMenu.classList.contains('-translate-x-full'));
+        docHtml.classList.toggle('scroll-lock', !mobileMenu.classList.contains('-translate-x-full'));
     };
     mobileMenuButton.addEventListener('click', toggleMenu);
-    document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            if (!mobileMenu.classList.contains('-translate-x-full')) {
+                toggleMenu();
+            }
+        });
+    });
     
     // ===== NAVEGAÇÃO ATIVA (SCROLLSPY) =====
     const sections = document.querySelectorAll('main section');
@@ -465,16 +603,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { rootMargin: '-50% 0px -50% 0px' });
 
     sections.forEach(section => observer.observe(section));
-
-    // ===== INICIALIZAÇÃO DO TILT.JS =====
-    VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-        max: 10,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.1,
-    });
     
-    // ===== LÓGICA DOS MODAIS =====
+    // ===== LÓGICA DOS MODAIS (GENÉRICO) =====
     const modalTriggers = document.querySelectorAll('.modal-trigger');
     const modals = document.querySelectorAll('.modal');
     const modalCloses = document.querySelectorAll('.modal-close');
@@ -483,15 +613,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = document.getElementById(`modal-${modalId}`);
         if (modal) {
             modal.classList.add('modal-active');
-            document.body.classList.add('modal-open');
+            docHtml.classList.add('scroll-lock');
         }
     };
 
     const closeModal = (modal) => {
         if (modal) {
             modal.classList.remove('modal-active');
-            if (!document.querySelector('.modal.modal-active')) {
-                document.body.classList.remove('modal-open');
+            const isAnyModalActive = Array.from(modals).some(m => m.classList.contains('modal-active'));
+            const isMobileMenuOpen = !mobileMenu.classList.contains('-translate-x-full');
+            if (!isAnyModalActive && !isMobileMenuOpen) {
+                docHtml.classList.remove('scroll-lock');
             }
         }
     };
@@ -503,6 +635,151 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === "Escape") document.querySelectorAll('.modal.modal-active').forEach(closeModal);
     });
 
+    // ===== ANIMAÇÃO 3D DOS CARDS (COM SEGURANÇA) =====
+    try {
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.3,
+        });
+    } catch (e) {
+        console.error("Vanilla Tilt failed to load, but the site will continue working.", e);
+    }
+
+    // ===== GEMINI API FEATURES =====
+    const apiKey = ""; // Chave da API do Gemini (deixar em branco)
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+    const planForm = document.getElementById('gemini-plan-form');
+    const planResultDiv = document.getElementById('plan-result');
+    const generatePlanBtn = document.getElementById('generate-plan-btn');
+
+    planForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        generatePlanBtn.disabled = true;
+        planResultDiv.innerHTML = '<div class="loader mx-auto"></div><p class="text-center mt-4">Gerando seu plano inteligente...</p>';
+
+        const formData = new FormData(planForm);
+        const goal = formData.get('goal');
+        const level = formData.get('level');
+        const days = formData.getAll('days');
+
+        if (days.length === 0) {
+            planResultDiv.innerHTML = '<p class="text-red-500">Por favor, selecione pelo menos um dia para treinar.</p>';
+            generatePlanBtn.disabled = false;
+            return;
+        }
+
+        const gymSchedule = `
+            - Monday: 07:00 Muay Thai, 12:00 Jiu-Jitsu, 18:00 Muay Thai, 19:30 Jiu-Jitsu (Advanced)
+            - Tuesday: 07:00 Jiu-Jitsu, 18:00 Jiu-Jitsu (Beginner), 19:30 Muay Thai
+            - Wednesday: 07:00 Muay Thai, 12:00 Jiu-Jitsu, 18:00 Muay Thai, 19:30 Jiu-Jitsu (Advanced)
+            - Thursday: 07:00 Jiu-Jitsu, 18:00 Jiu-Jitsu (Beginner), 19:30 Muay Thai
+            - Friday: 07:00 Muay Thai, 12:00 Jiu-Jitsu, 18:00 MMA, 19:30 MMA Sparring
+            - Saturday: 12:00 Open Mat
+        `;
+
+        const systemPrompt = "You are a world-class martial arts head coach at a high-tech gym called FMTC-EVO. Your goal is to create personalized, encouraging, and realistic weekly training plans for potential new members based on their inputs. You must use ONLY the classes available on the provided schedule. Be concise and motivating.";
+        const userQuery = `
+            Based on the following gym schedule and user profile, create a personalized weekly training plan.
+
+            **Gym Schedule:**
+            ${gymSchedule}
+
+            **User Profile:**
+            - Main Goal: ${goal}
+            - Experience Level: ${level}
+            - Available Days: ${days.join(', ')}
+
+            **Instructions:**
+            1. Create a plan for the available days only.
+            2. Suggest 1 or 2 classes per available day, balancing intensity and recovery.
+            3. For beginners, recommend beginner-friendly classes (Jiu-Jitsu (Inic.), Muay Thai, Open Mat). Avoid advanced classes like MMA Sparring or Jiu-Jitsu (Av.).
+            4. For intermediate/advanced with a competition goal, suggest MMA or Sparring if available on their days.
+            5. Provide a brief (1-2 sentences) encouraging explanation for your choices.
+            6. Format the output as simple HTML with <strong> for days and <ul>/<li> for classes.
+            7. The entire response MUST be in Brazilian Portuguese.
+        `;
+
+        try {
+            const response = await fetchWithBackoff(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const result = await response.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (text) {
+                planResultDiv.innerHTML = text;
+            } else {
+                planResultDiv.innerHTML = '<p class="text-red-500">Não foi possível gerar o plano. Tente novamente.</p>';
+            }
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            planResultDiv.innerHTML = `<p class="text-red-500">Ocorreu um erro ao conectar com o Coach Digital. Por favor, tente mais tarde. Detalhe: ${error.message}</p>`;
+        } finally {
+            generatePlanBtn.disabled = false;
+        }
+    });
+
+    // --- Gerador de Motivação ---
+    const getMotivationBtn = document.getElementById('get-motivation-btn');
+    const motivationContentDiv = document.getElementById('motivation-content');
+    
+    getMotivationBtn.addEventListener('click', async () => {
+        getMotivationBtn.disabled = true;
+        motivationContentDiv.innerHTML = '<div class="loader mx-auto"></div>';
+        openModal('motivation');
+
+        const userQuery = "Generate a short, powerful, and original motivational quote about the warrior spirit, discipline, or martial arts. The quote should be in Brazilian Portuguese. Make it impactful and format it inside a <p class='text-2xl text-text-primary'> tag followed by a <span class='text-sm text-secondary'>- Coach IA</span> tag.";
+        
+         try {
+            const response = await fetchWithBackoff(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: userQuery }] }],
+                })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            const result = await response.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (text) {
+                motivationContentDiv.innerHTML = text;
+            } else {
+                motivationContentDiv.innerHTML = '<p>Não foi possível gerar a motivação. Tente novamente.</p>';
+            }
+        } catch (error) {
+            console.error("Error calling Gemini API for motivation:", error);
+            motivationContentDiv.innerHTML = `<p>Ocorreu um erro. Por favor, tente mais tarde.</p>`;
+        } finally {
+             getMotivationBtn.disabled = false;
+        }
+    });
+
+    // --- Função de Fetch com Exponential Backoff ---
+    async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+        try {
+            return await fetch(url, options);
+        } catch (err) {
+            if (retries > 0) {
+                await new Promise(resolve => setTimeout(resolve, delay));
+                return fetchWithBackoff(url, options, retries - 1, delay * 2);
+            }
+            throw err;
+        }
+    }
 });
 </script>
 </body>
