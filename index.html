@@ -3,603 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO -->
-  <title>FMTC-MMA | Artes Marciais em Contagem - MG</title>
-  <meta name="description" content="Academia de Jiu-Jitsu, Muay Thai e MMA em Contagem, MG. Instrutores experientes, turmas para todos os níveis. Agende sua aula experimental gratuita.">
-  <meta name="keywords" content="jiu jitsu contagem, muay thai contagem, mma contagem, academia artes marciais, aula experimental, FMTC-MMA">
-  <meta name="author" content="FMTC-MMA">
-  <link rel="canonical" href="https://hbtmarc.github.io/FMTCMMA-Final/">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hbtmarc.github.io/FMTCMMA-Final/">
-  <meta property="og:title" content="FMTC-MMA | Artes Marciais em Contagem - MG">
-  <meta property="og:description" content="Jiu-Jitsu, Muay Thai e MMA com instrutores experientes. Agende sua aula experimental gratuita.">
-  <meta property="og:image" content="https://placehold.co/1200x630/B91C1C/FFFFFF?text=FMTC-MMA">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="FMTC-MMA | Artes Marciais em Contagem - MG">
-  <meta property="twitter:description" content="Jiu-Jitsu, Muay Thai e MMA com instrutores experientes. Agende sua aula experimental gratuita.">
-  <meta property="twitter:image" content="https://placehold.co/1200x630/B91C1C/FFFFFF?text=FMTC-MMA">
-
-  <!-- Fonts -->
+  <title>FMTC-MMA — Federação de Muay Thai Chaiya e MMA de Minas Gerais</title>
+  <meta name="description" content="Federação de Muay Thai Chaiya e Artes Marciais Mistas do Estado de Minas Gerais. Filiação, árbitros, atletas, professores e eventos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Acessibilidade: pular para conteúdo -->
-  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
-
-  <!-- ===== HEADER ===== -->
-  <header class="site-header" id="header">
-    <div class="container header-inner">
-      <a href="#" class="logo" aria-label="FMTC-MMA — Página inicial">
-        FMTC<span class="logo-accent">-MMA</span>
+  <!-- ══════ HEADER ══════ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#/inicio" class="logo" aria-label="Página inicial">
+        <span class="logo__icon">&#9733;</span>
+        <span class="logo__text">FMTC<span class="logo__accent">MMA</span></span>
       </a>
-
       <nav class="nav-desktop" aria-label="Navegação principal">
-        <a href="#modalidades">Modalidades</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#horarios">Horários</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#faq">FAQ</a>
+        <a href="#/inicio" class="nav-link" data-route="/inicio">Início</a>
+        <a href="#/institucional" class="nav-link" data-route="/institucional">Institucional</a>
+        <a href="#/diretoria" class="nav-link" data-route="/diretoria">Diretoria</a>
+        <a href="#/arbitros" class="nav-link" data-route="/arbitros">Árbitros</a>
+        <a href="#/professores" class="nav-link" data-route="/professores">Professores</a>
+        <a href="#/atletas" class="nav-link" data-route="/atletas">Atletas</a>
+        <a href="#/onde-treinar" class="nav-link" data-route="/onde-treinar">Onde Treinar</a>
+        <a href="#/filiacao" class="nav-link" data-route="/filiacao">Filiação</a>
+        <a href="#/documentos" class="nav-link" data-route="/documentos">Documentos</a>
+        <a href="#/departamentos" class="nav-link" data-route="/departamentos">Departamentos</a>
+        <a href="#/contato" class="nav-link" data-route="/contato">Contato</a>
       </nav>
-
-      <a href="#agendar" class="btn btn-primary header-cta">Agendar Aula</a>
-
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-        <span class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
-
-    <!-- Menu Mobile -->
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-      <nav aria-label="Navegação móvel">
-        <a href="#modalidades">Modalidades</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#horarios">Horários</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#faq">FAQ</a>
-        <a href="#agendar" class="btn btn-primary mobile-menu-cta">Agendar Aula Experimental</a>
-      </nav>
-    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Navegação mobile">
+      <a href="#/inicio" class="nav-link" data-route="/inicio">Início</a>
+      <a href="#/institucional" class="nav-link" data-route="/institucional">Institucional</a>
+      <a href="#/diretoria" class="nav-link" data-route="/diretoria">Diretoria</a>
+      <a href="#/arbitros" class="nav-link" data-route="/arbitros">Árbitros</a>
+      <a href="#/professores" class="nav-link" data-route="/professores">Professores</a>
+      <a href="#/atletas" class="nav-link" data-route="/atletas">Atletas</a>
+      <a href="#/onde-treinar" class="nav-link" data-route="/onde-treinar">Onde Treinar</a>
+      <a href="#/filiacao" class="nav-link" data-route="/filiacao">Filiação</a>
+      <a href="#/documentos" class="nav-link" data-route="/documentos">Documentos</a>
+      <a href="#/departamentos" class="nav-link" data-route="/departamentos">Departamentos</a>
+      <a href="#/contato" class="nav-link" data-route="/contato">Contato</a>
+    </nav>
   </header>
 
-  <!-- ===== MAIN ===== -->
-  <main id="conteudo">
+  <!-- ══════ SPA VIEW CONTAINER ══════ -->
+  <main id="app" class="app"></main>
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-content">
-          <span class="hero-badge">Artes Marciais em Contagem - MG</span>
-          <h1>Disciplina, Técnica<br>e Evolução</h1>
-          <p class="hero-text">
-            Jiu-Jitsu, Muay Thai e MMA com instrutores experientes e turmas para todos os níveis — do iniciante ao competidor.
-          </p>
-          <div class="hero-actions">
-            <a href="#agendar" class="btn btn-primary btn-lg">Agendar Aula Experimental</a>
-            <a href="#modalidades" class="btn btn-outline btn-lg">Ver Modalidades</a>
-          </div>
-        </div>
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand"><span class="logo__icon">&#9733;</span> <span class="logo__text">FMTC<span class="logo__accent">MMA</span></span></div>
+        <p class="footer__tagline">Federação de Muay Thai Chaiya e Artes Marciais Mistas do Estado de Minas Gerais</p>
       </div>
-      <div class="hero-decoration" aria-hidden="true"></div>
-    </section>
-
-    <!-- MODALIDADES -->
-    <section class="section" id="modalidades">
-      <div class="container">
-        <header class="section-header">
-          <h2>Nossas Modalidades</h2>
-          <p>Escolha a arte marcial que combina com você — ou treine todas.</p>
-        </header>
-
-        <div class="card-grid card-grid-3">
-          <!-- Jiu-Jitsu -->
-          <article class="card animate-on-scroll">
-            <div class="card-accent card-accent-red"></div>
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="5" r="3"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M8 11l-3 4"/><path d="M16 11l3 4"/></svg>
-              </div>
-              <h3>Jiu-Jitsu</h3>
-              <p>
-                A arte suave que ensina técnica, estratégia e controle. Ideal para defesa pessoal
-                e desenvolvimento da confiança, com turmas infantis e adultas.
-              </p>
-              <div class="card-actions">
-                <button class="btn btn-ghost modal-trigger" data-modal="jiujitsu">Ver Graduação</button>
-                <a href="#agendar" class="btn btn-primary btn-sm">Experimentar</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Muay Thai -->
-          <article class="card animate-on-scroll">
-            <div class="card-accent card-accent-gold"></div>
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 4a3 3 0 0 0-3 3v4H9V7a3 3 0 0 0-6 0v7a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V7a3 3 0 0 0-3-3z"/></svg>
-              </div>
-              <h3>Muay Thai</h3>
-              <p>
-                A arte das oito armas: punhos, cotovelos, joelhos e canelas.
-                Treino intenso que melhora condicionamento, força e disciplina.
-              </p>
-              <div class="card-actions">
-                <button class="btn btn-ghost modal-trigger" data-modal="muaythai">Ver Graduação</button>
-                <a href="#agendar" class="btn btn-primary btn-sm">Experimentar</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- MMA -->
-          <article class="card animate-on-scroll">
-            <div class="card-accent card-accent-dark"></div>
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              </div>
-              <h3>MMA</h3>
-              <p>
-                A síntese completa do combate. Integra técnicas de luta em pé e chão
-                para formar o lutador mais versátil e preparado.
-              </p>
-              <div class="card-actions">
-                <a href="#agendar" class="btn btn-primary btn-sm">Experimentar</a>
-              </div>
-            </div>
-          </article>
-        </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Navegação</h4>
+        <a href="#/institucional">Institucional</a>
+        <a href="#/diretoria">Diretoria</a>
+        <a href="#/atletas">Atletas</a>
+        <a href="#/filiacao">Filiação</a>
       </div>
-    </section>
-
-    <!-- DIFERENCIAIS -->
-    <section class="section section-alt" id="diferenciais">
-      <div class="container">
-        <header class="section-header">
-          <h2>Por que a FMTC-MMA?</h2>
-          <p>O que faz da nossa academia o lugar certo para a sua evolução.</p>
-        </header>
-
-        <div class="card-grid card-grid-3">
-          <div class="diferencial animate-on-scroll">
-            <div class="diferencial-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M20 4a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v1H9V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a8 8 0 0 0 16 0V4z"/></svg>
-            </div>
-            <h3>Instrutores Qualificados</h3>
-            <p>Professores com anos de experiência em competição e ensino, formação comprovada e dedicação ao seu desenvolvimento.</p>
-          </div>
-
-          <div class="diferencial animate-on-scroll">
-            <div class="diferencial-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3>Turmas para Todos os Níveis</h3>
-            <p>Do iniciante completo ao atleta competidor. Cada aluno recebe atenção individualizada no seu ritmo.</p>
-          </div>
-
-          <div class="diferencial animate-on-scroll">
-            <div class="diferencial-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            </div>
-            <h3>Ambiente Seguro</h3>
-            <p>Uma comunidade acolhedora que valoriza o respeito mútuo. Aqui você treina com confiança e apoio.</p>
-          </div>
-
-          <div class="diferencial animate-on-scroll">
-            <div class="diferencial-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <h3>Metodologia Progressiva</h3>
-            <p>Evolução estruturada com graduações e acompanhamento. Cada treino é um passo na sua jornada.</p>
-          </div>
-
-          <div class="diferencial animate-on-scroll">
-            <div class="diferencial-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <h3>Horários Flexíveis</h3>
-            <p>Aulas pela manhã, ao meio-dia e à noite. Encaixe o treino na sua rotina sem sacrifícios.</p>
-          </div>
-
-          <div class="diferencial animate-on-scroll">
-            <div class="diferencial-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h3>Tradição e Respeito</h3>
-            <p>Valorizamos as raízes de cada arte marcial. Disciplina, humildade e espírito de equipe guiam nosso tatame.</p>
-          </div>
-        </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Federação</h4>
+        <a href="#/arbitros">Quadro de Árbitros</a>
+        <a href="#/professores">Professores &amp; Mestres</a>
+        <a href="#/documentos">Documentos</a>
+        <a href="#/departamentos">Departamentos</a>
       </div>
-    </section>
-
-    <!-- HORÁRIOS -->
-    <section class="section" id="horarios">
-      <div class="container">
-        <header class="section-header">
-          <h2>Horários das Aulas</h2>
-          <p>Encontre o melhor dia e horário para treinar. Confira nossa grade semanal.</p>
-        </header>
-
-        <div class="schedule-grid animate-on-scroll">
-          <div class="schedule-day">
-            <h3>Segunda</h3>
-            <ul>
-              <li><time>07:00</time> <span>Muay Thai</span></li>
-              <li><time>12:00</time> <span>Jiu-Jitsu</span></li>
-              <li><time>18:00</time> <span>Muay Thai</span></li>
-              <li><time>19:30</time> <span class="badge-advanced">Jiu-Jitsu Avançado</span></li>
-            </ul>
-          </div>
-          <div class="schedule-day">
-            <h3>Terça</h3>
-            <ul>
-              <li><time>07:00</time> <span>Jiu-Jitsu</span></li>
-              <li><time>18:00</time> <span class="badge-beginner">Jiu-Jitsu Iniciante</span></li>
-              <li><time>19:30</time> <span>Muay Thai</span></li>
-            </ul>
-          </div>
-          <div class="schedule-day">
-            <h3>Quarta</h3>
-            <ul>
-              <li><time>07:00</time> <span>Muay Thai</span></li>
-              <li><time>12:00</time> <span>Jiu-Jitsu</span></li>
-              <li><time>18:00</time> <span>Muay Thai</span></li>
-              <li><time>19:30</time> <span class="badge-advanced">Jiu-Jitsu Avançado</span></li>
-            </ul>
-          </div>
-          <div class="schedule-day">
-            <h3>Quinta</h3>
-            <ul>
-              <li><time>07:00</time> <span>Jiu-Jitsu</span></li>
-              <li><time>18:00</time> <span class="badge-beginner">Jiu-Jitsu Iniciante</span></li>
-              <li><time>19:30</time> <span>Muay Thai</span></li>
-            </ul>
-          </div>
-          <div class="schedule-day">
-            <h3>Sexta</h3>
-            <ul>
-              <li><time>07:00</time> <span>Muay Thai</span></li>
-              <li><time>12:00</time> <span>Jiu-Jitsu</span></li>
-              <li><time>18:00</time> <span class="badge-special">MMA</span></li>
-              <li><time>19:30</time> <span class="badge-special">MMA Sparring</span></li>
-            </ul>
-          </div>
-          <div class="schedule-day">
-            <h3>Sábado</h3>
-            <ul>
-              <li><time>10:00</time> <span class="badge-openmat">Open Mat</span></li>
-            </ul>
-          </div>
-          <div class="schedule-day schedule-day-off">
-            <h3>Domingo</h3>
-            <p class="day-off-text">Descanso</p>
-          </div>
-        </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Contato</h4>
+        <p>fmtc-mma@fmtc-mma.com</p>
+        <p>Contagem — Minas Gerais</p>
+        <p>Brasil</p>
       </div>
-    </section>
-
-    <!-- MONTE SEU TREINO (Plano IA — utilidade secundária) -->
-    <section class="section section-alt section-compact" id="plano-ia">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-badge">Ferramenta</span>
-          <h2>Monte seu Plano de Treino</h2>
-          <p>Responda três perguntas e receba uma sugestão personalizada de treino baseada nos nossos horários.</p>
-        </header>
-
-        <div class="plano-ia-layout">
-          <form id="plan-form" class="plano-ia-form animate-on-scroll">
-            <div class="form-group">
-              <label for="goal">Qual seu principal objetivo?</label>
-              <select id="goal" name="goal" required>
-                <option value="Perda de peso">Perder peso e melhorar o condicionamento</option>
-                <option value="Defesa pessoal">Aprender defesa pessoal</option>
-                <option value="Competição">Competir</option>
-                <option value="Condicionamento físico">Ganhar força e resistência</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="level">Qual seu nível de experiência?</label>
-              <select id="level" name="level" required>
-                <option value="Iniciante">Iniciante — nunca treinei</option>
-                <option value="Intermediário">Intermediário — já treinei antes</option>
-                <option value="Avançado">Avançado — atleta ativo</option>
-              </select>
-            </div>
-
-            <fieldset class="form-group">
-              <legend>Quais dias você pode treinar?</legend>
-              <div class="checkbox-grid">
-                <label class="checkbox-label"><input type="checkbox" name="days" value="Segunda"><span>Seg</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="days" value="Terça"><span>Ter</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="days" value="Quarta"><span>Qua</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="days" value="Quinta"><span>Qui</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="days" value="Sexta"><span>Sex</span></label>
-                <label class="checkbox-label"><input type="checkbox" name="days" value="Sábado"><span>Sáb</span></label>
-              </div>
-            </fieldset>
-
-            <button type="submit" id="generate-plan-btn" class="btn btn-primary btn-block">Gerar Plano de Treino</button>
-          </form>
-
-          <div class="plano-ia-result animate-on-scroll" id="plan-result-box">
-            <div id="plan-result" class="plan-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-              <p>Seu plano de treino personalizado aparecerá aqui.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DEPOIMENTOS -->
-    <section class="section" id="depoimentos">
-      <div class="container">
-        <header class="section-header">
-          <h2>O que Nossos Alunos Dizem</h2>
-          <p>Histórias reais de quem treina com a gente.</p>
-        </header>
-
-        <div class="card-grid card-grid-3">
-          <article class="testimonial-card animate-on-scroll">
-            <div class="testimonial-body">
-              <svg class="testimonial-quote" width="24" height="24" viewBox="0 0 24 24" fill="var(--color-primary-light)" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-              <p>"A FMTC mudou meu jogo. A atenção aos detalhes dos instrutores é algo que nunca vi em outro lugar. Mais que uma academia, uma família."</p>
-            </div>
-            <footer class="testimonial-author">
-              <div class="testimonial-avatar" aria-hidden="true">JP</div>
-              <div>
-                <strong>João P.</strong>
-                <span>Faixa Roxa, Jiu-Jitsu</span>
-              </div>
-            </footer>
-          </article>
-
-          <article class="testimonial-card animate-on-scroll">
-            <div class="testimonial-body">
-              <svg class="testimonial-quote" width="24" height="24" viewBox="0 0 24 24" fill="var(--color-accent-light)" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-              <p>"O treino de Muay Thai aqui é de outro nível. Me sinto mais forte, confiante e preparada para qualquer desafio. A energia é contagiante!"</p>
-            </div>
-            <footer class="testimonial-author">
-              <div class="testimonial-avatar testimonial-avatar-gold" aria-hidden="true">MC</div>
-              <div>
-                <strong>Maria C.</strong>
-                <span>Aluna de Muay Thai</span>
-              </div>
-            </footer>
-          </article>
-
-          <article class="testimonial-card animate-on-scroll">
-            <div class="testimonial-body">
-              <svg class="testimonial-quote" width="24" height="24" viewBox="0 0 24 24" fill="var(--color-border)" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-              <p>"Como atleta de MMA, preciso de treinamento integrado. Aqui encontrei o equilíbrio perfeito entre luta em pé e chão. Recomendo 100%."</p>
-            </div>
-            <footer class="testimonial-author">
-              <div class="testimonial-avatar testimonial-avatar-dark" aria-hidden="true">LG</div>
-              <div>
-                <strong>Lucas G.</strong>
-                <span>Atleta de MMA</span>
-              </div>
-            </footer>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section section-alt" id="faq">
-      <div class="container container-narrow">
-        <header class="section-header">
-          <h2>Perguntas Frequentes</h2>
-          <p>Tire suas dúvidas antes de começar.</p>
-        </header>
-
-        <div class="faq-list" role="list">
-          <details class="faq-item animate-on-scroll" role="listitem">
-            <summary>Preciso ter experiência prévia para começar?</summary>
-            <div class="faq-answer">
-              <p>Não! A maioria dos nossos alunos começou do zero. Temos turmas específicas para iniciantes com acompanhamento individualizado. Você vai aprender no seu ritmo.</p>
-            </div>
-          </details>
-
-          <details class="faq-item animate-on-scroll" role="listitem">
-            <summary>Como funciona a aula experimental?</summary>
-            <div class="faq-answer">
-              <p>É simples: você agenda pelo formulário ou WhatsApp, escolhe a modalidade que quer conhecer e vem treinar conosco. A aula é gratuita e sem compromisso. Basta trazer roupas confortáveis.</p>
-            </div>
-          </details>
-
-          <details class="faq-item animate-on-scroll" role="listitem">
-            <summary>A partir de qual idade posso treinar?</summary>
-            <div class="faq-answer">
-              <p>Temos turmas infantis de Jiu-Jitsu a partir dos 4 anos. Para Muay Thai e MMA, a idade mínima é de 12 anos. Adultos são bem-vindos em qualquer idade!</p>
-            </div>
-          </details>
-
-          <details class="faq-item animate-on-scroll" role="listitem">
-            <summary>Preciso comprar algum equipamento para começar?</summary>
-            <div class="faq-answer">
-              <p>Para as primeiras aulas, basta vir com roupas confortáveis (camiseta e bermuda ou calça). Depois, para o Jiu-Jitsu você vai precisar de um kimono, e para o Muay Thai, luvas e caneleiras. A equipe orienta sobre os equipamentos certos.</p>
-            </div>
-          </details>
-
-          <details class="faq-item animate-on-scroll" role="listitem">
-            <summary>Posso treinar mais de uma modalidade?</summary>
-            <div class="faq-answer">
-              <p>Sim! Muitos alunos combinam Jiu-Jitsu com Muay Thai. Nossos planos permitem que você participe de todas as aulas da grade. É a melhor forma de se tornar um lutador completo.</p>
-            </div>
-          </details>
-
-          <details class="faq-item animate-on-scroll" role="listitem">
-            <summary>Quais são as formas de pagamento?</summary>
-            <div class="faq-answer">
-              <p>Aceitamos PIX, cartão de crédito/débito e boleto bancário. Temos planos mensais, trimestrais e semestrais com condições especiais.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA FINAL + CONTATO -->
-    <section class="section section-cta" id="agendar">
-      <div class="container container-narrow">
-        <header class="section-header">
-          <h2>Agende sua Aula Experimental</h2>
-          <p>Gratuita e sem compromisso. Venha conhecer a FMTC-MMA e descubra o que as artes marciais podem fazer por você.</p>
-        </header>
-
-        <form id="contact-form" class="contact-form animate-on-scroll" novalidate>
-          <div class="form-group">
-            <label for="contact-name">Nome</label>
-            <input type="text" id="contact-name" name="name" placeholder="Seu nome completo" required autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="contact-phone">WhatsApp</label>
-            <input type="tel" id="contact-phone" name="phone" placeholder="(31) 99999-9999" required autocomplete="tel">
-          </div>
-          <div class="form-group">
-            <label for="contact-modality">Modalidade de Interesse</label>
-            <select id="contact-modality" name="modality">
-              <option value="">Não sei ainda</option>
-              <option value="Jiu-Jitsu">Jiu-Jitsu</option>
-              <option value="Muay Thai">Muay Thai</option>
-              <option value="MMA">MMA</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Quero minha Aula Experimental</button>
-          <p class="form-note">Ou envie uma mensagem direto pelo <a href="https://wa.me/5531999999999?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20na%20FMTC-MMA." target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p>
-        </form>
-
-        <div id="form-success" class="form-success" hidden>
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3>Mensagem enviada!</h3>
-          <p>Entraremos em contato pelo WhatsApp em breve para confirmar sua aula experimental.</p>
-          <a href="#hero" class="btn btn-outline">Voltar ao início</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer" id="contato">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-info">
-          <strong class="footer-logo">FMTC<span class="logo-accent">-MMA</span></strong>
-          <p>Formando lutadores e construindo campeões através da disciplina, respeito e dedicação.</p>
-        </div>
-        <div class="footer-contact">
-          <h4>Localização</h4>
-          <address>
-            R. Monsenhor Leão, 490<br>Industrial, Contagem - MG<br>CEP 32220-490
-          </address>
-        </div>
-        <div class="footer-links">
-          <h4>Navegação</h4>
-          <nav aria-label="Rodapé">
-            <a href="#modalidades">Modalidades</a>
-            <a href="#horarios">Horários</a>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="#agendar">Agendar Aula</a>
-          </nav>
-        </div>
-      </div>
-
-      <div class="footer-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.704222122177!2d-44.02058332477161!3d-19.92842183749293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6956282865913%3A0x8e87d00f890f845a!2sManu's%20Estacionamento!5e0!3m2!1spt-BR!2sbr!4v1716578052187!5m2!1spt-BR!2sbr"
-          width="100%" height="280"
-          style="border:0; border-radius: var(--radius-lg);"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Localização da FMTC-MMA no mapa"
-        ></iframe>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 FMTC-MMA — Todos os direitos reservados.</p>
-        <p>CNPJ: 26.546.108/0001-78</p>
-      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container"><p>&copy; 2024 FMTC-MMA. Todos os direitos reservados.</p></div>
     </div>
   </footer>
-
-  <!-- ===== MODALS ===== -->
-
-  <!-- Modal Jiu-Jitsu Graduação -->
-  <div class="modal" id="modal-jiujitsu" role="dialog" aria-modal="true" aria-labelledby="modal-jiujitsu-title" hidden>
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <button class="modal-close" aria-label="Fechar">&times;</button>
-      <div class="modal-body">
-        <h3 id="modal-jiujitsu-title">Graduação no Jiu-Jitsu</h3>
-        <p class="modal-subtitle">A progressão é dividida por idade, respeitando o desenvolvimento de cada aluno.</p>
-
-        <h4 class="graduation-group-title">Infantil / Juvenil (até 15 anos)</h4>
-        <ol class="graduation-list">
-          <li class="graduation-item"><span class="belt" style="background:#9CA3AF"></span><div><strong>Faixa Cinza</strong><small>4 a 15 anos — lisa até 4 graus</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#EAB308"></span><div><strong>Faixa Amarela</strong><small>7 a 15 anos — lisa até 4 graus</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#F97316"></span><div><strong>Faixa Laranja</strong><small>10 a 15 anos — lisa até 4 graus</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#22C55E"></span><div><strong>Faixa Verde</strong><small>13 a 15 anos — lisa até 4 graus</small></div></li>
-        </ol>
-
-        <h4 class="graduation-group-title">Adulto (a partir de 16 anos)</h4>
-        <ol class="graduation-list">
-          <li class="graduation-item"><span class="belt" style="background:#E5E7EB; border-color:#D1D5DB"></span><div><strong>Faixa Branca</strong><small>Tempo indeterminado — foco nos fundamentos</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#3B82F6"></span><div><strong>Faixa Azul</strong><small>Tempo médio: 2 anos — desenvolvimento do jogo</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#9333EA"></span><div><strong>Faixa Roxa</strong><small>Tempo médio: 1,5 anos — combinações e estratégia</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#78350F"></span><div><strong>Faixa Marrom</strong><small>Tempo médio: 1 ano — refinamento técnico</small></div></li>
-          <li class="graduation-item"><span class="belt" style="background:#1F2937; border-color:#6B7280"></span><div><strong>Faixa Preta</strong><small>O início de um novo ciclo de maestria</small></div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Muay Thai Graduação -->
-  <div class="modal" id="modal-muaythai" role="dialog" aria-modal="true" aria-labelledby="modal-muaythai-title" hidden>
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <button class="modal-close" aria-label="Fechar">&times;</button>
-      <div class="modal-body">
-        <h3 id="modal-muaythai-title">Graduação no Muay Thai</h3>
-        <p class="modal-subtitle">O sistema de prajieds (faixas de braço) marca a evolução do lutador.</p>
-
-        <ol class="graduation-list">
-          <li class="graduation-item"><span class="prajied" style="background:#E5E7EB"></span><div><strong>Prajied Branca</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#F97316"></span><div><strong>Prajied Laranja</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#F97316 50%,#3B82F6 50%)"></span><div><strong>Laranja com Azul</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#3B82F6"></span><div><strong>Prajied Azul</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#3B82F6 50%,#EAB308 50%)"></span><div><strong>Azul com Amarela</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#EAB308"></span><div><strong>Prajied Amarela</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#EAB308 50%,#22C55E 50%)"></span><div><strong>Amarela com Verde</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#22C55E"></span><div><strong>Prajied Verde</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#22C55E 50%,#78350F 50%)"></span><div><strong>Verde com Marrom</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#78350F"></span><div><strong>Prajied Marrom</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#78350F 50%,#1F2937 50%)"></span><div><strong>Marrom com Preta</strong><small>Tempo médio: 6 meses</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#1F2937; border-color:#6B7280"></span><div><strong>Prajied Preta</strong><small>Instrutor Auxiliar</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#1F2937 50%,#E5E7EB 50%)"></span><div><strong>Preta com Branca</strong><small>Instrutor</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#1F2937 50%,#EAB308 50%)"></span><div><strong>Preta com Amarela</strong><small>Professor</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:linear-gradient(to right,#1F2937 50%,#DC2626 50%)"></span><div><strong>Preta com Vermelha</strong><small>Mestre</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#C0C0C0"></span><div><strong>Prajied Prata</strong><small>Grão Mestre</small></div></li>
-          <li class="graduation-item"><span class="prajied" style="background:#D4A017"></span><div><strong>Prajied Ouro</strong><small>Título Honorífico Máximo</small></div></li>
-        </ol>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
