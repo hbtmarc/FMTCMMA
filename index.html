@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FMTC-MMA — Federação de Muay Thai Chaiya e MMA de Minas Gerais</title>
-  <meta name="description" content="Federação de Muay Thai Chaiya e Artes Marciais Mistas do Estado de Minas Gerais. Filiação, árbitros, atletas, professores e eventos.">
+  <meta name="description" content="Site oficial da FMTC-MMA — Federação de Muay Thai Chaiya e Artes Marciais Mistas de Minas Gerais. Filiação, arbitragem, corpo técnico, atletas e competições.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main-content">Ir para o conteúdo</a>
 
   <!-- ══════ HEADER ══════ -->
   <header class="header" id="header">
@@ -32,11 +34,11 @@
         <a href="#/departamentos" class="nav-link" data-route="/departamentos">Departamentos</a>
         <a href="#/contato" class="nav-link" data-route="/contato">Contato</a>
       </nav>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMobile">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <nav class="nav-mobile" id="navMobile" aria-label="Navegação mobile">
+    <nav class="nav-mobile" id="navMobile" aria-label="Navegação mobile" aria-hidden="true">
       <a href="#/inicio" class="nav-link" data-route="/inicio">Início</a>
       <a href="#/institucional" class="nav-link" data-route="/institucional">Institucional</a>
       <a href="#/diretoria" class="nav-link" data-route="/diretoria">Diretoria</a>
@@ -52,7 +54,7 @@
   </header>
 
   <!-- ══════ SPA VIEW CONTAINER ══════ -->
-  <main id="app" class="app"></main>
+  <main id="main-content" class="app" aria-live="polite" aria-atomic="false"></main>
 
   <!-- ══════ FOOTER ══════ -->
   <footer class="footer">
@@ -69,9 +71,9 @@
         <a href="#/filiacao">Filiação</a>
       </div>
       <div class="footer__col">
-        <h4 class="footer__heading">Federação</h4>
-        <a href="#/arbitros">Quadro de Árbitros</a>
-        <a href="#/professores">Professores &amp; Mestres</a>
+        <h4 class="footer__heading">Corpo Federativo</h4>
+        <a href="#/arbitros">Corpo de Arbitragem</a>
+        <a href="#/professores">Mestres e Professores</a>
         <a href="#/documentos">Documentos</a>
         <a href="#/departamentos">Departamentos</a>
       </div>
@@ -83,7 +85,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="container"><p>&copy; 2024 FMTC-MMA. Todos os direitos reservados.</p></div>
+      <div class="container"><p>&copy; 2026 FMTC&#8209;MMA. Todos os direitos reservados.</p></div>
     </div>
   </footer>
 

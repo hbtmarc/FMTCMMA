@@ -101,6 +101,54 @@ const DOWNLOADS = [
   { name:'Invencibile Chaiya no Yucca', ext:'pdf', file:'arq/Invencibile Chayia no Yucca.pdf', desc:'Evento Invencibile Chaiya' }
 ];
 
+const DOCUMENT_HUB = [
+  { name:'Ficha de Filiação', ext:'pdf', file:'arq/Filiar-se federação.pdf', desc:'Formulário de filiação à federação', category:'Filiação', status:'Disponível' },
+  { name:'Edital 002 FMTC-MMA', ext:'pdf', file:'arq/Edital 002 FMTC-MMA.pdf', desc:'Edital oficial da federação', category:'Institucional', status:'Disponível' },
+  { name:'Ficha de Inscrição — Invincible Chaiya Fight', ext:'pdf', file:'arq/INVINCIBLE CHAIYA FIGHT Ficha de inscrição.pdf', desc:'Formulário de inscrição para evento', category:'Eventos', status:'Disponível' },
+  { name:'Invencibile Chaiya no Yucca', ext:'pdf', file:'arq/Invencibile Chayia no Yucca.pdf', desc:'Material de evento', category:'Eventos', status:'Disponível' },
+  { name:'Apresentação FMTC-MMA', ext:'pptx', file:'arq/Apresentação FMTC-MMA.pptx', desc:'Apresentação institucional', category:'Institucional', status:'Disponível' },
+  { name:'Registro de Filiados', ext:'xls', file:'arq/REGISTRO DE FILIADOS DA FMTC-MMA.xlsx', desc:'Planilha de filiados (base de registro e atualização cadastral)', category:'Registros', status:'Disponível' },
+  { name:'Registro Oficial de Alunos', ext:'xls', file:'arq/Registro Oficial de Alunos.xlsx', desc:'Planilha oficial de alunos', category:'Registros', status:'Disponível' },
+  { name:'Registro Geral de Alunos', ext:'doc', file:'arq/REGISTRO GERAL DE ALUNOS.docx', desc:'Cadastro geral de alunos', category:'Registros', status:'Disponível' },
+  { name:'Novos Associados FMTC-MMA', ext:'doc', file:'arq/NOVOS ASSOCIADOS FMTC-MMA.docx', desc:'Relação de novos associados', category:'Registros', status:'Disponível' },
+  { name:'Lista de chamada atualizada Dezembro', ext:'doc', file:'', desc:'Documento institucional em preparação', category:'Registros', status:'Em preparação' },
+  { name:'SITE DA FMTC-MMA 0002', ext:'doc', file:'', desc:'Documento institucional em preparação', category:'Institucional', status:'Em preparação' }
+];
+
+const FILIACAO_DECLARACAO = 'Solicitamos a inscrição e registro na FEDERAÇÃO DE MUAY THAI CHAIYA E ARTES MARCIAIS MISTAS DO ESTADO DE MINAS, declarando estarmos cientes das condições as quais nos submeteremos, obedecendo: códigos, estatutos, provimentos e regimento, bem como na legislação brasileira reguladora da matéria. Acatamos quaisquer decisões tomadas pelas autoridades da federação e afirmamos que as declarações prestadas são verdadeiras.';
+
+const FILIACAO_DOCUMENTOS = [
+  'Xerox do CGC ou CNPJ',
+  'Xerox do Alvará',
+  'Ficha de filiação corretamente preenchida e assinada pelo solicitante',
+  'Comprovante bancário de depósito'
+];
+
+const FILIACAO_CAMPOS_ATLETA = [
+  'Foto 3x4',
+  'Data de preenchimento',
+  'Nome do atleta',
+  'Filiação (pai e mãe)',
+  'Data de nascimento',
+  'RG e CPF',
+  'Escolaridade e profissão',
+  'Endereço completo (nº, bairro, cidade e estado)',
+  'Telefone fixo, celular e operadora',
+  'Nome da academia e nome do professor',
+  'Modalidade(s) praticada(s)',
+  'Cadastro recebido/revisado/autorizado (campos de controle)'
+];
+
+const FILIACAO_CAMPOS_EQUIPE = [
+  'Nome da equipe/clube/academia',
+  'Responsável legal',
+  'CNPJ e alvará',
+  'Cidade e estado de atuação',
+  'Contato institucional',
+  'Comprovante bancário de depósito',
+  'Documentação solicitada conforme o tipo de filiação'
+];
+
 /* ── MARTIAL ARTS DATA ─────────────── */
 
 const MARTIAL_ARTS = [
@@ -296,6 +344,154 @@ const MARTIAL_ARTS = [
     matchKey:'Krav Maga'
   }
 ];
+
+const ART_DETAIL_SLUGS = [
+  'muay-thai',
+  'boxe-chines',
+  'boxe',
+  'capoeira',
+  'defesa-pessoal',
+  'judo',
+  'jiu-jitsu',
+  'kick-boxing',
+  'kung-fu',
+  'mma',
+  'taekwondo'
+];
+
+const TAEKWONDO_RICH_CONTENT = {
+  origemContexto: 'Arte Marcial Coreana com consolidação esportiva olímpica. Foi modalidade de exibição em 1988 e 1992, e passou ao programa olímpico oficial com integração a partir de 2000. No Brasil, chegou em agosto de 1970 em São Paulo, trazido pelo grão-mestre Sang Min Cho.',
+  principios: ['Cortesia', 'Integridade', 'Perseverança', 'Autocontrole', 'Espírito Indomável'],
+  sistemaPontos: [
+    '1 ponto por ataque válido ao colete com o pé ou o punho',
+    '3 pontos por ataque válido rotativo ao colete com o pé',
+    '3 pontos por ataque válido à cabeça com o pé',
+    '4 pontos por ataque válido rotativo à cabeça com o pé',
+    '1 ponto por cada dois Kyung-gos ou um Gam-jeom cometido pelo adversário'
+  ],
+  condicoesVitoria: [
+    'Nocaute (KO)',
+    'Árbitro para o combate (RSC)',
+    'Resultado final (PTF)',
+    'Margem de pontos (PTG)',
+    'Morte súbita (SDP)',
+    'Superioridade (SUP)',
+    'Desistência (WDR)',
+    'Desqualificação (DSQ)',
+    'Decisão punitiva do árbitro central (PUN)'
+  ],
+  categoriasOlimpicas: [
+    'Homens: abaixo de 58 kg, abaixo de 68 kg, abaixo de 80 kg, acima de 80 kg',
+    'Mulheres: abaixo de 49 kg, abaixo de 57 kg, abaixo de 67 kg, acima de 67 kg'
+  ],
+  juramentos: [
+    'Juramento do atleta: respeitar o adversário, competir com lealdade, respeitar regulamentos, juízes e superiores.',
+    'Juramento do Taekwondo: observar as regras, respeitar instrutores e colegas, não fazer mau uso da arte, construir um mundo mais pacífico e ser campeão da liberdade e justiça.'
+  ],
+  numeros: [
+    '1 = Hanã',
+    '2 = Dulh',
+    '3 = Set',
+    '4 = Net',
+    '5 = Da sôt',
+    '6 = Io sôt',
+    '7 = Il gob',
+    '8 = Io dol',
+    '9 = Arrob',
+    '10 = Iol'
+  ],
+  comandos: [
+    'KianLhe (saudação)',
+    'Murupkuro (ajoelhar)',
+    'Andja (sentar)',
+    'Irosô (levantar)',
+    'Tchariot (sentido)',
+    'JumBi (preparar)',
+    'Shidjak (começar)',
+    'Chio (descansar)',
+    'Kuman (cessar)',
+    'Parô (sentido cessar)',
+    'Retchiô (à vontade)',
+    'Tiro-Tora (meia volta)',
+    'Dong-Gong (aluno)',
+    'Tchagui (soco)',
+    'Thirigo (socos)',
+    'Ap (frente)',
+    'Yop (lado)',
+    'Are (baixo)',
+    'Olgul (alto)',
+    'Uen (esquerda)',
+    'Orum (direita)',
+    'Dodjan (sala de treino)',
+    'Dobok (roupa de treino)'
+  ],
+  departamentoResponsavel: 'Departamento técnico da modalidade: Mestre Robson Teixeira da Costa (4º Dan em Taekwondo — WTCDKF).'
+};
+
+function normalizeText(value) {
+  return (value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/-/g, ' ')
+    .toLowerCase();
+}
+
+function getArtCards() {
+  return MARTIAL_ARTS.filter(art => ART_DETAIL_SLUGS.includes(art.slug));
+}
+
+function getArtMatchKeys(art) {
+  const keys = [art.matchKey, art.name, art.slug];
+  if (art.slug === 'kung-fu') keys.push('kung fu', 'kung-fu', 'kungu-fu');
+  if (art.slug === 'jiu-jitsu') keys.push('jiu jitsu', 'jiujitsu', 'jiu-jítsu');
+  if (art.slug === 'boxe-chines') keys.push('sanda', 'sanshou', 'boxe chines');
+  return keys.map(normalizeText);
+}
+
+function athleteIncludesArt(athlete, art) {
+  const modalities = normalizeText(athlete.m);
+  return getArtMatchKeys(art).some(key => modalities.includes(key));
+}
+
+function getArtRelations(art) {
+  const teachers = ATHLETES.filter(a =>
+    ['mestre', 'professor', 'instrutor', 'monitor', 'grao-mestre', 'grão-mestre'].includes(normalizeText(a.l)) &&
+    athleteIncludesArt(a, art)
+  );
+  const athletes = ATHLETES.filter(a =>
+    !['mestre', 'professor', 'instrutor', 'monitor', 'grao-mestre', 'grão-mestre'].includes(normalizeText(a.l)) &&
+    athleteIncludesArt(a, art)
+  );
+  const teams = [...new Set([...teachers, ...athletes].map(person => person.t).filter(Boolean))];
+  const gyms = GYMS.filter(gym => teams.includes(gym.name));
+  return { teachers, athletes, teams, gyms };
+}
+
+function renderListOrUpdate(items, listClass = '') {
+  if (!items || !items.length) {
+    return '<p class="art-update">Informações em breve.</p>';
+  }
+  return `<ul class="${listClass}">${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+}
+
+function renderGradTable(art) {
+  if (!art.graduacao || !art.graduacao.length) {
+    return '<p class="art-update">Informações em breve.</p>';
+  }
+  return `
+    ${art.gradIntro ? `<p class="grad-intro">${art.gradIntro}</p>` : ''}
+    <div class="grad-table">
+      ${art.graduacao.map(g => g.secao
+        ? `<div class="grad-section-header">${g.secao}</div>`
+        : `<div class="grad-row">
+            <span class="grad-swatch" style="background:${g.hex}"></span>
+            <div class="grad-info">
+              <strong>${g.cor}</strong>
+              <span>${g.desc}</span>
+            </div>
+          </div>`).join('')}
+    </div>`;
+}
 
 /* Full athlete roster from official federation records */
 const ATHLETES = [
@@ -494,6 +690,125 @@ const ATHLETES = [
   {n:'Magno Costa',r:'355',m:'Kung-Fu',b:'Mestre',l:'mestre',t:'AICCA'}
 ];
 
+/* ── NORMALIZED DIRECTORIES ───────────────────── */
+
+const TECHNICAL_LEVELS = new Set(['mestre', 'professor', 'instrutor', 'monitor']);
+
+function slugify(value) {
+  return normalizeText(value)
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
+
+function splitModalidades(value) {
+  return [...new Set((value || '')
+    .split(/,|\//)
+    .map(item => item.trim())
+    .filter(Boolean))];
+}
+
+function roleLabel(role) {
+  const key = normalizeText(role);
+  if (key === 'mestre') return 'Mestre';
+  if (key === 'professor') return 'Professor';
+  if (key === 'instrutor') return 'Instrutor';
+  if (key === 'monitor') return 'Monitor';
+  if (key === 'aluno') return 'Aluno';
+  return role || 'Integrante';
+}
+
+const GYM_BY_NAME = new Map(GYMS.map(gym => [gym.name, gym]));
+const DIRECTOR_BY_NAME = new Map(DIRECTORS.map(d => [normalizeText(d.name), d]));
+
+const ATHLETE_DIRECTORY = ATHLETES.map(item => {
+  const roleKey = normalizeText(item.l);
+  const gym = GYM_BY_NAME.get(item.t);
+  const director = DIRECTOR_BY_NAME.get(normalizeText(item.n));
+  return {
+    tipo: 'atleta',
+    slug: `${slugify(item.n)}-${item.r}`,
+    nome: item.n,
+    funcao: roleLabel(item.l),
+    funcaoNorm: roleKey,
+    modalidade: splitModalidades(item.m),
+    equipe: item.t || '',
+    academia: item.t || '',
+    registro: item.r || '',
+    cidade: gym?.city || '',
+    contato: director?.contact || '',
+    bio: director?.bio || '',
+    resumo: item.b || ''
+  };
+});
+
+const ATHLETE_BY_REG = new Map(ATHLETE_DIRECTORY.map(item => [item.registro, item]));
+const ATHLETE_BY_NAME = new Map(ATHLETE_DIRECTORY.map(item => [normalizeText(item.nome), item]));
+
+const PROFESSOR_DIRECTORY = ATHLETE_DIRECTORY
+  .filter(item => TECHNICAL_LEVELS.has(item.funcaoNorm))
+  .map(item => ({ ...item, tipo: 'professor' }));
+
+const REFEREE_DIRECTORY = REFEREES.map(item => {
+  const linkedAthlete = ATHLETE_BY_REG.get(item.reg) || ATHLETE_BY_NAME.get(normalizeText(item.name));
+  return {
+    tipo: 'arbitro',
+    slug: `${slugify(item.name)}-${item.reg}`,
+    nome: item.name,
+    funcao: item.func,
+    funcaoNorm: normalizeText(item.func),
+    modalidade: linkedAthlete?.modalidade || [],
+    equipe: linkedAthlete?.equipe || '',
+    academia: linkedAthlete?.academia || '',
+    registro: item.reg,
+    cidade: linkedAthlete?.cidade || '',
+    contato: linkedAthlete?.contato || '',
+    bio: linkedAthlete?.bio || '',
+    resumo: linkedAthlete?.resumo || '',
+    atletaRelacionadoSlug: linkedAthlete?.slug || ''
+  };
+});
+
+const REFEREE_BY_REG = new Map(REFEREE_DIRECTORY.map(item => [item.registro, item]));
+
+const GYM_DIRECTORY = GYMS.map(gym => {
+  const members = ATHLETE_DIRECTORY.filter(item => item.equipe === gym.name);
+  const professores = members.filter(item => TECHNICAL_LEVELS.has(item.funcaoNorm));
+  return {
+    slug: slugify(gym.name),
+    nome: gym.name,
+    equipe: gym.name,
+    academia: gym.name,
+    cidade: gym.city,
+    regiao: gym.region || '',
+    modalidade: [...new Set(members.flatMap(item => item.modalidade))],
+    membros: members,
+    professores,
+    totalAtletas: members.length
+  };
+});
+
+function byName(a, b) {
+  return a.nome.localeCompare(b.nome, 'pt-BR');
+}
+
+function hasMinimumProfileData(item) {
+  const score = [item.funcao, item.modalidade?.length, item.equipe, item.cidade, item.contato, item.bio, item.resumo]
+    .filter(Boolean).length;
+  return score >= 3;
+}
+
+function profileBackRoute(type) {
+  if (type === 'professor') return '#/professores';
+  if (type === 'arbitro') return '#/arbitros';
+  return '#/atletas';
+}
+
+function buildFilterOptions(values, firstLabel) {
+  const options = [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+  return `<option value="">${firstLabel}</option>${options.map(value => `<option value="${value}">${value}</option>`).join('')}`;
+}
+
 /* ── ROUTER ───────────────────────────── */
 
 const routes = {
@@ -511,12 +826,57 @@ const routes = {
 };
 
 function router() {
-  const hash = location.hash.slice(1) || '/inicio';
+  const hashRaw = location.hash.slice(1) || '/inicio';
+  const [hash] = hashRaw.split('?');
+  if (hash.startsWith('/professores/')) {
+    const slug = hash.replace('/professores/', '');
+    const professor = PROFESSOR_DIRECTORY.find(item => item.slug === slug);
+    const app = document.getElementById('main-content');
+    app.innerHTML = professor ? renderPersonProfile(professor) : renderProfessores();
+    app.classList.remove('view-enter');
+    void app.offsetWidth;
+    app.classList.add('view-enter');
+    window.scrollTo({ top: 0 });
+    updateActiveNav('/professores');
+    closeMobileMenu();
+    initPageFeatures('/professores');
+    return;
+  }
+  if (hash.startsWith('/arbitros/')) {
+    const slug = hash.replace('/arbitros/', '');
+    const referee = REFEREE_DIRECTORY.find(item => item.slug === slug);
+    const app = document.getElementById('main-content');
+    app.innerHTML = referee ? renderPersonProfile(referee) : renderArbitros();
+    app.classList.remove('view-enter');
+    void app.offsetWidth;
+    app.classList.add('view-enter');
+    window.scrollTo({ top: 0 });
+    updateActiveNav('/arbitros');
+    closeMobileMenu();
+    initPageFeatures('/arbitros');
+    return;
+  }
+  if (hash.startsWith('/atletas/')) {
+    const slug = hash.replace('/atletas/', '');
+    const athlete = ATHLETE_DIRECTORY.find(item => item.slug === slug);
+    const app = document.getElementById('main-content');
+    app.innerHTML = athlete ? renderPersonProfile(athlete) : renderAtletas();
+    app.classList.remove('view-enter');
+    void app.offsetWidth;
+    app.classList.add('view-enter');
+    window.scrollTo({ top: 0 });
+    updateActiveNav('/atletas');
+    closeMobileMenu();
+    initPageFeatures('/atletas');
+    return;
+  }
   /* Art detail sub-routes */
   if (hash.startsWith('/artes/')) {
     const slug = hash.replace('/artes/', '');
-    const art = MARTIAL_ARTS.find(a => a.slug === slug);
-    const app = document.getElementById('app');
+    const art = ART_DETAIL_SLUGS.includes(slug)
+      ? MARTIAL_ARTS.find(a => a.slug === slug)
+      : null;
+    const app = document.getElementById('main-content');
     app.innerHTML = art ? renderArteDetail(art) : renderInicio();
     app.classList.remove('view-enter');
     void app.offsetWidth;
@@ -528,7 +888,7 @@ function router() {
     return;
   }
   const render = routes[hash] || renderInicio;
-  const app = document.getElementById('app');
+  const app = document.getElementById('main-content');
   app.innerHTML = render();
   app.classList.remove('view-enter');
   void app.offsetWidth;
@@ -541,14 +901,20 @@ function router() {
 
 function updateActiveNav(hash) {
   document.querySelectorAll('.nav-link').forEach(l => {
-    l.classList.toggle('active', l.dataset.route === hash);
+    const isActive = l.dataset.route === hash;
+    l.classList.toggle('active', isActive);
+    if (isActive) { l.setAttribute('aria-current','page'); }
+    else { l.removeAttribute('aria-current'); }
   });
 }
 
 function closeMobileMenu() {
   document.getElementById('navMobile')?.classList.remove('open');
+  document.getElementById('navMobile')?.setAttribute('aria-hidden','true');
   document.getElementById('mobileToggle')?.classList.remove('open');
-  document.getElementById('mobileToggle')?.setAttribute('aria-expanded', 'false');
+  document.getElementById('mobileToggle')?.setAttribute('aria-expanded','false');
+  document.getElementById('mobileToggle')?.setAttribute('aria-label','Abrir menu de navegação');
+  document.body.classList.remove('menu-open');
 }
 
 /* ── VIEW RENDERERS ───────────────────── */
@@ -560,29 +926,45 @@ function renderInicio() {
   const profs = ATHLETES.filter(a => ['mestre','professor','instrutor','monitor'].includes(a.l)).length;
   return `
     <section class="hero">
-      <div class="hero__content">
-        <span class="hero__badge">Federação Oficial — Minas Gerais</span>
-        <h1 class="hero__title">Disciplina, <em>Legado</em><br>e Artes Marciais</h1>
-        <p class="hero__sub">Federação de Muay Thai Chaiya e Artes Marciais Mistas do Estado de Minas Gerais — formando campeões, professores e cidadãos desde a fundação.</p>
-        <div class="hero__actions">
-          <a href="#/filiacao" class="btn btn--primary">Filiar-se à Federação</a>
-          <a href="#/institucional" class="btn btn--outline">Conheça a FMTC-MMA</a>
+      <div class="container hero__shell">
+        <div class="hero__content">
+          <span class="hero__badge">Federação Oficial — Minas Gerais</span>
+          <h1 class="hero__title">Disciplina, <em>Legado</em><br>e Formação Marcial</h1>
+          <p class="hero__sub">Órgão oficial de regulamentação, filiação e promoção do Muay Thai Chaiya e das Artes Marciais Mistas em Minas Gerais — com atuação técnica, ética e voltada à tradição marcial.</p>
+          <div class="hero__meta">
+            <span class="hero__meta-item">12 modalidades regulamentadas</span>
+            <span class="hero__meta-item">Corpo técnico e arbitragem oficial</span>
+            <span class="hero__meta-item">Filiação, registro e competições</span>
+          </div>
+          <div class="hero__actions">
+            <a href="#/filiacao" class="btn btn--primary">Solicitar Filiação</a>
+            <a href="#/institucional" class="btn btn--outline">Conhecer a Federação</a>
+          </div>
         </div>
+        <aside class="hero__panel" aria-label="Destaques institucionais">
+          <span class="hero__panel-eyebrow">O que oferecemos</span>
+          <h2 class="hero__panel-title">Estrutura completa para o desenvolvimento marcial em Minas Gerais.</h2>
+          <ul class="hero__panel-list">
+            <li>Registro federativo oficial para atletas, professores, árbitros e equipes.</li>
+            <li>Exames de graduação, campeonatos, seminários e ações institucionais.</li>
+            <li>Suporte por departamentos jurídico, contábil, marketing, nutrição e odontologia.</li>
+          </ul>
+        </aside>
       </div>
     </section>
-    <div class="stats-bar" style="background:var(--bg-hero)">
-      <div class="container" style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap">
-        <div class="stat"><span class="stat__number" data-target="${totalAthletes}">0</span><span class="stat__label">Atletas Filiados</span></div>
-        <div class="stat"><span class="stat__number" data-target="${totalTeams}">0</span><span class="stat__label">Equipes</span></div>
-        <div class="stat"><span class="stat__number" data-target="${profs}">0</span><span class="stat__label">Professores &amp; Mestres</span></div>
-        <div class="stat"><span class="stat__number" data-target="${totalRefs}">0</span><span class="stat__label">Árbitros</span></div>
-        <div class="stat"><span class="stat__number" data-target="12">0</span><span class="stat__label">Modalidades</span></div>
+    <section class="stats-bar" aria-label="Indicadores institucionais">
+      <div class="container stats-bar__inner">
+        <div class="stat"><span class="stat__number" data-target="${totalAthletes}">0</span><span class="stat__label">Atletas filiados</span></div>
+        <div class="stat"><span class="stat__number" data-target="${totalTeams}">0</span><span class="stat__label">Equipes ativas</span></div>
+        <div class="stat"><span class="stat__number" data-target="${profs}">0</span><span class="stat__label">Professores e mestres</span></div>
+        <div class="stat"><span class="stat__number" data-target="${totalRefs}">0</span><span class="stat__label">Árbitros cadastrados</span></div>
+        <div class="stat"><span class="stat__number" data-target="12">0</span><span class="stat__label">Modalidades regulamentadas</span></div>
       </div>
-    </div>
+    </section>
     <section class="section">
       <div class="container">
         <div class="section__header section__header--center">
-          <span class="section__eyebrow">Acesso Rápido</span>
+          <span class="section__eyebrow">Navegação Rápida</span>
           <h2 class="section__title">Explore a Federação</h2>
         </div>
         <div class="quicklinks">
@@ -598,6 +980,7 @@ function renderInicio() {
 }
 
 function renderInstitucional() {
+  const artCards = getArtCards();
   return `
     <section class="section">
       <div class="container split">
@@ -605,8 +988,8 @@ function renderInstitucional() {
           <span class="section__eyebrow">Quem Somos</span>
           <h2 class="section__title">Federação de Muay Thai Chaiya e MMA de Minas Gerais</h2>
           <p class="section__desc">A FMTC-MMA é o órgão oficial que regulamenta, fiscaliza e promove o Muay Thai Chaiya e as Artes Marciais Mistas no Estado de Minas Gerais. Fundada com a missão de preservar a tradição marcial e formar atletas, professores e cidadãos de excelência.</p>
-          <p class="section__desc">Atuamos na organização de campeonatos, exames de graduação, cursos de arbitragem, seminários técnicos e ações sociais — sempre com compromisso ético, técnico e esportivo.</p>
-          <p class="section__desc">Nossos filiados contam com registros oficiais, orientação jurídica, tributária e administrativa, convênios médicos e odontológicos, e acesso a competições nacionais e internacionais.</p>
+          <p class="section__desc">Organizamos campeonatos, exames de graduação, cursos de arbitragem, seminários técnicos e ações sociais — sempre com compromisso ético, técnico e esportivo.</p>
+          <p class="section__desc">Filiados contam com registro oficial, orientação jurídica e tributária, convênios médicos e odontológicos, e acesso a competições nacionais e internacionais.</p>
         </div>
         <div>
           <div class="pillars">
@@ -625,10 +1008,10 @@ function renderInstitucional() {
         <div class="section__header section__header--center">
           <span class="section__eyebrow">Modalidades</span>
           <h2 class="section__title">Artes Marciais Praticadas</h2>
-          <p class="section__desc">A FMTC-MMA abrange 12 modalidades de artes marciais, todas regulamentadas e com estrutura técnica oficial.</p>
+          <p class="section__desc">A FMTC-MMA regulamenta 12 modalidades de artes marciais, todas com estrutura técnica oficial.</p>
         </div>
         <div class="quicklinks">
-          ${MARTIAL_ARTS.map(a =>
+          ${artCards.map(a =>
             `<a href="#/artes/${a.slug}" class="ql-card ql-card--art"><span class="ql-card__icon">${a.icon}</span><span class="ql-card__label">${a.name}</span><span class="ql-card__arrow">→</span></a>`
           ).join('')}
         </div>
@@ -638,79 +1021,30 @@ function renderInstitucional() {
 
 /* ── ART DETAIL VIEW ─────────── */
 function renderArteDetail(art) {
-  /* Find related professors/instructors */
-  const relatedProfs = ATHLETES.filter(a =>
-    ['mestre','professor','instrutor','grão-mestre'].includes((a.l||'').toLowerCase()) &&
-    (a.m||'').toLowerCase().includes(art.matchKey.toLowerCase())
-  );
-  /* Find related athletes */
-  const relatedAthletes = ATHLETES.filter(a =>
-    !['mestre','professor','instrutor','grão-mestre'].includes((a.l||'').toLowerCase()) &&
-    (a.m||'').toLowerCase().includes(art.matchKey.toLowerCase())
-  );
+  const relations = getArtRelations(art);
+  const taekwondo = art.slug === 'taekwondo' ? TAEKWONDO_RICH_CONTENT : null;
+  const generalOverview = [art.resumo, art.detalhes].filter(Boolean).join(' ');
+  const linkedTeams = relations.teams.length
+    ? relations.teams.map(team => `${team}`)
+    : [];
+  const teacherCards = relations.teachers.length ? relations.teachers.map(person => `
+      <div class="art-prof-chip">
+        <span class="art-prof-chip__title">${person.l || 'Corpo técnico'}</span>
+        <strong>${person.n}</strong>
+        <span class="art-prof-chip__reg">${person.r ? `Reg. ${person.r}` : ''}</span>
+      </div>`).join('') : '<p class="art-update">Informações em breve.</p>';
 
-  const gradHTML = art.graduacao ? `
-    <div class="accordion__item">
-      <button class="accordion__trigger" aria-expanded="false">
-        <span>🎓 Sistema de Graduação</span><span class="accordion__chevron">▸</span>
-      </button>
-      <div class="accordion__body">
-        ${art.gradIntro ? `<p class="grad-intro">${art.gradIntro}</p>` : ''}
-        <div class="grad-table">
-          ${art.graduacao.map(g => g.secao
-            ? `<div class="grad-section-header">${g.secao}</div>`
-            : `<div class="grad-row">
-              <span class="grad-swatch" style="background:${g.hex}"></span>
-              <div class="grad-info">
-                <strong>${g.cor}</strong>
-                <span>${g.desc}</span>
-              </div>
-            </div>`).join('')}
-        </div>
-      </div>
-    </div>` : '';
+  const athletesTags = relations.athletes.length
+    ? relations.athletes.slice(0, 36).map(person => `<span class="athlete-tag">${person.n}</span>`).join('')
+    : '<p class="art-update">Informações em breve.</p>';
 
-  const tecHTML = art.tecnico ? `
-    <div class="accordion__item">
-      <button class="accordion__trigger" aria-expanded="false">
-        <span>📋 Informações Técnicas</span><span class="accordion__chevron">▸</span>
-      </button>
-      <div class="accordion__body">
-        <p>${art.tecnico}</p>
-      </div>
-    </div>` : '';
+  const gymsCards = relations.gyms.length
+    ? relations.gyms.map(gym => `<li><strong>${gym.name}</strong> — ${gym.city}${gym.region ? ` (${gym.region})` : ''}</li>`).join('')
+    : '';
 
-  const profsHTML = relatedProfs.length ? `
-    <div class="accordion__item">
-      <button class="accordion__trigger" aria-expanded="false">
-        <span>👨‍🏫 Professores e Mestres (${relatedProfs.length})</span><span class="accordion__chevron">▸</span>
-      </button>
-      <div class="accordion__body">
-        <div class="art-profs-grid">
-          ${relatedProfs.map(p => `
-            <div class="art-prof-chip">
-              <span class="art-prof-chip__title">${p.l || ''}</span>
-              <strong>${p.n}</strong>
-              <span class="art-prof-chip__reg">${p.r ? 'Reg. '+p.r : ''}</span>
-            </div>`).join('')}
-        </div>
-      </div>
-    </div>` : '';
-
-  const athHTML = relatedAthletes.length ? `
-    <div class="accordion__item">
-      <button class="accordion__trigger" aria-expanded="false">
-        <span>🥊 Atletas Vinculados (${relatedAthletes.length})</span><span class="accordion__chevron">▸</span>
-      </button>
-      <div class="accordion__body">
-        <div class="art-athletes-list">
-          ${relatedAthletes.slice(0, 30).map(a => `<span class="athlete-tag">${a.n}</span>`).join('')}
-          ${relatedAthletes.length > 30 ? `<span class="athlete-tag athlete-tag--more">+${relatedAthletes.length - 30} atletas</span>` : ''}
-        </div>
-      </div>
-    </div>` : '';
-
-  const noContent = !art.detalhes;
+  const departmentText = taekwondo
+    ? `${taekwondo.departamentoResponsavel} Apoio institucional integrado: ${DEPARTMENTS.map(d => d.title).join(', ')}.`
+    : `Apoio institucional disponível por meio dos departamentos da FMTC-MMA: ${DEPARTMENTS.map(d => d.title).join(', ')}.`;
 
   return `
     <section class="art-hero">
@@ -725,38 +1059,106 @@ function renderArteDetail(art) {
 
     <section class="section">
       <div class="container art-detail">
-        ${noContent ? `
-          <div class="art-notice">
-            <span>🔄</span>
-            <p><strong>Conteúdo em atualização.</strong> As informações completas desta modalidade estão sendo compiladas pela FMTC-MMA.</p>
-          </div>
-        ` : ''}
-
         <div class="art-content">
-          <div class="art-section">
-            <h2>Resumo</h2>
-            <p>${art.resumo}</p>
+          <div class="art-section art-section--hero">
+            <h2>Visão Geral</h2>
+            ${generalOverview ? `<p>${generalOverview}</p>` : '<p class="art-update">Informações em breve.</p>'}
           </div>
-
-          ${art.detalhes ? `
-          <div class="art-section">
-            <h2>História e Detalhes</h2>
-            <p>${art.detalhes}</p>
-          </div>` : ''}
 
           <div class="art-section">
             <h2>Vínculo com a FMTC-MMA</h2>
-            <p>${art.vinculo}</p>
+            ${art.vinculo ? `<p>${art.vinculo}</p>` : '<p class="art-update">Informações em breve.</p>'}
           </div>
 
-          <div class="accordion">
-            ${gradHTML}
-            ${tecHTML}
-            ${profsHTML}
-            ${athHTML}
+          ${taekwondo ? `
+          <div class="art-section">
+            <h2>Origem e Contexto</h2>
+            <p>${taekwondo.origemContexto}</p>
           </div>
 
-          ${art.fonte ? `<p class="art-source">Fonte: <a href="${art.fonte}" target="_blank" rel="noopener">${art.fonte}</a></p>` : ''}
+          <div class="art-section art-section--two">
+            <div>
+              <h2>Princípios</h2>
+              ${renderListOrUpdate(taekwondo.principios, 'art-bullets')}
+            </div>
+            <div>
+              <h2>Faixas, Gubs e Dans</h2>
+              ${renderGradTable(art)}
+            </div>
+          </div>
+
+          <div class="art-section art-section--two">
+            <div>
+              <h2>Sistema de Pontos</h2>
+              ${renderListOrUpdate(taekwondo.sistemaPontos, 'art-bullets')}
+            </div>
+            <div>
+              <h2>Condições de Vitória</h2>
+              ${renderListOrUpdate(taekwondo.condicoesVitoria, 'art-bullets')}
+            </div>
+          </div>
+
+          <div class="art-section art-section--two">
+            <div>
+              <h2>Categorias Olímpicas</h2>
+              ${renderListOrUpdate(taekwondo.categoriasOlimpicas, 'art-bullets')}
+            </div>
+            <div>
+              <h2>Juramentos</h2>
+              ${renderListOrUpdate(taekwondo.juramentos, 'art-bullets')}
+            </div>
+          </div>
+
+          <div class="art-section art-section--two">
+            <div>
+              <h2>Números</h2>
+              ${renderListOrUpdate(taekwondo.numeros, 'art-bullets art-bullets--compact')}
+            </div>
+            <div>
+              <h2>Comandos</h2>
+              ${renderListOrUpdate(taekwondo.comandos, 'art-bullets art-bullets--compact')}
+            </div>
+          </div>
+          ` : `
+          <div class="art-section">
+            <h2>Informações Técnicas</h2>
+            ${art.tecnico ? `<p>${art.tecnico}</p>` : '<p class="art-update">Informações em breve.</p>'}
+          </div>
+          <div class="art-section">
+            <h2>Faixas, Gubs e Dans</h2>
+            ${renderGradTable(art)}
+          </div>
+          `}
+
+          <div class="art-section">
+            <h2>Professores e Mestres Relacionados</h2>
+            <div class="art-profs-grid">${teacherCards}</div>
+          </div>
+
+          <div class="art-section art-section--two">
+            <div>
+              <h2>Atletas e Equipes Relacionadas</h2>
+              <div class="art-athletes-list">${athletesTags}</div>
+              <h3 class="art-subtitle">Equipes vinculadas</h3>
+              ${renderListOrUpdate(linkedTeams, 'art-bullets')}
+            </div>
+            <div>
+              <h2>Onde Treinar</h2>
+              ${relations.gyms.length ? `<ul class="art-bullets">${gymsCards}</ul>` : '<p class="art-update">Informações em breve.</p>'}
+            </div>
+          </div>
+
+          <div class="art-section">
+            <h2>Departamento Relacionado</h2>
+            <p>${departmentText}</p>
+          </div>
+
+          <div class="art-cta-band">
+            <a href="#/filiacao" class="btn btn--primary">Solicitar filiação</a>
+            <a href="#/documentos" class="btn btn--gold">Ver documentos</a>
+          </div>
+
+          ${art.fonte ? `<p class="art-source">Fonte técnica: <a href="${art.fonte}" target="_blank" rel="noopener">${art.fonte}</a></p>` : '<p class="art-source">Fonte técnica: a ser publicada.</p>'}
         </div>
       </div>
     </section>`;
@@ -769,7 +1171,7 @@ function renderDiretoria() {
         <div class="section__header">
           <span class="section__eyebrow">Diretoria Executiva</span>
           <h2 class="section__title">Liderança da Federação</h2>
-          <p class="section__desc">Os dirigentes da FMTC-MMA são atletas e profissionais dedicados à promoção das artes marciais em Minas Gerais.</p>
+          <p class="section__desc">Dirigentes da FMTC-MMA — atletas e profissionais dedicados ao fortalecimento das artes marciais em Minas Gerais.</p>
         </div>
         <div class="leader-grid">
           ${DIRECTORS.map(d => `
@@ -780,7 +1182,7 @@ function renderDiretoria() {
                 <h3 class="leader-card__name">${d.name}</h3>
                 <p class="leader-card__bio">${d.bio}</p>
                 ${d.contact ? `<span class="leader-card__contact">☎ ${d.contact}</span>` : ''}
-                <span class="leader-card__contact" style="display:block;margin-top:4px;color:var(--text-light);font-size:.75rem">Registro: ${d.reg}</span>
+                <span class="leader-card__reg">Registro: ${d.reg}</span>
               </div>
             </div>
           `).join('')}
@@ -796,7 +1198,7 @@ function renderDiretoria() {
                 <div class="leader-card__role">${d.role}</div>
                 <h3 class="leader-card__name">${d.name}</h3>
                 <p class="leader-card__bio">${d.bio}</p>
-                <span class="leader-card__contact" style="display:block;margin-top:4px;color:var(--text-light);font-size:.75rem">Registro: ${d.reg}</span>
+                <span class="leader-card__reg">Registro: ${d.reg}</span>
               </div>
             </div>
           `).join('')}
@@ -806,171 +1208,259 @@ function renderDiretoria() {
 }
 
 function renderArbitros() {
-  const getBadge = f => {
-    if (f.includes('Internacional')) return 'intl';
-    if (f.includes('Nacional')) return 'national';
-    if (f.includes('Regional')) return 'regional';
-    if (f.includes('Central')) return 'central';
-    return 'lateral';
-  };
+  const modalidades = REFEREE_DIRECTORY.flatMap(item => item.modalidade);
+  const equipes = REFEREE_DIRECTORY.map(item => item.equipe);
+  const cidades = REFEREE_DIRECTORY.map(item => item.cidade);
+  const funcoes = REFEREE_DIRECTORY.map(item => item.funcao);
   return `
     <section class="section">
       <div class="container">
         <div class="section__header">
-          <span class="section__eyebrow">Quadro de Árbitros</span>
-          <h2 class="section__title">Corpo de Arbitragem Oficial</h2>
-          <p class="section__desc">${REFEREES.length} árbitros credenciados pela FMTC-MMA, incluindo árbitros internacionais, nacionais e regionais.</p>
+          <span class="section__eyebrow">Corpo de Arbitragem</span>
+          <h2 class="section__title">Quadro Oficial de Árbitros</h2>
+          <p class="section__desc">Árbitros internacionais, nacionais e regionais credenciados pela FMTC-MMA.</p>
         </div>
-        <div class="data-table-wrap">
-          <table class="data-table">
-            <thead>
-              <tr><th>#</th><th>Nome</th><th>Registro</th><th>Função</th></tr>
-            </thead>
-            <tbody>
-              ${REFEREES.map((r, i) => `
-                <tr>
-                  <td>${i + 1}</td>
-                  <td><strong>${r.name}</strong></td>
-                  <td>${r.reg}</td>
-                  <td><span class="badge badge--${getBadge(r.func)}">${r.func}</span></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
+
+        <div class="directory__controls directory__controls--grid">
+          <div class="directory__field directory__field--search">
+            <label for="refSearch" class="directory__label">Buscar árbitro</label>
+            <div class="directory__search-row">
+              <input type="search" class="directory__search" id="refSearch" placeholder="Nome, registro ou modalidade">
+              <button type="button" class="directory__clear" id="refClearSearch">Limpar</button>
+            </div>
+          </div>
+          <div class="directory__field"><label for="refFilterFuncao" class="directory__label">Função</label><select class="directory__filter" id="refFilterFuncao">${buildFilterOptions(funcoes, 'Todas as funções')}</select></div>
+          <div class="directory__field"><label for="refFilterModalidade" class="directory__label">Modalidade</label><select class="directory__filter" id="refFilterModalidade">${buildFilterOptions(modalidades, 'Todas as modalidades')}</select></div>
+          <div class="directory__field"><label for="refFilterEquipe" class="directory__label">Equipe</label><select class="directory__filter" id="refFilterEquipe">${buildFilterOptions(equipes, 'Todas as equipes')}</select></div>
+          <div class="directory__field"><label for="refFilterCidade" class="directory__label">Cidade</label><select class="directory__filter" id="refFilterCidade">${buildFilterOptions(cidades, 'Todas as cidades')}</select></div>
         </div>
+
+        <p class="directory__count" id="refCount"></p>
+        <div class="directory-grid" id="refGrid"></div>
+        <div class="directory__empty" id="refEmpty">Nenhum árbitro corresponde aos filtros selecionados.</div>
       </div>
     </section>`;
 }
 
 function renderProfessores() {
-  const profs = ATHLETES.filter(a => ['mestre','professor','instrutor','monitor'].includes(a.l))
-    .sort((a, b) => {
-      const order = { mestre: 0, professor: 1, instrutor: 2, monitor: 3 };
-      return (order[a.l] || 9) - (order[b.l] || 9);
-    });
-  const levelClass = l => {
-    if (l === 'mestre') return 'mestre';
-    if (l === 'professor') return 'professor';
-    if (l === 'instrutor') return 'instrutor';
-    return 'monitor';
-  };
-  const levelLabel = l => {
-    if (l === 'mestre') return 'Mestre';
-    if (l === 'professor') return 'Professor';
-    if (l === 'instrutor') return 'Instrutor';
-    return 'Monitor';
-  };
+  const modalidades = PROFESSOR_DIRECTORY.flatMap(item => item.modalidade);
+  const equipes = PROFESSOR_DIRECTORY.map(item => item.equipe);
+  const cidades = PROFESSOR_DIRECTORY.map(item => item.cidade);
+  const funcoes = PROFESSOR_DIRECTORY.map(item => item.funcao);
   return `
     <section class="section">
       <div class="container">
         <div class="section__header">
           <span class="section__eyebrow">Corpo Técnico</span>
           <h2 class="section__title">Mestres, Professores e Instrutores</h2>
-          <p class="section__desc">${profs.length} profissionais credenciados responsáveis pela formação técnica e humana dos atletas.</p>
+          <p class="section__desc">Diretório oficial de mestres, professores e instrutores credenciados pela federação.</p>
         </div>
-        <div class="prof-grid">
-          ${profs.map(p => `
-            <div class="prof-card">
-              <span class="prof-card__level prof-card__level--${levelClass(p.l)}">${levelLabel(p.l)}</span>
-              <h3 class="prof-card__name">${p.n}</h3>
-              <div class="prof-card__meta">
-                <span><strong>Modalidades:</strong> ${p.m}</span>
-                <span><strong>Graduação:</strong> ${p.b}</span>
-                <span><strong>Equipe:</strong> ${p.t}</span>
-                <span style="color:var(--gold);font-size:.75rem">Registro: ${p.r}</span>
-              </div>
+
+        <div class="directory__controls directory__controls--grid">
+          <div class="directory__field directory__field--search">
+            <label for="profSearch" class="directory__label">Buscar professor</label>
+            <div class="directory__search-row">
+              <input type="search" class="directory__search" id="profSearch" placeholder="Nome, registro ou modalidade">
+              <button type="button" class="directory__clear" id="profClearSearch">Limpar</button>
             </div>
-          `).join('')}
+          </div>
+          <div class="directory__field"><label for="profFilterFuncao" class="directory__label">Função</label><select class="directory__filter" id="profFilterFuncao">${buildFilterOptions(funcoes, 'Todas as funções')}</select></div>
+          <div class="directory__field"><label for="profFilterModalidade" class="directory__label">Modalidade</label><select class="directory__filter" id="profFilterModalidade">${buildFilterOptions(modalidades, 'Todas as modalidades')}</select></div>
+          <div class="directory__field"><label for="profFilterEquipe" class="directory__label">Equipe</label><select class="directory__filter" id="profFilterEquipe">${buildFilterOptions(equipes, 'Todas as equipes')}</select></div>
+          <div class="directory__field"><label for="profFilterCidade" class="directory__label">Cidade</label><select class="directory__filter" id="profFilterCidade">${buildFilterOptions(cidades, 'Todas as cidades')}</select></div>
         </div>
+
+        <p class="directory__count" id="profCount"></p>
+        <div class="prof-grid" id="profGrid"></div>
+        <div class="directory__empty" id="profEmpty">Nenhum professor corresponde aos filtros selecionados.</div>
       </div>
     </section>`;
 }
 
 function renderAtletas() {
-  const levels = [...new Set(ATHLETES.map(a => a.l))].sort();
-  const teams = [...new Set(ATHLETES.map(a => a.t))].sort();
+  const modalidades = ATHLETE_DIRECTORY.flatMap(item => item.modalidade);
+  const equipes = ATHLETE_DIRECTORY.map(item => item.equipe);
+  const cidades = ATHLETE_DIRECTORY.map(item => item.cidade);
+  const funcoes = ATHLETE_DIRECTORY.map(item => item.funcao);
   return `
     <section class="section">
       <div class="container">
         <div class="section__header">
           <span class="section__eyebrow">Atletas Filiados</span>
           <h2 class="section__title">Diretório de Atletas</h2>
-          <p class="section__desc">Registro oficial dos atletas filiados à FMTC-MMA.</p>
+          <p class="section__desc">Registro oficial de atletas filiados com busca por modalidade, equipe, cidade e função.</p>
         </div>
-        <div class="directory__controls">
-          <input type="text" class="directory__search" id="athleteSearch" placeholder="Buscar por nome, registro ou modalidade…">
-          <select class="directory__filter" id="filterLevel">
-            <option value="">Todos os Níveis</option>
-            ${levels.map(l => `<option value="${l}">${l.charAt(0).toUpperCase() + l.slice(1)}</option>`).join('')}
-          </select>
-          <select class="directory__filter" id="filterTeam">
-            <option value="">Todas as Equipes</option>
-            ${teams.map(t => `<option value="${t}">${t}</option>`).join('')}
-          </select>
+
+        <div class="directory__controls directory__controls--grid">
+          <div class="directory__field directory__field--search">
+            <label for="athleteSearch" class="directory__label">Buscar atleta</label>
+            <div class="directory__search-row">
+              <input type="search" class="directory__search" id="athleteSearch" placeholder="Nome, registro ou modalidade">
+              <button type="button" class="directory__clear" id="athleteClearSearch">Limpar</button>
+            </div>
+          </div>
+          <div class="directory__field"><label for="athleteFilterFuncao" class="directory__label">Função</label><select class="directory__filter" id="athleteFilterFuncao">${buildFilterOptions(funcoes, 'Todas as funções')}</select></div>
+          <div class="directory__field"><label for="athleteFilterModalidade" class="directory__label">Modalidade</label><select class="directory__filter" id="athleteFilterModalidade">${buildFilterOptions(modalidades, 'Todas as modalidades')}</select></div>
+          <div class="directory__field"><label for="athleteFilterEquipe" class="directory__label">Equipe</label><select class="directory__filter" id="athleteFilterEquipe">${buildFilterOptions(equipes, 'Todas as equipes')}</select></div>
+          <div class="directory__field"><label for="athleteFilterCidade" class="directory__label">Cidade</label><select class="directory__filter" id="athleteFilterCidade">${buildFilterOptions(cidades, 'Todas as cidades')}</select></div>
         </div>
         <p class="directory__count" id="athleteCount"></p>
         <div class="athlete-grid" id="athleteGrid"></div>
+        <div class="directory__empty" id="athleteEmpty">Nenhum atleta corresponde aos filtros selecionados.</div>
         <div class="pagination" id="athletePagination"></div>
       </div>
     </section>`;
 }
 
 function renderOndeTreinar() {
-  const teamCounts = {};
-  ATHLETES.forEach(a => { teamCounts[a.t] = (teamCounts[a.t] || 0) + 1; });
+  const modalidades = GYM_DIRECTORY.flatMap(item => item.modalidade);
+  const cidades = GYM_DIRECTORY.map(item => item.cidade);
+  const equipes = GYM_DIRECTORY.map(item => item.equipe);
   return `
     <section class="section">
       <div class="container">
         <div class="section__header">
           <span class="section__eyebrow">Onde Treinar</span>
           <h2 class="section__title">Academias e Equipes Filiadas</h2>
-          <p class="section__desc">${GYMS.length} núcleos de treinamento espalhados por Minas Gerais e além.</p>
+          <p class="section__desc">Academias e núcleos filiados à FMTC-MMA em Minas Gerais e outros estados.</p>
         </div>
-        <div class="gym-grid">
-          ${GYMS.map(g => `
-            <div class="gym-card">
-              <h3 class="gym-card__name">${g.name}</h3>
-              <p class="gym-card__location">📍 ${g.city}${g.region ? ' — ' + g.region : ''}</p>
-              <p class="gym-card__stat">${teamCounts[g.name] || 0} atletas filiados</p>
+
+        <div class="directory__controls directory__controls--grid">
+          <div class="directory__field directory__field--search">
+            <label for="gymSearch" class="directory__label">Buscar academia</label>
+            <div class="directory__search-row">
+              <input type="search" class="directory__search" id="gymSearch" placeholder="Academia, cidade ou modalidade">
+              <button type="button" class="directory__clear" id="gymClearSearch">Limpar</button>
             </div>
-          `).join('')}
+          </div>
+          <div class="directory__field"><label for="gymFilterEquipe" class="directory__label">Equipe</label><select class="directory__filter" id="gymFilterEquipe">${buildFilterOptions(equipes, 'Todas as equipes')}</select></div>
+          <div class="directory__field"><label for="gymFilterCidade" class="directory__label">Cidade</label><select class="directory__filter" id="gymFilterCidade">${buildFilterOptions(cidades, 'Todas as cidades')}</select></div>
+          <div class="directory__field"><label for="gymFilterModalidade" class="directory__label">Modalidade</label><select class="directory__filter" id="gymFilterModalidade">${buildFilterOptions(modalidades, 'Todas as modalidades')}</select></div>
+        </div>
+
+        <p class="directory__count" id="gymCount"></p>
+        <div class="gym-grid" id="gymGrid"></div>
+        <div class="directory__empty" id="gymEmpty">Nenhuma academia corresponde aos filtros selecionados.</div>
+      </div>
+    </section>`;
+}
+
+function renderPersonProfile(item) {
+  const gym = item.equipe ? GYM_BY_NAME.get(item.equipe) : null;
+  const referee = REFEREE_BY_REG.get(item.registro);
+  const sameTeamPeople = item.equipe
+    ? ATHLETE_DIRECTORY.filter(person => person.equipe === item.equipe && person.slug !== item.slug)
+    : [];
+  const noProfileData = !hasMinimumProfileData(item);
+
+  return `
+    <section class="art-hero">
+      <div class="container">
+        <a href="${profileBackRoute(item.tipo)}" class="art-back">&larr; Voltar ao diretório</a>
+        <div class="art-hero__inner">
+          <span class="art-hero__icon">👤</span>
+          <h1 class="art-hero__title">${item.nome}</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container profile-detail">
+        ${noProfileData ? `<div class="art-notice"><span>ℹ️</span><p><strong>Dados em consolidação.</strong> As informações oficiais deste cadastro estão sendo atualizadas.</p></div>` : ''}
+
+        <div class="profile-grid">
+          <article class="profile-card">
+            <h2 class="profile-card__title">Dados principais</h2>
+            <p><strong>Função:</strong> ${item.funcao || 'A confirmar'}</p>
+            <p><strong>Registro:</strong> ${item.registro || 'A confirmar'}</p>
+            <p><strong>Modalidades:</strong> ${item.modalidade.length ? item.modalidade.join(', ') : 'A confirmar'}</p>
+            <p><strong>Equipe/Academia:</strong> ${item.equipe || 'A confirmar'}</p>
+            <p><strong>Cidade:</strong> ${item.cidade || 'A confirmar'}</p>
+            <p><strong>Contato:</strong> ${item.contato || 'A confirmar'}</p>
+          </article>
+
+          <article class="profile-card">
+            <h2 class="profile-card__title">Resumo</h2>
+            ${item.resumo ? `<p>${item.resumo}</p>` : '<p class="profile-update">Sem informação</p>'}
+            ${item.bio ? `<p>${item.bio}</p>` : ''}
+          </article>
+        </div>
+
+        <div class="profile-grid">
+          <article class="profile-card">
+            <h2 class="profile-card__title">Relações de treino</h2>
+            ${gym ? `<p><strong>Academia relacionada:</strong> ${gym.name} — ${gym.city}${gym.region ? ` (${gym.region})` : ''}</p>` : '<p class="profile-update">Sem informação</p>'}
+            ${gym ? `<p><a class="profile-link" href="#/onde-treinar">Ver todas as academias</a></p>` : ''}
+            ${referee && item.tipo !== 'arbitro' ? `<p><a class="profile-link" href="#/arbitros/${referee.slug}">Ver no quadro de arbitragem</a></p>` : ''}
+            ${item.atletaRelacionadoSlug ? `<p><a class="profile-link" href="#/atletas/${item.atletaRelacionadoSlug}">Ver atleta relacionado</a></p>` : ''}
+          </article>
+
+          <article class="profile-card">
+            <h2 class="profile-card__title">Pessoas da mesma equipe</h2>
+            ${sameTeamPeople.length
+              ? `<ul class="profile-list">${sameTeamPeople.slice(0, 10).map(person => `<li><a class="profile-link" href="#/atletas/${person.slug}">${person.nome}</a></li>`).join('')}</ul>`
+              : '<p class="profile-update">Sem informação</p>'}
+          </article>
         </div>
       </div>
     </section>`;
 }
 
 function renderFiliacao() {
+  const beneficios = [
+    'Registro e graduação reconhecidos por órgão oficial do esporte',
+    'Participação em competições oficiais com histórico preservado',
+    'Emissão de comprovações para bolsa atleta e cartas para patrocinadores',
+    'Participação em cursos e seminários nacionais e internacionais',
+    'Orientação jurídica, tributária, administrativa e marketing digital',
+    'Convênios médicos, odontológicos e seguros',
+    'Desconto de 10% em correligionários'
+  ];
   return `
     <section class="section section--dark cta-band">
       <div class="container">
         <span class="section__eyebrow">Filie-se</span>
-        <h2 class="section__title" style="color:#fff">Venha Fazer Parte da Nossa Família</h2>
-        <p class="section__desc" style="color:rgba(255,255,255,.6);margin:0 auto 32px;text-align:center;max-width:640px">Juntos somos mais fortes. Tenha seu registro e graduação reconhecidos por um órgão oficial do esporte.</p>
-        <h3 style="color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:1rem;margin-bottom:16px;text-align:center">Por que filiar-se?</h3>
+        <h2 class="section__title section__title--light">Filiação Institucional</h2>
+        <p class="section__desc section__desc--light">A filiação oficializa o vínculo com a FMTC-MMA, garantindo registro federativo, histórico técnico e acesso a competições e benefícios institucionais.</p>
+
+        <h3 class="cta-band__subheading cta-band__subheading--md">Por que filiar-se?</h3>
         <ul class="cta-benefits">
-          <li>Registro e graduação reconhecidos oficialmente</li>
-          <li>Participação em competições oficiais com histórico preservado</li>
-          <li>Comprovantes de colocação, bolsa atleta pelo Ministério dos Esportes</li>
-          <li>Cursos e seminários nacionais e internacionais</li>
-          <li>Orientação jurídica, tributária, administrativa e marketing digital</li>
-          <li>Convênios médicos, odontológicos e seguros</li>
-          <li>Descontos de 10% em correligionários</li>
+          ${beneficios.map(item => `<li>${item}</li>`).join('')}
         </ul>
+
         <div class="cta-steps">
-          <div class="cta-step"><span class="cta-step__number">01</span><span class="cta-step__text">Baixe a ficha de inscrição na aba Documentos</span></div>
-          <div class="cta-step"><span class="cta-step__number">02</span><span class="cta-step__text">Preencha e anexe os documentos solicitados</span></div>
-          <div class="cta-step"><span class="cta-step__number">03</span><span class="cta-step__text">Envie para fmtc-mma@fmtc-mma.com com comprovante de depósito</span></div>
-          <div class="cta-step"><span class="cta-step__number">04</span><span class="cta-step__text">Receba seu registro oficial da FMTC-MMA</span></div>
+          <div class="cta-step"><span class="cta-step__number">01</span><span class="cta-step__text">Acesse a ficha na seção Documentos</span></div>
+          <div class="cta-step"><span class="cta-step__number">02</span><span class="cta-step__text">Preencha a ficha e reúna os anexos obrigatórios</span></div>
+          <div class="cta-step"><span class="cta-step__number">03</span><span class="cta-step__text">Envie tudo para fmtc-mma@fmtc-mma.com junto com o comprovante de depósito</span></div>
+          <div class="cta-step"><span class="cta-step__number">04</span><span class="cta-step__text">Aguarde a homologação do seu registro oficial</span></div>
         </div>
-        <h3 style="color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:.9rem;margin:32px 0 12px;text-align:center">Documentos Necessários</h3>
-        <ul class="cta-benefits" style="max-width:500px">
-          <li>Xerox do CGC ou CNPJ</li>
-          <li>Xerox do Alvará</li>
-          <li>Ficha de filiação preenchida e assinada</li>
-          <li>Comprovante bancário de depósito</li>
+
+        <div class="inst-grid">
+          <article class="inst-card">
+            <h3 class="inst-card__title">Filiação de Atleta</h3>
+            <p class="inst-card__desc">Dados de identificação pessoal, vínculo técnico e modalidades praticadas conforme ficha oficial.</p>
+            <ul class="inst-list">
+              ${FILIACAO_CAMPOS_ATLETA.map(field => `<li>${field}</li>`).join('')}
+            </ul>
+          </article>
+          <article class="inst-card">
+            <h3 class="inst-card__title">Filiação de Equipe/Clube/Academia</h3>
+            <p class="inst-card__desc">Dados institucionais e documentação jurídica conforme o tipo de filiação.</p>
+            <ul class="inst-list">
+              ${FILIACAO_CAMPOS_EQUIPE.map(field => `<li>${field}</li>`).join('')}
+            </ul>
+          </article>
+        </div>
+
+        <h3 class="cta-band__subheading cta-band__subheading--sm">Documentos obrigatórios</h3>
+        <ul class="cta-benefits">
+          ${FILIACAO_DOCUMENTOS.map(item => `<li>${item}</li>`).join('')}
         </ul>
-        <div style="text-align:center;margin-top:32px">
-          <a href="#/documentos" class="btn btn--gold">Acessar Documentos</a>
+
+        <blockquote class="inst-declaration">${FILIACAO_DECLARACAO}</blockquote>
+
+        <div class="cta-band__actions">
+          <a href="#/documentos" class="btn btn--gold">Ver documentos de filiação</a>
         </div>
       </div>
     </section>`;
@@ -983,24 +1473,36 @@ function renderDocumentos() {
     if (e === 'xls') return '📗';
     return '📙';
   };
+  const categories = [...new Set(DOCUMENT_HUB.map(item => item.category))];
+  const statusClass = status => status === 'Disponível' ? 'doc-status--ok' : 'doc-status--update';
   return `
     <section class="section">
       <div class="container">
         <div class="section__header">
-          <span class="section__eyebrow">Downloads</span>
-          <h2 class="section__title">Documentos da Federação</h2>
-          <p class="section__desc">Fichas, editais, planilhas e apresentações oficiais para download.</p>
+          <span class="section__eyebrow">Documentos</span>
+          <h2 class="section__title">Central de Documentos</h2>
+          <p class="section__desc">Formulários, registros e materiais oficiais da FMTC-MMA. Documentos ainda não publicados aparecem com status “Em preparação”.</p>
         </div>
-        <div class="dl-grid">
-          ${DOWNLOADS.map(d => `
-            <a href="${d.file}" target="_blank" class="dl-card" download>
-              <div class="dl-card__icon dl-card__icon--${d.ext}">${extIcon(d.ext)}</div>
-              <div class="dl-card__info">
-                <div class="dl-card__name">${d.name}</div>
-                <div class="dl-card__meta">${d.desc} · ${d.ext.toUpperCase()}</div>
+
+        <div class="doc-categories">
+          ${categories.map(category => `
+            <section class="doc-category">
+              <h3 class="doc-category__title">${category}</h3>
+              <div class="dl-grid">
+                ${DOCUMENT_HUB.filter(item => item.category === category).map(item => {
+                  const cardBody = `
+                    <div class="dl-card__icon dl-card__icon--${item.ext}">${extIcon(item.ext)}</div>
+                    <div class="dl-card__info">
+                      <div class="dl-card__name">${item.name}</div>
+                      <div class="dl-card__meta">${item.desc} · ${item.ext.toUpperCase()}</div>
+                    </div>
+                    <span class="doc-status ${statusClass(item.status)}">${item.status}</span>`;
+                  return item.file
+                    ? `<a href="${item.file}" target="_blank" class="dl-card" download>${cardBody}</a>`
+                    : `<article class="dl-card dl-card--disabled" aria-label="${item.name}">${cardBody}</article>`;
+                }).join('')}
               </div>
-              <span class="dl-card__link">Baixar ↓</span>
-            </a>
+            </section>
           `).join('')}
         </div>
       </div>
@@ -1013,8 +1515,8 @@ function renderDepartamentos() {
       <div class="container">
         <div class="section__header">
           <span class="section__eyebrow">Departamentos</span>
-          <h2 class="section__title">Suporte Especializado</h2>
-          <p class="section__desc">A FMTC-MMA oferece estrutura departamental profissional para seus filiados.</p>
+          <h2 class="section__title">Estrutura Operacional da Federação</h2>
+          <p class="section__desc">Setores de apoio institucional com responsáveis e contatos disponíveis para filiados.</p>
         </div>
         <div class="dept-grid">
           ${DEPARTMENTS.map(d => `
@@ -1026,10 +1528,17 @@ function renderDepartamentos() {
                 <div class="dept-card__name">${d.name}</div>
                 <div class="dept-card__role">${d.role}</div>
                 <p class="dept-card__bio">${d.bio}</p>
-                ${d.contact ? `<span class="dept-card__contact">📞 ${d.contact}</span>` : '<span class="dept-card__contact" style="color:var(--text-light)">Em atualização</span>'}
+                ${d.contact ? `<span class="dept-card__contact">📞 ${d.contact}</span>` : '<span class="dept-card__contact dept-card__contact--muted">Contato em breve</span>'}
               </div>
             </div>
           `).join('')}
+          <div class="dept-card">
+            <div class="dept-card__header"><h3 class="dept-card__title">Outros setores</h3></div>
+            <div class="dept-card__body">
+              <p class="dept-card__bio">Demais setores institucionais serão detalhados em breve.</p>
+              <span class="dept-card__contact dept-card__contact--muted">Contato em breve</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>`;
@@ -1042,6 +1551,7 @@ function renderContato() {
         <div class="section__header">
           <span class="section__eyebrow">Contato</span>
           <h2 class="section__title">Fale com a Federação</h2>
+          <p class="section__desc">Canal de contato oficial da FMTC-MMA, com sede em Contagem — Minas Gerais.</p>
         </div>
         <div class="contact-grid">
           <div class="contact-info">
@@ -1054,39 +1564,45 @@ function renderContato() {
               <div class="contact-info__value">Contagem — Minas Gerais, Brasil</div>
             </div>
             <div class="contact-info__item">
-              <div class="contact-info__label">Diretor Fiscal</div>
-              <div class="contact-info__value">Rafael Ribeiro Silva — (31) 99185-0965</div>
+              <div class="contact-info__label">Como filiar-se</div>
+              <div class="contact-info__value">Envie ficha preenchida + comprovante de depósito + anexos para fmtc-mma@fmtc-mma.com</div>
             </div>
             <div class="contact-info__item">
-              <div class="contact-info__label">Departamento Jurídico</div>
-              <div class="contact-info__value">Dr. Manoel Jandir — (31) 99867-1338</div>
+              <div class="contact-info__label">Diretor Fiscal</div>
+              <div class="contact-info__value">Rafael Ribeiro Silva — (31) 99185-0965</div>
             </div>
             <div class="contact-info__item">
               <div class="contact-info__label">Departamento Contábil</div>
               <div class="contact-info__value">Roberta Keyla — (31) 99953-9903</div>
             </div>
+            <div class="contact-info__item">
+              <div class="contact-info__label">Departamento Jurídico</div>
+              <div class="contact-info__value">Dr. Manoel Jandir de Almeida Junior — OAB/MG 116.269 — (31) 99867-1338</div>
+            </div>
           </div>
           <form class="form" id="contactForm" novalidate>
             <div class="form__row">
               <div class="form__group">
-                <label class="form__label">Nome</label>
-                <input type="text" class="form__input" id="cName" required>
+                <label class="form__label" for="cName">Nome</label>
+                <input type="text" class="form__input" id="cName" name="name" required autocomplete="name">
               </div>
               <div class="form__group">
-                <label class="form__label">Email</label>
-                <input type="email" class="form__input" id="cEmail" required>
+                <label class="form__label" for="cEmail">Email</label>
+                <input type="email" class="form__input" id="cEmail" name="email" required autocomplete="email">
               </div>
             </div>
             <div class="form__group">
-              <label class="form__label">Assunto</label>
-              <input type="text" class="form__input" id="cSubject">
+              <label class="form__label" for="cSubject">Assunto</label>
+              <input type="text" class="form__input" id="cSubject" name="subject">
             </div>
             <div class="form__group">
-              <label class="form__label">Mensagem</label>
-              <textarea class="form__textarea" id="cMessage" required></textarea>
+              <label class="form__label" for="cMessage">Mensagem</label>
+              <textarea class="form__textarea" id="cMessage" name="message" required></textarea>
             </div>
-            <button type="submit" class="btn btn--primary" style="justify-self:start">Enviar Mensagem</button>
-            <div class="form__success" id="formSuccess">Mensagem enviada com sucesso! Entraremos em contato em breve.</div>
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary">Enviar Mensagem</button>
+            </div>
+            <div class="form__success" id="formSuccess">Mensagem enviada com sucesso. Retornaremos em breve.</div>
           </form>
         </div>
       </div>
@@ -1097,9 +1613,11 @@ function renderContato() {
 
 function initPageFeatures(hash) {
   if (hash === '/inicio') initCounters();
+  if (hash === '/professores') initProfessorDirectory();
+  if (hash === '/arbitros') initRefereeDirectory();
   if (hash === '/atletas') initAthleteDirectory();
+  if (hash === '/onde-treinar') initGymDirectory();
   if (hash === '/contato') initContactForm();
-  if (hash === '/artes') initAccordions();
   initScrollAnimations();
 }
 
@@ -1119,71 +1637,185 @@ function initCounters() {
   });
 }
 
-/* Athlete directory with pagination */
+/* Diretórios com busca e filtros */
 let currentPage = 1;
-const PER_PAGE = 48;
+const ATHLETE_PER_PAGE = 48;
+
+function setupSearchClear(inputId, clearBtnId, onChange) {
+  const input = document.getElementById(inputId);
+  const clear = document.getElementById(clearBtnId);
+  if (!input || !clear) return;
+  input.addEventListener('input', onChange);
+  clear.addEventListener('click', () => {
+    input.value = '';
+    onChange();
+    input.focus();
+  });
+}
+
+function updateEmptyState(emptyId, show) {
+  const empty = document.getElementById(emptyId);
+  if (!empty) return;
+  empty.classList.toggle('show', show);
+}
+
+function initProfessorDirectory() {
+  const update = () => renderProfessorGrid();
+  setupSearchClear('profSearch', 'profClearSearch', update);
+  ['profFilterFuncao', 'profFilterModalidade', 'profFilterEquipe', 'profFilterCidade'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', update);
+  });
+  renderProfessorGrid();
+}
+
+function getFilteredProfessors() {
+  const q = normalizeText(document.getElementById('profSearch')?.value || '');
+  const funcao = document.getElementById('profFilterFuncao')?.value || '';
+  const modalidade = document.getElementById('profFilterModalidade')?.value || '';
+  const equipe = document.getElementById('profFilterEquipe')?.value || '';
+  const cidade = document.getElementById('profFilterCidade')?.value || '';
+  return PROFESSOR_DIRECTORY.filter(item => {
+    const searchable = normalizeText(`${item.nome} ${item.registro} ${item.modalidade.join(' ')}`);
+    if (q && !searchable.includes(q)) return false;
+    if (funcao && item.funcao !== funcao) return false;
+    if (modalidade && !item.modalidade.includes(modalidade)) return false;
+    if (equipe && item.equipe !== equipe) return false;
+    if (cidade && item.cidade !== cidade) return false;
+    return true;
+  }).sort(byName);
+}
+
+function renderProfessorGrid() {
+  const filtered = getFilteredProfessors();
+  const grid = document.getElementById('profGrid');
+  const count = document.getElementById('profCount');
+  if (count) count.textContent = `${filtered.length} professor${filtered.length !== 1 ? 'es' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
+  if (!grid) return;
+  grid.innerHTML = filtered.map(item => {
+    const levelClass = normalizeText(item.funcao);
+    return `<a class="prof-card" href="#/professores/${item.slug}">
+      <span class="prof-card__level prof-card__level--${levelClass}">${item.funcao}</span>
+      <h3 class="prof-card__name">${item.nome}</h3>
+      <div class="prof-card__meta">
+        <span><strong>Modalidades:</strong> ${item.modalidade.join(', ') || 'A confirmar'}</span>
+        <span><strong>Equipe:</strong> ${item.equipe || 'A confirmar'}</span>
+        <span><strong>Cidade:</strong> ${item.cidade || 'A confirmar'}</span>
+        <span class="prof-card__reg">Registro: ${item.registro || 'A confirmar'}</span>
+      </div>
+    </a>`;
+  }).join('');
+  updateEmptyState('profEmpty', filtered.length === 0);
+}
+
+function initRefereeDirectory() {
+  const update = () => renderRefereeGrid();
+  setupSearchClear('refSearch', 'refClearSearch', update);
+  ['refFilterFuncao', 'refFilterModalidade', 'refFilterEquipe', 'refFilterCidade'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', update);
+  });
+  renderRefereeGrid();
+}
+
+function getFilteredReferees() {
+  const q = normalizeText(document.getElementById('refSearch')?.value || '');
+  const funcao = document.getElementById('refFilterFuncao')?.value || '';
+  const modalidade = document.getElementById('refFilterModalidade')?.value || '';
+  const equipe = document.getElementById('refFilterEquipe')?.value || '';
+  const cidade = document.getElementById('refFilterCidade')?.value || '';
+  return REFEREE_DIRECTORY.filter(item => {
+    const searchable = normalizeText(`${item.nome} ${item.registro} ${item.modalidade.join(' ')}`);
+    if (q && !searchable.includes(q)) return false;
+    if (funcao && item.funcao !== funcao) return false;
+    if (modalidade && !item.modalidade.includes(modalidade)) return false;
+    if (equipe && item.equipe !== equipe) return false;
+    if (cidade && item.cidade !== cidade) return false;
+    return true;
+  }).sort(byName);
+}
+
+function renderRefereeGrid() {
+  const filtered = getFilteredReferees();
+  const grid = document.getElementById('refGrid');
+  const count = document.getElementById('refCount');
+  if (count) count.textContent = `${filtered.length} árbitro${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
+  if (!grid) return;
+  grid.innerHTML = filtered.map(item => `
+    <a class="directory-card" href="#/arbitros/${item.slug}">
+      <h3 class="directory-card__title">${item.nome}</h3>
+      <p class="directory-card__meta"><strong>Função:</strong> ${item.funcao}</p>
+      <p class="directory-card__meta"><strong>Registro:</strong> ${item.registro || 'A confirmar'}</p>
+      <p class="directory-card__meta"><strong>Modalidades:</strong> ${item.modalidade.join(', ') || 'A confirmar'}</p>
+      <p class="directory-card__meta"><strong>Equipe:</strong> ${item.equipe || 'A confirmar'}</p>
+      <p class="directory-card__meta"><strong>Cidade:</strong> ${item.cidade || 'A confirmar'}</p>
+    </a>
+  `).join('');
+  updateEmptyState('refEmpty', filtered.length === 0);
+}
 
 function initAthleteDirectory() {
   currentPage = 1;
-  const search = document.getElementById('athleteSearch');
-  const filterLevel = document.getElementById('filterLevel');
-  const filterTeam = document.getElementById('filterTeam');
-  if (!search) return;
   const update = () => { currentPage = 1; renderAthleteGrid(); };
-  search.addEventListener('input', update);
-  filterLevel.addEventListener('change', update);
-  filterTeam.addEventListener('change', update);
+  setupSearchClear('athleteSearch', 'athleteClearSearch', update);
+  ['athleteFilterFuncao', 'athleteFilterModalidade', 'athleteFilterEquipe', 'athleteFilterCidade'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', update);
+  });
   renderAthleteGrid();
 }
 
 function getFilteredAthletes() {
-  const q = (document.getElementById('athleteSearch')?.value || '').toLowerCase();
-  const level = document.getElementById('filterLevel')?.value || '';
-  const team = document.getElementById('filterTeam')?.value || '';
-  return ATHLETES.filter(a => {
-    if (q && !a.n.toLowerCase().includes(q) && !a.r.includes(q) && !a.m.toLowerCase().includes(q)) return false;
-    if (level && a.l !== level) return false;
-    if (team && a.t !== team) return false;
+  const q = normalizeText(document.getElementById('athleteSearch')?.value || '');
+  const funcao = document.getElementById('athleteFilterFuncao')?.value || '';
+  const modalidade = document.getElementById('athleteFilterModalidade')?.value || '';
+  const equipe = document.getElementById('athleteFilterEquipe')?.value || '';
+  const cidade = document.getElementById('athleteFilterCidade')?.value || '';
+  return ATHLETE_DIRECTORY.filter(item => {
+    const searchable = normalizeText(`${item.nome} ${item.registro} ${item.modalidade.join(' ')}`);
+    if (q && !searchable.includes(q)) return false;
+    if (funcao && item.funcao !== funcao) return false;
+    if (modalidade && !item.modalidade.includes(modalidade)) return false;
+    if (equipe && item.equipe !== equipe) return false;
+    if (cidade && item.cidade !== cidade) return false;
     return true;
-  });
+  }).sort(byName);
 }
 
 function renderAthleteGrid() {
   const filtered = getFilteredAthletes();
-  const total = filtered.length;
-  const totalPages = Math.ceil(total / PER_PAGE);
+  const totalPages = Math.ceil(filtered.length / ATHLETE_PER_PAGE);
   if (currentPage > totalPages) currentPage = totalPages || 1;
-  const start = (currentPage - 1) * PER_PAGE;
-  const page = filtered.slice(start, start + PER_PAGE);
+  const start = (currentPage - 1) * ATHLETE_PER_PAGE;
+  const pageItems = filtered.slice(start, start + ATHLETE_PER_PAGE);
 
   const countEl = document.getElementById('athleteCount');
-  if (countEl) countEl.textContent = `${total} atleta${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
+  if (countEl) countEl.textContent = `${filtered.length} atleta${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
 
   const grid = document.getElementById('athleteGrid');
   if (grid) {
-    grid.innerHTML = page.map(a => {
-      const initials = a.n.split(' ').filter(w => w.length > 1).slice(0, 2).map(w => w[0]).join('');
-      return `<div class="athlete-card">
-        <div class="athlete-card__avatar athlete-card__avatar--${a.l}">${initials}</div>
+    grid.innerHTML = pageItems.map(item => {
+      const initials = item.nome.split(' ').filter(word => word.length > 1).slice(0, 2).map(word => word[0]).join('');
+      return `<a class="athlete-card" href="#/atletas/${item.slug}">
+        <div class="athlete-card__avatar athlete-card__avatar--${item.funcaoNorm}">${initials}</div>
         <div class="athlete-card__info">
-          <div class="athlete-card__name" title="${a.n}">${a.n}</div>
-          <div class="athlete-card__details">${a.m} · ${a.b} · ${a.t}</div>
+          <div class="athlete-card__name" title="${item.nome}">${item.nome}</div>
+          <div class="athlete-card__details">${item.modalidade.join(', ') || 'A confirmar'} · ${item.equipe || 'A confirmar'} · ${item.cidade || 'A confirmar'}</div>
         </div>
-        <span class="athlete-card__reg">#${a.r}</span>
-      </div>`;
+        <span class="athlete-card__reg">#${item.registro}</span>
+      </a>`;
     }).join('');
   }
+
+  updateEmptyState('athleteEmpty', filtered.length === 0);
 
   const pag = document.getElementById('athletePagination');
   if (pag && totalPages > 1) {
     let html = '';
     if (currentPage > 1) html += `<button class="pagination__btn" data-page="${currentPage - 1}">‹</button>`;
     const maxShow = 7;
-    let s = Math.max(1, currentPage - 3);
-    let e = Math.min(totalPages, s + maxShow - 1);
-    if (e - s < maxShow - 1) s = Math.max(1, e - maxShow + 1);
-    for (let i = s; i <= e; i++) {
-      html += `<button class="pagination__btn${i === currentPage ? ' active' : ''}" data-page="${i}">${i}</button>`;
+    let startPage = Math.max(1, currentPage - 3);
+    let endPage = Math.min(totalPages, startPage + maxShow - 1);
+    if (endPage - startPage < maxShow - 1) startPage = Math.max(1, endPage - maxShow + 1);
+    for (let page = startPage; page <= endPage; page++) {
+      html += `<button class="pagination__btn${page === currentPage ? ' active' : ''}" data-page="${page}">${page}</button>`;
     }
     if (currentPage < totalPages) html += `<button class="pagination__btn" data-page="${currentPage + 1}">›</button>`;
     pag.innerHTML = html;
@@ -1199,6 +1831,50 @@ function renderAthleteGrid() {
   }
 }
 
+function initGymDirectory() {
+  const update = () => renderGymGrid();
+  setupSearchClear('gymSearch', 'gymClearSearch', update);
+  ['gymFilterEquipe', 'gymFilterCidade', 'gymFilterModalidade'].forEach(id => {
+    document.getElementById(id)?.addEventListener('change', update);
+  });
+  renderGymGrid();
+}
+
+function getFilteredGyms() {
+  const q = normalizeText(document.getElementById('gymSearch')?.value || '');
+  const equipe = document.getElementById('gymFilterEquipe')?.value || '';
+  const cidade = document.getElementById('gymFilterCidade')?.value || '';
+  const modalidade = document.getElementById('gymFilterModalidade')?.value || '';
+  return GYM_DIRECTORY.filter(item => {
+    const searchable = normalizeText(`${item.nome} ${item.cidade} ${item.modalidade.join(' ')}`);
+    if (q && !searchable.includes(q)) return false;
+    if (equipe && item.equipe !== equipe) return false;
+    if (cidade && item.cidade !== cidade) return false;
+    if (modalidade && !item.modalidade.includes(modalidade)) return false;
+    return true;
+  }).sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+}
+
+function renderGymGrid() {
+  const filtered = getFilteredGyms();
+  const grid = document.getElementById('gymGrid');
+  const count = document.getElementById('gymCount');
+  if (count) count.textContent = `${filtered.length} academia${filtered.length !== 1 ? 's' : ''} encontrada${filtered.length !== 1 ? 's' : ''}`;
+  if (!grid) return;
+  grid.innerHTML = filtered.map(item => `
+    <article class="gym-card">
+      <h3 class="gym-card__name">${item.nome}</h3>
+      <p class="gym-card__location">📍 ${item.cidade}${item.regiao ? ` — ${item.regiao}` : ''}</p>
+      <p class="gym-card__stat">${item.totalAtletas} atleta${item.totalAtletas !== 1 ? 's' : ''} vinculado${item.totalAtletas !== 1 ? 's' : ''}</p>
+      <p class="directory-card__meta"><strong>Modalidades:</strong> ${item.modalidade.join(', ') || 'A confirmar'}</p>
+      <div class="gym-card__links">
+        ${item.professores.slice(0, 3).map(person => `<a class="profile-link" href="#/professores/${person.slug}">${person.nome}</a>`).join('') || '<span class="profile-update">A confirmar</span>'}
+      </div>
+    </article>
+  `).join('');
+  updateEmptyState('gymEmpty', filtered.length === 0);
+}
+
 /* Contact form */
 function initContactForm() {
   const form = document.getElementById('contactForm');
@@ -1208,7 +1884,7 @@ function initContactForm() {
     const name = document.getElementById('cName')?.value.trim();
     const email = document.getElementById('cEmail')?.value.trim();
     const msg = document.getElementById('cMessage')?.value.trim();
-    if (!name || !email || !msg) { alert('Preencha todos os campos obrigatórios.'); return; }
+    if (!name || !email || !msg) { alert('Por favor, preencha todos os campos obrigatórios.'); return; }
     document.getElementById('formSuccess')?.classList.add('show');
     form.reset();
   });
@@ -1257,6 +1933,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const open = navMob.classList.toggle('open');
     toggle.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+    navMob.setAttribute('aria-hidden', !open);
+    document.body.classList.toggle('menu-open', open);
   });
 
   /* Close mobile menu on link click */
